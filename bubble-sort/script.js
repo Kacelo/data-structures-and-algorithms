@@ -61,7 +61,7 @@ async function BubbleSort(delay = 100) {
 			// blocks to be compared
 			blocks[j].style.backgroundColor = "#FF4949";
 			blocks[j + 1].style.backgroundColor = "#FF4949";
-
+ 
 			// To wait for .1 sec
 			await new Promise((resolve) =>
 				setTimeout(() => {
