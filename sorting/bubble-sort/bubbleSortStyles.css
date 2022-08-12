@@ -28,6 +28,7 @@
 	font-size: 16px;
 	border: white;
 	text-align: center;
+	cursor: pointer;
 }
 .btn1 {
 	padding: 12px;
@@ -37,6 +38,17 @@
 	color: white;
 	font-size: 16px;
 	border: white;
+	cursor: pointer;
+}
+#Button2{
+	padding: 12px;
+	font-weight: bolder;
+	background-color: #6f459e;
+	border-radius: 10px;
+	color: white;
+	font-size: 16px;
+	border: white;
+	cursor: pointer;
 }
 .btn-container{
 	display: flex;

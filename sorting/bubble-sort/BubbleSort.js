@@ -91,6 +91,11 @@ let btnSort = document.getElementById("bubble-sort-btn");
 btnSort.addEventListener("click", () => {
   // Calling BubbleSort function
   BubbleSort();
+  disable();
+
+  var heading = document.getElementById("header");
+  heading.innerHTML=
+     `Bubble Sort`;
 });
 
 generatearray();
@@ -180,6 +185,7 @@ async function InsertionSort(delay = 600) {
   // "Insertion Sort" after final(sorted)
   document.getElementById("Button2").disabled = false;
   document.getElementById("Button2").style.backgroundColor = "#6f459e";
+ 
 }
 
 let insertionBtn = document.getElementById("Button2");
@@ -187,6 +193,10 @@ let insertionBtn = document.getElementById("Button2");
 insertionBtn.addEventListener("click", () => {
   InsertionSort();
   disable();
+ var heading = document.getElementById("header");
+ heading.innerHTML=
+    `Selection Sort`;
+ 
 //   type.innerHTML = '<h3>Insertion Sort</h3>'
 });
 
