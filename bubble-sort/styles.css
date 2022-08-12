@@ -10,7 +10,16 @@
 	text-align: center;
 }
 
-.bubble-sort-btn{
+#bubble-sort-btn{
+    padding: 12px;
+font-weight: bolder; 
+background-color: #6f459e; 
+border-radius: 10px; 
+color: white; 
+font-size: 16px; 
+border: white; 
+margin-top: 1vw;
+margin-right: 1vw;
     
 }
 
@@ -38,4 +47,27 @@
 	margin-top: -20px;
 	width: 100%;
 	text-align: center;
+}
+
+.btn1
+{
+padding: 12px;
+font-weight: bolder; 
+background-color: #6f459e; 
+border-radius: 10px; 
+color: white; 
+font-size: 16px; 
+border: white; 
+margin-top: 1vw;
+margin-right: 1vw;
+}
+.btn2
+{
+padding: 12px; 
+font-weight: bolder; 
+background-color: #6f459e; 
+border-radius: 10px; 
+color: white; 
+font-size: 16px; 
+border: white
 }
