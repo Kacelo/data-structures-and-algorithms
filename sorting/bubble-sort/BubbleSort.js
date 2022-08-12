@@ -51,6 +51,7 @@ function swap(el1, el2) {
 
 // Asynchronous BubbleSort function
 async function BubbleSort(delay = 100) {
+	disable()
 	var blocks = document.querySelectorAll(".block");
 
 	// BubbleSort Algorithm
@@ -68,8 +69,6 @@ async function BubbleSort(delay = 100) {
 					resolve();
 				}, delay)
 			);
-
-			console.log("run");
 			var value1 = Number(blocks[j].childNodes[0].innerHTML);
 			var value2 = Number(blocks[j + 1]
 						.childNodes[0].innerHTML);
@@ -90,6 +89,13 @@ async function BubbleSort(delay = 100) {
 		blocks[blocks.length - i - 1]
 				.style.backgroundColor = "#13CE66";
 	}
+	// To enable the button "Generate New Array"
+	document.getElementById("Button1").disabled = false;
+	document.getElementById("Button1").style.backgroundColor = "#6f459e";
+
+	// To enable the button "Bubble sort"
+	document.getElementById("bubble-sort-btn").disabled = false;
+	document.getElementById("bubble-sort-btn").style.backgroundColor = "#6f459e";
 }
 
 let btnSort = document.getElementById('bubble-sort-btn');
@@ -101,6 +107,23 @@ BubbleSort();
    
 })
 
+// function to generate new random array
+function generate()
+{
+window.location.reload();
+}
+
+//function to disable generate btn
+function disable()
+{
+// To disable the button "Generate New Array"
+document.getElementById("Button1").disabled = true;
+document.getElementById("Button1").style.backgroundColor = "#d8b6ff";
+
+// To disable the button "Bubble sort"
+document.getElementById("bubble-sort-btn").disabled = true;
+document.getElementById("bubble-sort-btn").style.backgroundColor = "#d8b6ff";
+}
 
 generatearray();
 
