@@ -35,11 +35,11 @@ export const App = () => {
 					display: 'flex',
 					justifyContent: 'center',
 					alignItems: 'center',
-					marginTop: '7%',
+					marginTop: '3%',
 					width: '100%',
 				}}
 			>
-				<div style={{ marginBottom: '1rem' }}>
+				<div>
 					<input
 						type="text"
 						value={node}
@@ -52,11 +52,11 @@ export const App = () => {
 							setNode(0);
 						}}
 					>
-						Add node
+						Add Node
 					</button>
 				</div>
 
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={handleSubmit} style={{margin: '1%'}}>
 					<label>
 						Root:
 						<input
@@ -65,7 +65,7 @@ export const App = () => {
 							onChange={(e) => setRootNode(e.target.value)}
 						/>
 					</label>
-					<input type="submit" value="Submit" />
+					<input type="submit" value="Generate Tree" />
 				</form>
 			</div>
 			<div
