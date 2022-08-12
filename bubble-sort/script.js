@@ -92,8 +92,20 @@ async function BubbleSort(delay = 100) {
 	}
 }
 
-// Calling generatearray function
+let btnSort = document.getElementById('bubble-sort-btn');
+let randomiseBtn = document.getElementById('randomise-button')
+
+btnSort.addEventListener('click', ()=>{
+    // Calling BubbleSort function
+BubbleSort();
+   
+})
+
+
 generatearray();
 
-// Calling BubbleSort function
-BubbleSort();
+
+
+
+
+
