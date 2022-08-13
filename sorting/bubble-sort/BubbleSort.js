@@ -71,6 +71,7 @@ async function BubbleSort(delay = 100) {
 
       // To compare value of two blocks
       if (value1 > value2) {
+        console.log("index");
         await swap(blocks[j], blocks[j + 1]);
         blocks = document.querySelectorAll(".block");
       }
@@ -86,6 +87,8 @@ async function BubbleSort(delay = 100) {
   }
 }
 
+
+
 let btnSort = document.getElementById("bubble-sort-btn");
 
 btnSort.addEventListener("click", () => {
@@ -94,8 +97,7 @@ btnSort.addEventListener("click", () => {
   disable();
 
   var heading = document.getElementById("header");
-  heading.innerHTML=
-     `Bubble Sort`;
+  heading.innerHTML = `Bubble Sort`;
 });
 
 generatearray();
@@ -173,7 +175,6 @@ async function InsertionSort(delay = 600) {
     blocks[i].style.backgroundColor = " rgb(49, 226, 13)";
   }
 
-
   barval.innerHTML = "<h3>Sorted!!!</h3>";
 
   // To enable the button
@@ -185,7 +186,6 @@ async function InsertionSort(delay = 600) {
   // "Insertion Sort" after final(sorted)
   document.getElementById("Button2").disabled = false;
   document.getElementById("Button2").style.backgroundColor = "#6f459e";
- 
 }
 
 let insertionBtn = document.getElementById("Button2");
@@ -193,13 +193,61 @@ let insertionBtn = document.getElementById("Button2");
 insertionBtn.addEventListener("click", () => {
   InsertionSort();
   disable();
- var heading = document.getElementById("header");
- heading.innerHTML=
-    `Selection Sort`;
- 
-//   type.innerHTML = '<h3>Insertion Sort</h3>'
+  var heading = document.getElementById("header");
+  heading.innerHTML = `Selection Sort`;
+
+  //   type.innerHTML = '<h3>Insertion Sort</h3>'
 });
 
+async function searchAlgorithm(delay = 500) {
+  var blocks = document.querySelectorAll(".block");
+
+  var valueTofind = 10;
+
+  for (var i = 0; i < blocks.length; i += 1) {
+    // To change background-color of the
+    // blocks to be compared
+    blocks[i].style.backgroundColor = "#FF4949";
+    blocks[i + 1].style.backgroundColor = "#FF4949";
+
+    // To wait for .1 sec
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
+    console.log(Number(blocks[i + 1].childNodes[0].innerHTML));
+    // values in array
+    var values = Number(blocks[i + 1].childNodes[0].innerHTML);
+
+    // var to store index where found value is stored
+    var index = blocks.length - (blocks.length - i - 1);
+
+    // if statement to compare values in array to value to find
+    if (values === valueTofind) {
+      console.log("value found");
+
+      // display message
+      var heading = document.getElementById("header");
+      heading.innerHTML = `Value: ${valueTofind} found at index: ${index} `;
+      break;
+    } else {
+      // move from one block to the next
+      blocks[i + 1];
+      blocks = document.querySelectorAll(".block");
+      console.log("value not found");
+    }
+  }
+}
+
+let searcButton = document.getElementById("search");
+
+searcButton.addEventListener("click", () => {
+  searchAlgorithm();
+  disable();
+  var heading = document.getElementById("header");
+  heading.innerHTML = `Searching`;
+});
 function generate() {
   window.location.reload();
 }
