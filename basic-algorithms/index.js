@@ -1,5 +1,47 @@
-var container = document.getElementById("array");
+const container = document.getElementById("array");
 let currentArray = [];
+const setCountValue = document.getElementById("countValue");
+
+function reset(blocks) {
+  for (let index = 0; index < blocks.length; index++) {
+    blocks[index].style.backgroundColor = "#6b5b95";
+  }
+}
+
+function disable() {
+  // To disable the button "Generate New Array"
+  document.getElementById("generteButton").disabled = true;
+  document.getElementById("generteButton").style.backgroundColor = "#d8b6ff";
+  // To disable the button "counting"
+  document.getElementById("countingButton").disabled = true;
+  document.getElementById("countingButton").style.backgroundColor = "#d8b6ff";
+  // To disable the button "minimum"
+  document.getElementById("minimumButton").disabled = true;
+  document.getElementById("minimumButton").style.backgroundColor = "#d8b6ff";
+  // To disable the button "maximum"
+  document.getElementById("maximumButton").disabled = true;
+  document.getElementById("maximumButton").style.backgroundColor = "#d8b6ff";
+  // To disable the button "summing"
+  document.getElementById("summingButton").disabled = true;
+  document.getElementById("summingButton").style.backgroundColor = "#d8b6ff";
+}
+function enable() {
+  // To enable the button "Generate New Array"
+  document.getElementById("generteButton").disabled = false;
+  document.getElementById("generteButton").style.backgroundColor = "#6b5b95";
+  // To enable the button "counting"
+  document.getElementById("countingButton").disabled = false;
+  document.getElementById("countingButton").style.backgroundColor = "#6b5b95";
+  // To enable the button "minimum"
+  document.getElementById("minimumButton").disabled = false;
+  document.getElementById("minimumButton").style.backgroundColor = "#6b5b95";
+  // To enable the button "maximum"
+  document.getElementById("maximumButton").disabled = false;
+  document.getElementById("maximumButton").style.backgroundColor = "#6b5b95";
+  // To enable the button "summing"
+  document.getElementById("summingButton").disabled = false;
+  document.getElementById("summingButton").style.backgroundColor = "#6b5b95";
+}
 // Function to generate the array of blocks
 function generateArray() {
   for (var i = 0; i < 20; i++) {
@@ -37,52 +79,146 @@ function generate() {
 }
 generateArray();
 
-function counting() {
+async function counting(delay = 500) {
+  //disable the buttons
+  disable();
+  //selecting all the blocks on the graph
+  var blocks = document.querySelectorAll(".block");
+  //reset the blocks to the default color
+  reset(blocks);
+
+  //Setting the count to 0
   let count = 0;
-  var setCountValue = document.getElementById("countValue");
 
-  for (let index = 0; index < currentArray.length; index++) {
-    const element = currentArray[index];
+  for (var i = 0; i < blocks.length; i += 1) {
+    // To change background-color of the
+    // blocks to be compared
+    blocks[i].style.backgroundColor = "#FF4949";
     count++;
-  }
-  setCountValue.innerText = `The number of elements in the array is: ${count}`;
-}
-function maximum() {
-  let max = currentArray[0];
-  var setCountValue = document.getElementById("countValue");
+    setCountValue.innerText = `The number of elements in the array is: ${count}`;
 
-  for (let index = 1; index < currentArray.length; index++) {
-    if (max < currentArray[index]) max = currentArray[index];
+    // To wait for .5 sec
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
   }
-  setCountValue.innerText = `The maximum value is: ${max}`;
+  //enabling the buttons once operation is complete
+  enable();
 }
-function minimum() {
-  let min = currentArray[0];
-  var setCountValue = document.getElementById("countValue");
+async function maximum(delay = 500) {
+  //disable the buttons
+  disable();
+  //selecting all the blocks on the graph
+  var blocks = document.querySelectorAll(".block");
+  //reset the blocks to the default color
+  reset(blocks);
 
-  for (let index = 1; index < currentArray.length; index++) {
-    if (min > currentArray[index]) min = currentArray[index];
+  //Setting the first element as the minimum
+  let max = Number(blocks[0].childNodes[0].innerHTML);
+  blocks[0].style.backgroundColor = "#13CE66";
+
+  for (var i = 1; i < blocks.length; i += 1) {
+    // To change background-color of the
+    // blocks to be compared
+    blocks[i].style.backgroundColor = "#FF4949";
+
+    // To wait for .5 sec
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
+    // values in array
+    var cuurentValue = Number(blocks[i].childNodes[0].innerHTML);
+
+    // var to store index where found value is stored
+    var index = blocks.length - (blocks.length - i);
+
+    // if the minimum is greater than the current value set the minimum to the current value
+    if (max < cuurentValue) {
+      max = cuurentValue;
+      blocks[i].style.backgroundColor = "#13CE66";
+      // display message
+      setCountValue.innerText = `The maximum value is: ${max} at index ${index}`;
+    }
   }
-  setCountValue.innerText = `The minimum value is: ${min}`;
+  enable();
 }
-function summing() {
+
+async function minimum(delay = 500) {
+  disable();
+  //selecting all the blocks on the graph
+  var blocks = document.querySelectorAll(".block");
+  reset(blocks);
+
+  //Setting the first element as the minimum
+  let min = Number(blocks[0].childNodes[0].innerHTML);
+  blocks[0].style.backgroundColor = "#13CE66";
+
+  for (var i = 1; i < blocks.length; i += 1) {
+    // To change background-color of the
+    // blocks to be compared
+    blocks[i].style.backgroundColor = "#FF4949";
+
+    // To wait for .5 sec
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
+    // values in array
+    var cuurentValue = Number(blocks[i].childNodes[0].innerHTML);
+
+    // var to store index where found value is stored
+    var index = blocks.length - (blocks.length - i);
+
+    // if the minimum is greater than the current value set the minimum to the current value
+    if (min > cuurentValue) {
+      min = cuurentValue;
+      blocks[i].style.backgroundColor = "#13CE66";
+      // display message
+      setCountValue.innerText = `The minimum value is: ${min} at index ${index}`;
+    }
+  }
+  enable();
+}
+async function summing(delay = 500) {
+  //disable the buttons
+  disable();
+  //selecting all the blocks on the graph
+  var blocks = document.querySelectorAll(".block");
+  //reset the blocks to the default color
+  reset(blocks);
+
+  //Setting the count to 0
   let sum = 0;
-  var setCountValue = document.getElementById("countValue");
 
-  for (let index = 0; index < currentArray.length; index++) {
-    sum += currentArray[index];
+  for (var i = 0; i < blocks.length; i += 1) {
+    // To change background-color of the
+    // blocks to be compared
+    blocks[i].style.backgroundColor = "#FF4949";
+    sum += currentArray[i];
+    setCountValue.innerText = `The total is: ${sum}`;
+
+    // To wait for .5 sec
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
   }
-  setCountValue.innerText = `The total is: ${sum}`;
+  //enabling the buttons once operation is complete
+  enable();
 }
 function searching(number) {
-  var setCountValue = document.getElementById("countValue");
   for (let index = 0; index < currentArray.length; index++) {
     if (number === currentArray[index]) {
       setCountValue.innerText = `Number found at index: ${index}`;
       return;
     } else {
-        setCountValue.innerText = `The number ${number} was not found in the array`;
-
+      setCountValue.innerText = `The number ${number} was not found in the array`;
     }
   }
 }
