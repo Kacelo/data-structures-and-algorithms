@@ -1,46 +1,51 @@
-let elements = ['sample ', 'Sample '];
+let elements = ["sample ", "Sample "];
 let count = elements.length;
-function addElements(){
-    // mapping through to get exact values of Array
-    let cont = elements.map(content=>{
-        console.log(content)
-        return content
-    })
+function addElements() {
+  // mapping through to get exact values of Array
+  let cont = elements.map((content) => {
+    console.log(content);
+    return content;
+  });
 
-    // mapping through array and displaying contents into a list item
-    let contents = elements.map(content=>`<li><div class='box'>${content}, index: ${viewID(content)}</div></li>`).join('\n');
-    document.querySelector('ul').innerHTML = contents;
-    
+  // mapping through array and displaying contents into a list item
+  let contents = elements
+    .map(
+      (content) =>
+        `<li><div class='box'>${content}, index: ${viewID(content)}</div></li>`
+    )
+    .join("\n");
+  document.querySelector("ul").innerHTML = contents;
 }
 
 // function to display element index according to array content
 // with use of indexOf() function.
-function viewID(id){
-    let index = elements.indexOf(id);
+function viewID(id) {
+  let index = elements.indexOf(id);
 
-    return index;
+  return index;
 }
 
-
+// to display sample elements
 addElements();
 
-let btnPush = document.getElementById('push-button');
-let arrInput = document.getElementById('array-input');
-let btnPop = document.getElementById('pop-button');
+// buttons
+let btnPush = document.getElementById("push-button");
+let arrInput = document.getElementById("array-input");
+let btnPop = document.getElementById("pop-button");
 
-btnPop.addEventListener('click', ()=>{
-    elements.pop();
+// event listeners
+btnPop.addEventListener("click", () => {
+  elements.pop();
+
+  addElements();
+});
+btnPush.addEventListener("click", () => {
+  elements.push(arrInput.value);
+  arrInput.value = "";
+  this.count += 1;
+
+//   amount of time before function is called
+  setTimeout(() => {
     addElements();
-   
-})
-btnPush.addEventListener('click', ()=>{
-    elements.push(arrInput.value);
-    arrInput.value = '';
-    this.count+=1;
-
-    setTimeout(()=>{
-        addElements();
-    }, 3000)
-    
-    
-})
+  }, 1000);
+});
