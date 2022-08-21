@@ -24,6 +24,9 @@ function disable() {
   // To disable the button "summing"
   document.getElementById("summingButton").disabled = true;
   document.getElementById("summingButton").style.backgroundColor = "#d8b6ff";
+  // to disable the button "searching"
+  document.getElementById("search").disabled = true;
+  document.getElementById("search").style.backgroundColor = "#d8b6ff";
 }
 function enable() {
   // To enable the button "Generate New Array"
@@ -41,6 +44,9 @@ function enable() {
   // To enable the button "summing"
   document.getElementById("summingButton").disabled = false;
   document.getElementById("summingButton").style.backgroundColor = "#6b5b95";
+  // to enable the button "searching"
+  document.getElementById("search").disabled = false;
+  document.getElementById("search").style.backgroundColor = "#6b5b95";
 }
 // Function to generate the array of blocks
 function generateArray() {
@@ -221,4 +227,42 @@ function searching(number) {
       setCountValue.innerText = `The number ${number} was not found in the array`;
     }
   }
+}
+
+async function searchAlgorithm(delay = 500) {
+  disable();
+  var blocks = document.querySelectorAll(".block");
+  //reset the blocks to the default color
+  reset(blocks);
+
+  // value from user to be searched
+  let arrInput = document.getElementById("array-input").value;
+
+  for (var i = 0; i < blocks.length; i += 1) {
+    // To change background-color of the
+    // blocks to be compared
+    blocks[i].style.backgroundColor = "#FF4949";
+    // To wait for .5 sec
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
+    console.log(arrInput);
+    console.log(Number(blocks[i].childNodes[0].innerHTML));
+    // values in array
+    var values = Number(blocks[i].childNodes[0].innerHTML);
+    // variable to store index where found value is stored
+    var index = blocks.length - (blocks.length - i);
+    // if statement to compare values in array to value to find
+    if (values == arrInput) {
+      console.log("value found");
+      // display message
+      setCountValue.innerText = `Number ${arrInput} found at index: ${index}`;
+      enable();
+      return;
+    }
+  }
+  setCountValue.innerText = `The number ${arrInput} was not found in the array`;
+  enable();
 }
