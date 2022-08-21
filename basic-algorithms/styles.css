@@ -28,7 +28,6 @@
 	font-size: 16px;
 	border: white;
 	text-align: center;
-	cursor: pointer;
 }
 .btn1 {
 	padding: 12px;
@@ -38,17 +37,6 @@
 	color: white;
 	font-size: 16px;
 	border: white;
-	cursor: pointer;
-}
-#Button2{
-	padding: 12px;
-	font-weight: bolder;
-	background-color: #6f459e;
-	border-radius: 10px;
-	color: white;
-	font-size: 16px;
-	border: white;
-	cursor: pointer;
 }
 .btn-container{
 	display: flex;
@@ -61,10 +49,15 @@
 	width: 598px;
 	margin: auto;
 	position: relative;
-	margin-top: 2rem;
+	/* margin-top: 2rem; */
 	margin-bottom: 2rem;
 }
-
+.centerDiv{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 1rem;
+}
 
 .block {
 	width: 28px;
@@ -80,4 +73,8 @@
 	bottom: 1.3rem;
 	width: 100%;
 	text-align: center;
+}
+
+#array-input{
+	padding: 10px;
 }
