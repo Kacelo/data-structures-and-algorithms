@@ -3,6 +3,7 @@ let BtnEle = document.querySelector(".Btn");
 let enqueueBtnEle = document.querySelector(".enqueueBtn");
 let dequeueBtnEle = document.querySelector(".dequeueBtn");
 let inputVal = document.getElementById("queueValue")
+let message = document.getElementById("display")
 class Queue {
    constructor() {
       this.items = [];
@@ -44,9 +45,11 @@ enqueueBtnEle.addEventListener("click", () => {
    let ele = document.querySelector(".enqueueVal").value;
    resEle.innerHTML = ele + " is added to the back of the queue";
    queue1.enqueue(ele);
+   queue1.display();
    inputVal.value = '';
 });
 dequeueBtnEle.addEventListener("click", () => {
    resEle.innerHTML =
    queue1.dequeue() + " is removed from the front of queue";
+   queue1.display();
 });

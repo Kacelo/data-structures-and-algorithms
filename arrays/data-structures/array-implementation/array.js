@@ -1,110 +1,70 @@
-let popButton = document.getElementById("pop-button")
-let pushButton = document.getElementById("push-button")
-let inputVal = document.getElementById("array-input")
+let popButton = document.getElementById("pop-button");
+let pushButton = document.getElementById("push-button");
+let inputVal = document.getElementById("array-input");
 let resEle = document.querySelector(".container");
+let insertButton = document.getElementById("insert-button");
+let indexValue = document.getElementById("indexValue");
+let insertValue = document.getElementById("insertValue");
+let deleteButton = document.getElementById("delete-button");
+let deleteValue = document.getElementById("deleteValue");
+let findButton = document.getElementById("find-button");
+let findIndex = document.getElementById("findValue");
+// declare Array
 
-class Array{
-    constructor(){
-      this.length=0;
-      this.data={};
+const items = [1, 2 ,3];
+const count = items.length;
+
+// make function to insert at a certain index
+Array.prototype.insert = function (index, item) {
+  this.splice(index, 0, item);
+};
+Array.prototype.delete = function (index) {
+  this.splice(index, 1);
+};
+
+Array.prototype.findAt=function(index) {
+
+  for (var i = 0; i < items.length; i++) {
+    if (index === (items.indexOf(items[i]))) {
+      console.log("found ", items[i]);
     }
-    getElementAtIndex(index){
-      return this.data[index];
-    }
-   
-    pop(){
-      const item= this.data[this.length-1];
-      delete this.data[this.length-1];
-      this.length--;
-      return this.data;
-    }
-    deleteAt(index){
-      for(let i=index; i<this.length-1;i++){
-        this.data[i]=this.data[i+1];
-      }
-      delete this.data[this.length-1];
-      this.length--;
-      return this.data;
-    }
-    insertAt(item, index){
-      for(let i=this.length;i>=index;i--){
-        this.data[i]=this.data[i-1];
-      }
-      this.data[index]=item;
-      this.length++;
-      return this.data;
-    }
+    console.log('not found')
+    // console.log(items.indexOf(items[i]))
   }
-  Array.prototype.push = function(element){
-    this.data[this.length]=element;
-    this.length+= 1;
-    // return this.length;
+}
 
-  }
-  
-  //we are instantiating an object of Array class
-  Array.prototype.display = function () {
-    //    debugger;
-       if (this.length == 0) {
-          return "Array is empty";
-       }
-       for (let i in array.data) {
-        resEle.innerHTML +=`<li><div class='box'>${array.data[i]}</div></li>`
-            // document.write("<span>"+array.data[i]+" "+"</span>"); 
-            console.log(array.data[i])
-          
-       }
+function addElements() {
+  let contents = items
+    .map((content) => `<li><div class='box'>${content}</div></li>`)
+    .join("\n");
+  document.querySelector("ul").innerHTML = contents;
 
-    
-    };
-   
-    let array= new Array();
-  pushButton.addEventListener("click", ()=>{
-    let item = document.querySelector(".in").value;
-    array.push(item);
-    inputVal.value = '';
-    
-  })
-  
-  popButton.addEventListener("click", ()=>{
-   
-   
-    array.display();
- 
-  })
+  console.log(contents);
+}
 
-//   array.push(12);
-//   array.push(13); //pushing element 
-//   array.push(14);
-//   array.push(10);
-//   array.push(989);
-//   document.write("<div>Print element in an array</div>");
-//   for (let i = 0; i < this.length; i++) {
-       
-//     document.write("<span>"+array.data[i]+" "+"</span>"); 
-//     console.log(array.data[i])
-  
-// }
-    
-    
-//   document.write("<div>Pop element in an array</div>");
-//   array.pop(); //Popping element 989
-//   for(var key in array.data){
-//     document.write("<span>"+array.data[key]+" "+"</span>"); 
-//   }
-    
-    
-//   document.write("<div>Inserting element at position 2</div>");
-//   array.insertAt(456, 2); //Inserting element 456
-//   for(var key in array.data){
-//     document.write("<span>"+array.data[key]+" "+"</span>"); 
-//   }
-    
-//   document.write("<div>deleting element at position 3</div>");
-//   array.deleteAt(3); //Deleting 14
-//   for(var key in array.data){
-//     document.write("<span>"+array.data[key]+" "+"</span>"); 
-//   }
-    
-//   document.write("<div>Getting  element at position 2</div>");
-//   document.write("<div>"+array.getElementAtIndex(2)+"</div>");
+insertButton.addEventListener("click", () => {
+  items.insert(indexValue.value, insertValue.value);
+  indexValue.value = "";
+  insertValue.value = "";
+  addElements();
+});
+
+deleteButton.addEventListener("click", () => {
+  items.delete(deleteValue.value);
+  deleteValue.value = "";
+  addElements();
+});
+popButton.addEventListener("click", () => {
+  items.pop();
+  addElements();
+});
+pushButton.addEventListener("click", () => {
+  items.push(inputVal.value);
+  inputVal.value = "";
+  addElements();
+});
+findButton.addEventListener("click", ()=>{
+  items.findAt(findIndex.value)
+  findIndex.value="";
+})
+
