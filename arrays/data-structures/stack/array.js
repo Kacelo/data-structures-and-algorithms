@@ -1,6 +1,6 @@
 let elements = ['sample ', 'Sample'];
 //maximum number of elements in the stack
-let limit = 3;
+let limit = 5;
 // buttons
 const btnPush = document.getElementById('push-button');
 const arrInput = document.getElementById('array-input');
