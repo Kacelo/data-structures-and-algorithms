@@ -1,7 +1,7 @@
 let popButton = document.getElementById("pop-button");
 let pushButton = document.getElementById("push-button");
 let inputVal = document.getElementById("array-input");
-let resEle = document.querySelector(".container");
+let resEle = document.querySelector(".searchResult");
 let insertButton = document.getElementById("insert-button");
 let indexValue = document.getElementById("indexValue");
 let insertValue = document.getElementById("insertValue");
@@ -12,11 +12,11 @@ let findIndex = document.getElementById("findValue");
 // declare Array
 
 const items = [1, 2 ,3];
-const count = items.length;
+const count = items.length-1;
 
 // make function to insert at a certain index
 Array.prototype.insert = function (index, item) {
-  this.splice(index, 0, item);
+  this.splice(index, 1, item);
 };
 Array.prototype.delete = function (index) {
   this.splice(index, 1);
@@ -24,18 +24,35 @@ Array.prototype.delete = function (index) {
 
 Array.prototype.findAt=function(index) {
 
+  
   for (var i = 0; i < items.length; i++) {
-    if (index === (items.indexOf(items[i]))) {
-      console.log("found ", items[i]);
+    
+    if (index == items.indexOf(items[i])) {
+      console.log("found ", items[i], `at ${index}`);
+     return resEle.innerHTML +=`value ${items[i]}, found at index:${index}`;
     }
-    console.log('not found')
+    // else if(index > items.length){
+    //   resEle.innerHTML +=`Array Index ${index} is Out Of Bounds`;
+    // }
+   
     // console.log(items.indexOf(items[i]))
+    
   }
+  resEle.innerHTML +=`Array Index ${index} is Out Of Bounds`;
+  
 }
 
-function addElements() {
+Array.prototype.pushNew = function (item) {
+ 
+  this.push(item)
+ 
+};
+
+
+
+function showElements() {
   let contents = items
-    .map((content) => `<li><div class='box'>${content}</div></li>`)
+    .map((content, index) => `<li><div class='box'>${content} index:${index} </div></li>`)
     .join("\n");
   document.querySelector("ul").innerHTML = contents;
 
@@ -46,25 +63,27 @@ insertButton.addEventListener("click", () => {
   items.insert(indexValue.value, insertValue.value);
   indexValue.value = "";
   insertValue.value = "";
-  addElements();
+  showElements();
 });
 
 deleteButton.addEventListener("click", () => {
   items.delete(deleteValue.value);
   deleteValue.value = "";
-  addElements();
+  showElements();
 });
 popButton.addEventListener("click", () => {
   items.pop();
-  addElements();
+  showElements();
 });
 pushButton.addEventListener("click", () => {
-  items.push(inputVal.value);
+  items.pushNew(inputVal.value);
   inputVal.value = "";
-  addElements();
+  showElements();
 });
 findButton.addEventListener("click", ()=>{
+  resEle.replaceChildren();
   items.findAt(findIndex.value)
   findIndex.value="";
+  resEle.innerHTML +=""
 })
 
