@@ -13,15 +13,84 @@ let findIndex = document.getElementById("findValue");
 // declare Array
 const items = [];
 
+/*******
+ * functions
+ * add/
+ * updateAt
+ * deleteAt
+ * findAt
+ *******/ 
 
-// make function to insert at a certain index
-Array.prototype.insert = function (index, item) {
-  this.splice(index, 1, item);
-};
-Array.prototype.delete = function (index) {
-  this.splice(index, 1);
-};
 
+// function to add to new item to array
+Array.prototype.addNew = function (item) {
+  const lastElement = items[items.length-1];  
+  console.log("last value" ,lastElement)
+  //check if there is a mismatch in type between the last element and the new element
+  // only run this function if the stack is not empty
+  if (!isEmpty()) {
+    if (
+      (isNumber(item) && isString(lastElement)) ||
+      (isNumber(lastElement) && isString(item))
+    ) {
+      if (isNumber(item)) {
+        alert('Could not Update! only enter strings please ');
+        return;
+      } else {
+        alert('Could not Update! only enter numbers please ');
+        return;
+      }
+      
+    }
+  }
+  if(item){
+   return  this.push(item)
+  }
+  else{
+    resEle.innerHTML +=`Error! Please enter a value`;
+  }
+};
+// function to update at a certain index
+Array.prototype.updateAt = function (index, item) {
+  const lastElement = items[items.length-1]; 
+  // if(!customRegex(item, lastElement)){
+  //   console.log("true!")
+  //   return;
+  // }
+  if (
+    (isNumber(item) && isString(lastElement)) ||
+    (isNumber(lastElement) && isString(item))
+  ) {
+    if (isNumber(item)) {
+      alert('Only enter strings please ');
+      return;
+    } else {
+      alert('Only enter numbers please ');
+      return;
+    }
+    
+  }
+ 
+  if(index && item){
+    
+   return index > items.length-1?  resEle.innerHTML +=`Array Index ${index} is Out Of Bounds` : this.splice(index, 1, item);
+  }
+  else{
+    resEle.innerHTML +=`Error! Please enter both values`;
+  }
+  
+};
+// function to delete at a specified index
+Array.prototype.deleteAt = function (index) {
+ 
+  if(index){
+    return index > items.length?  resEle.innerHTML +=`Array Index ${index} is Out Of Bounds` :  this.splice(index, 1);
+   }
+   else{
+     resEle.innerHTML +=`Error! Please enter an index`;
+   }
+};
+// function to search through array with index
 Array.prototype.findAt=function(index) {
 
   
@@ -50,7 +119,6 @@ function isNumber(value) {
 	//return false if value is not a number
 	return false;
 }
-
 //convert value passed as an argument to a string and check if it is a string
 function isString(value) {
 	let string = String(value);
@@ -67,31 +135,6 @@ function isEmpty() {
 	}
 	return false;
 }
-Array.prototype.pushNew = function (item) {
-  const lastElement = items[items.length-1];  
-  console.log("last value" ,lastElement)
-  //check if there is a mismatch in type between the last element and the new element
-  // only run this function if the stack is not empty
-  if (!isEmpty()) {
-    if (
-			(isNumber(item) && isString(lastElement)) ||
-			(isNumber(lastElement) && isString(item))
-		) {
-			if (isNumber(item)) {
-				alert('Only enter strings please ');
-				return;
-			} else {
-				alert('Only enter numbers please ');
-				return;
-			}
-      
-		}
-
-  }
-  this.push(item)
- 
-};
-
 
 function showElements() {
   let contents = items
@@ -102,15 +145,23 @@ function showElements() {
   console.log(contents);
 }
 
-insertButton.addEventListener("click", () => {
-  items.insert(indexValue.value, insertValue.value);
+insertButton.addEventListener("click", async () => {
+  resEle.replaceChildren();
+  items.updateAt(indexValue.value, insertValue.value);
   indexValue.value = "";
   insertValue.value = "";
-  showElements();
+  await new Promise((resolve)=>{
+    setTimeout(()=>{
+      resolve();
+      showElements();
+    }, 1000)
+  })
+  
 });
 
 deleteButton.addEventListener("click", () => {
-  items.delete(deleteValue.value);
+  resEle.replaceChildren();
+  items.deleteAt(deleteValue.value);
   deleteValue.value = "";
   showElements();
 });
@@ -120,7 +171,8 @@ popButton.addEventListener("click", () => {
 });
 pushButton.addEventListener("click",  () => {
 
-  items.pushNew(inputVal.value);
+  resEle.replaceChildren();
+  items.addNew(inputVal.value);
   inputVal.value = "";
    showElements();
 });
@@ -128,6 +180,6 @@ findButton.addEventListener("click", ()=>{
   resEle.replaceChildren();
   items.findAt(findIndex.value)
   findIndex.value="";
-  resEle.innerHTML +=""
+
 })
 
