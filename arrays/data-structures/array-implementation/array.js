@@ -9,10 +9,10 @@ let deleteButton = document.getElementById("delete-button");
 let deleteValue = document.getElementById("deleteValue");
 let findButton = document.getElementById("find-button");
 let findIndex = document.getElementById("findValue");
-// declare Array
 
-const items = [1, 2 ,3];
-const count = items.length-1;
+// declare Array
+const items = [];
+
 
 // make function to insert at a certain index
 Array.prototype.insert = function (index, item) {
@@ -30,24 +30,67 @@ Array.prototype.findAt=function(index) {
     if (index == items.indexOf(items[i])) {
       console.log("found ", items[i], `at ${index}`);
      return resEle.innerHTML +=`value ${items[i]}, found at index:${index}`;
-    }
-    // else if(index > items.length){
-    //   resEle.innerHTML +=`Array Index ${index} is Out Of Bounds`;
-    // }
-   
-    // console.log(items.indexOf(items[i]))
-    
+    }  
   }
   resEle.innerHTML +=`Array Index ${index} is Out Of Bounds`;
   
 }
 
+//convert value passed as an argument to a number and check if it is a number
+function isNumber(value) {
+	//convert value to number
+	let number = Number(value);
+	//regex to check if the value is a number
+	let regex = /^[0-9]+$/;
+
+	//return true if value is a number
+	if (regex.test(number)) {
+		return true;
+	}
+	//return false if value is not a number
+	return false;
+}
+
+//convert value passed as an argument to a string and check if it is a string
+function isString(value) {
+	let string = String(value);
+	let regex = /^[a-zA-Z]+$/;
+	if (regex.test(string)) {
+		return true;
+	}
+	return false;
+}
+// see if array is empty 
+function isEmpty() {
+	if (items.length === 0) {
+		return true;
+	}
+	return false;
+}
 Array.prototype.pushNew = function (item) {
- 
+  const lastElement = items[items.length-1];  
+  console.log("last value" ,lastElement)
+  //check if there is a mismatch in type between the last element and the new element
+  // only run this function if the stack is not empty
+  if (!isEmpty()) {
+    if (
+			(isNumber(item) && isString(lastElement)) ||
+			(isNumber(lastElement) && isString(item))
+		) {
+			if (isNumber(item)) {
+				alert('Only enter strings please ');
+				return;
+			} else {
+				alert('Only enter numbers please ');
+				return;
+			}
+      
+		}
+
+  }
   this.push(item)
  
 };
-
 
 
 function showElements() {
@@ -75,10 +118,11 @@ popButton.addEventListener("click", () => {
   items.pop();
   showElements();
 });
-pushButton.addEventListener("click", () => {
+pushButton.addEventListener("click",  () => {
+
   items.pushNew(inputVal.value);
   inputVal.value = "";
-  showElements();
+   showElements();
 });
 findButton.addEventListener("click", ()=>{
   resEle.replaceChildren();
