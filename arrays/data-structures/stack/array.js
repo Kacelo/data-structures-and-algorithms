@@ -6,6 +6,7 @@ const btnPush = document.getElementById("push-button");
 const arrInput = document.getElementById("array-input");
 const btnPop = document.getElementById("pop-button");
 const btnPeek = document.getElementById("peek-button");
+let functionRes = document.querySelector(".function-result");
 
 //check if stack is full
 function isFull() {
@@ -23,7 +24,7 @@ function isEmpty() {
   return false;
 }
 //display stack content
-function addElements() {
+function displayElements() {
   // mapping through stack and displaying contents into a list item
   let contents = elements
     .map((content, index) => {
@@ -33,19 +34,12 @@ function addElements() {
   document.querySelector("ul").innerHTML = contents;
 }
 
-// function to display element index according to stack content
-// with use of indexOf() function.
-function viewID(id) {
-  let index = elements.indexOf(id);
-
-  return index;
-}
-
 // to display stack elements
-addElements();
+displayElements();
 
 // event listeners
 btnPop.addEventListener("click", async () => {
+	functionRes.replaceChildren();
   if (!isEmpty()) {
     disableButton(btnPop);
     //enable push button
@@ -56,7 +50,7 @@ btnPop.addEventListener("click", async () => {
     await new Promise((resolve) =>
       setTimeout(() => {
         resolve();
-        addElements();
+        displayElements();
         if (isEmpty()) disableButton(btnPop);
       }, 500)
     );
@@ -66,15 +60,18 @@ btnPop.addEventListener("click", async () => {
 
 // Check the last element of the stack
 btnPeek.addEventListener("click", () => {
+	functionRes.replaceChildren();
   if (isEmpty()) {
-    return;
+    return  functionRes.innerHTML += `stack is empty!`;;
   }
+
   const lastElement = elements[elements.length - 1];
-  alert("Peek value is: " + lastElement);
+  functionRes.innerHTML += `Peek value is: ${lastElement}`;
   // return lastElement;
 });
 
 btnPush.addEventListener("click", async () => {
+	functionRes.replaceChildren();
   const value = arrInput.value;
   const lastElement = elements[elements.length - 1];
 
@@ -100,15 +97,22 @@ btnPush.addEventListener("click", async () => {
     //enable the pop button when an element is pushed into the stack
     if (isEmpty()) {
       enableButton(btnPop);
-    } //push entered value into the array
-    elements.push(arrInput.value);
-    arrInput.value = "";
+    } 
+	//push entered value into the array
+	if(arrInput.value){
+		elements.push(arrInput.value);
+		arrInput.value = "";
+	}
+	else{
+		functionRes.innerHTML += `Error! Please enter a value`;
+	}
+  
 
     //wait for .5 sec before enabling the pop button and adding the element to the stack
     await new Promise((resolve) =>
       setTimeout(() => {
         resolve();
-        addElements();
+        displayElements();
         if (!isFull()) enableButton(btnPush);
       }, 500)
     );
