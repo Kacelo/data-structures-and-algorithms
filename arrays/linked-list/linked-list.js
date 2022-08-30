@@ -7,6 +7,7 @@ const removeButton = document.getElementById('removeBtn')
 const removeHeadButton = document.getElementById('removeHeadBtn')
 let resEle = document.querySelector(".result");
 const insertValue = document.getElementById("insertValue");
+const insertHeadValue = document.querySelector(".insertHeadInput")
 function createNode(value) {
     return {
       value: value,
@@ -47,6 +48,7 @@ insert(value) {
     }
   
     this.head = this.tail = newNode;
+    console.log(newNode)
     return newNode;
   }
 
@@ -57,7 +59,11 @@ let tail = this.tail;
     for(var i =0; i<this.length; i++){
         // console.log(current.value);
       current = current.next;
-     resEle.innerHTML +=`<li><div class='box'>current: ${current.value} ${current.next.value}</div></li>`;
+      if(current.next=== null){
+       return current.next = 'NULL'
+      }
+      console.log(current.value)
+     resEle.innerHTML +=`<li><div class='box'>head: ${current.value} next value:${current.next=== null? "" : (current.next.value)}</div></li>`;
     }
   }
 
@@ -99,13 +105,15 @@ const linkedList = new LinkedList();
 // linkedList.insert(21);
 // linkedList.insert(22);
 // linkedList.print(); // 7 true 20
-
+console.log(insertHeadValue.value)
+insertHeadButton.addEventListener('click', ()=>{
+  linkedList.print();
+  
+})
 insertButton.addEventListener('click', ()=>{
-
-
   linkedList.insert(insertValue.value);
   insertValue.value='';
-  linkedList.print();
+  // linkedList.print();
 })
 
 
