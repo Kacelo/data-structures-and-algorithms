@@ -1,46 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="main"> 
-       
-        <div class="container">
-            <h2 class="header">
-                Array implementation
-            </h2>
-             <!-- Input element to accept user input -->
-             <br>
-        <input type="text" id="array-input" class="valueEntry" placeholder="push a value">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Array</title>
+  </head>
+  <body>
+    <div class="main">
+      <div class="container">
+        <h2 class="header">Array Implementation</h2>
+        <!-- Input element to accept user input -->
+        <br />
+        <ul class="list"></ul>
+        <br />
+        <h4 class="searchResult"></h4>
+        <input
+          type="text"
+          id="array-input"
+          class="valueEntry"
+          placeholder="insert a value"
+        />
         <!-- button to add input to array -->
-        <button class="btn1" id="push-button">add</button>
+        <button class="btn1" id="push-button">insert</button>
         <!-- button to pop -->
-        <button id="pop-button" class="btn1">Pop</button>
+        <button id="pop-button" class="btn1">delete</button>
 
-   
-        <input type="text" id="indexValue" placeholder="insert index" class="valueEntry">
-        <input type="text" id="insertValue" placeholder="insert Value"class="valueEntry">
-        <button id="insert-button" class="btn1">insert</button>
+        <input
+          type="text"
+          id="indexValue"
+          placeholder="insert index"
+          class="valueEntry"
+        />
+        <input
+          type="text"
+          id="insertValue"
+          placeholder="insert Value"
+          class="valueEntry"
+        />
+        <button id="insert-button" class="btn1">update</button>
 
-        <input type="text" id="deleteValue" placeholder="insert index to delete" class="valueEntry">
-        <button id="delete-button" class="btn1">delete</button>
-        <!-- <input type="text" id="findValue" placeholder="insert index to find" class="valueEntry">
-        <button id="find-button" class="btn1">find</button> -->
-         <!-- un ordered list to display array elements -->
-            <ul class="container">
-                 
-            </ul>
-        
-        </div>
-       
+        <input
+          type="text"
+          id="deleteValue"
+          placeholder="insert index to delete"
+          class="valueEntry"
+        />
+        <button id="delete-button" class="btn1">delete at index</button>
 
+        <input
+          type="text"
+          id="findValue"
+          placeholder="insert index to find"
+          class="valueEntry"
+        />
+        <button id="find-button" class="btn1">find</button>
+        <!-- un ordered list to display array elements -->
+      </div>
     </div>
-   
+
     <script src="array.js"></script>
-</body>
+  </body>
 </html>
