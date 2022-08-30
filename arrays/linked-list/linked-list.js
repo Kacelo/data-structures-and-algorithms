@@ -1,22 +1,23 @@
 // 1. create a function to create new nodes
 
 // buttons and inputs
-const insertButton = document.getElementById('insertBtn')
+const insertButton = document.getElementById('insert-button')
 const insertHeadButton = document.getElementById('insertHeadBtn')
 const removeButton = document.getElementById('removeBtn')
 const removeHeadButton = document.getElementById('removeHeadBtn')
 let resEle = document.querySelector(".result");
-
+const insertValue = document.getElementById("insertValue");
 function createNode(value) {
     return {
       value: value,
       next: null,
     };
   }
+
 class LinkedList {
     constructor() {
-      this.head = null;
-      this.tail = null;
+      this.head = '';
+      this.tail = '';
       this.length = 0;
     }
     //   creating a new node
@@ -31,6 +32,7 @@ insert(value) {
     }
 
     this.head = this.tail = newNode;
+    console.log(newNode)
     return newNode;
   }
 
@@ -50,16 +52,12 @@ insert(value) {
 
   print() {
     let current = this.head;
-    // while (current>5) {
-    //   console.log(current.value);
-    //   current = current.next;
-    //   return resEle.innerHTML +=`<li><div class='box'>current: ${current.value} next:${current.next.value}</div></li>`;
-    // }
-
+   
+let tail = this.tail;
     for(var i =0; i<this.length; i++){
         // console.log(current.value);
       current = current.next;
-     resEle.innerHTML +=`<li><div class='box'>cc ${current.next.value}</div></li>`;
+     resEle.innerHTML +=`<li><div class='box'>current: ${current.value} ${current.next.value}</div></li>`;
     }
   }
 
@@ -94,12 +92,21 @@ insert(value) {
   }
 const linkedList = new LinkedList();
 
-linkedList.insert(7);
-linkedList.insert(true);
-linkedList.insert(20);
-linkedList.insert(true);
-linkedList.insert(20);
-linkedList.print(); // 7 true 20
+// linkedList.insert(7);
+// linkedList.insert(6);
+// linkedList.insert(8);
+// linkedList.insert(20);
+// linkedList.insert(21);
+// linkedList.insert(22);
+// linkedList.print(); // 7 true 20
+
+insertButton.addEventListener('click', ()=>{
+
+
+  linkedList.insert(insertValue.value);
+  insertValue.value='';
+  linkedList.print();
+})
 
 
 
