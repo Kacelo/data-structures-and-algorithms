@@ -17,8 +17,8 @@ function createNode(value) {
 
 class LinkedList {
     constructor() {
-      this.head = '';
-      this.tail = '';
+      this.head = null;
+      this.tail = null;
       this.length = 0;
     }
     //   creating a new node
@@ -59,13 +59,16 @@ let tail = this.tail;
     for(var i =0; i<this.length; i++){
         // console.log(current.value);
       current = current.next;
-      if(current.next=== null){
-       return current.next = 'NULL'
-      }
+      
       console.log(current.value)
-     resEle.innerHTML +=`<li><div class='box'>head: ${current.value} next value:${current.next=== null? "" : (current.next.value)}</div></li>`;
+     resEle.innerHTML +=`<li><div class='box'>current value: ${current.value}</div></li>`;
     }
-  }
+// while (current) {
+//   console.log(current.value);
+//   current = current.next;
+//   resEle.innerHTML +=`<li><div class='box'>head: ${current.value} </div></li>`;
+//   }
+}
 
   remove() {
     if (this.tail) {
@@ -107,9 +110,18 @@ const linkedList = new LinkedList();
 // linkedList.print(); // 7 true 20
 console.log(insertHeadValue.value)
 insertHeadButton.addEventListener('click', ()=>{
-  linkedList.print();
+  insertValue.value='';
+  linkedList.insertHead(insertHeadValue.value);
+  insertValue.value='';
+  // linkedList.print();
   
 })
+removeButton.addEventListener('click', ()=>{
+  // linkedList.insert(insertValue.value);
+  // insertValue.value='';
+  linkedList.print();
+})
+
 insertButton.addEventListener('click', ()=>{
   linkedList.insert(insertValue.value);
   insertValue.value='';
