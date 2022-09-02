@@ -6,7 +6,9 @@
 .container {
 	text-align: center;
 }
-
+.first-button-group{
+	margin: 2rem;
+}
 .button {
 	padding: 12px;
 	font-weight: bolder;
