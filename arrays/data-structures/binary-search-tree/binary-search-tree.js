@@ -1,6 +1,6 @@
 // buttons and input fields
 const insertValue = document.getElementById("insertValue");
-const insertButton = document.getElementById("insertButton")
+let insertButton = document.getElementById("insertButton")
 const removeButton = document.getElementById("removeButton") 
 const removeValue = document.getElementById("removeValue");
 const serchValue = document.getElementById("serchValue");
@@ -8,15 +8,19 @@ const searchButton = document.getElementById("searchButton")
 const printInOrder = document.getElementById("printInOrder")
 const printPostOrder = document.getElementById("printPostOrder")
 const findMinNodeButton = document.getElementById("findMinNodeButton")
-
+const displayRes = document.getElementById("level1")
+const displayRes2 = document.getElementById("level2")
+const rootNode = document.getElementById("rootNode");
 // Node class
 class Node
 {
-    constructor(data)
+    constructor(data, x, y)
     {
         this.data = data;
         this.left = null;
         this.right = null;
+        this.x = x;
+        this.y = y;
     }
 }
 
@@ -26,6 +30,25 @@ class BinarySearchTree
     {
         // root of a binary search tree
         this.root = null;
+    }
+
+    visit(node){
+        if (node.left != null) {
+            node.left.visit(this);
+          }
+          console.log("FROm VISIT",this.data);
+          fill(255);
+          noStroke();
+          textAlign(CENTER);
+          text(this.getRootNode(), 3, 20, 20);
+          stroke(255);
+          noFill();
+          ellipse(2, 3, 20, 20);
+          line(2, 3, 20, 20);
+          if (node.right != null) {
+            node.right.visit(this);
+          }
+         
     }
  
     // function to be implemented
@@ -41,7 +64,12 @@ insert(data)
     // root is null then node will
     // be added to the tree and made root.
     if(this.root === null)
-        this.root = newNode;
+       { this.root = newNode;
+        this.root.x = 2;
+        this.root.y = 16
+
+      
+    }
     else
  
         // find the correct position in the
@@ -59,27 +87,41 @@ insertNode(node, newNode)
     {
         // if left is null insert node here
         if(node.left === null)
-            node.left = newNode;
+          {  node.left = newNode;
+            node.left.x = this.x -50
+            node.left.y = this.y + 20}
         else
  
             // if left is not null recur until
             // null is found
             this.insertNode(node.left, newNode);
+            // fill(255)
+            // noStroke();
+            
+            console.log(`${node.left.data} inserted to the left of ${node.data}`)
+            console.log(` ${node.data}`)
+            displayRes.innerHTML += `${node.left.data} inserted to the left of ${node.data}    `;
     }
  
     // if the data is more than the node
     // data move right of the tree
-    else
+    else if(newNode.data > node.data)
     {
         // if right is null insert node here
         if(node.right === null)
-            node.right = newNode;
+           { node.right = newNode;
+            node.right.x = this.x +50
+            node.right.y = this.y + 20}
         else
  
             // if right is not null recur until
             // null is found
             this.insertNode(node.right,newNode);
+            console.log(`${node.right.data} inserted to the right of ${node.data}`)
+            displayRes.innerHTML += `${node.right.data} inserted to the right of ${node.data},   `
     }
+    
+
 }
     // remove(data)
             // helper method that calls the
@@ -154,6 +196,7 @@ removeNode(node, key)
     }
  
 }     
+
  
     // Helper function
 
@@ -172,11 +215,20 @@ findMinNode(node)
         return this.findMinNode(node.left);
 }
 
+traverse(){
+    console.log("ROOOOOT",this.getRootNode())
+    this.visit(this.getRootNode())
+    
+}
+// console.log("ROOOOOT",this.getRootNode())
+
     // getRootNode()
     // returns root of the tree
 getRootNode()
 {
-    return this.root;
+    console.log("Root node",this.root.data)
+    rootNode.innerHTML += `${this.root.data}`;
+    return this.root.data;
 }
     // inorder(node)
         // Performs inorder traversal of a tree
@@ -195,10 +247,22 @@ preorder(node)
 {
     if(node !== null)
     {
-        console.log(node.data);
-        this.preorder(node.left);
-        this.preorder(node.right);
+    //     console.log(node.data);
+    //    let preLeft = (node.right);
+    //     this.preorder(node.right);
+        // fill(255)
+    // console.log("FROm VISIT",node);
+    fill(255);
+    noStroke();
+    textAlign(CENTER);
+    text(this.getRootNode(), 50, 20, 40);
+    stroke(255);
+    noFill();
+    ellipse(this.getRootNode(), this.getRootNode(), 20, 20);
+    line(this.getRootNode(), 3, 20, 20);
+        // displayRes2.innerHTML += ` ${preLeft}`
     }
+
 } 
               
     // postorder(node)
@@ -212,6 +276,8 @@ postorder(node)
         console.log(node.data);
     }
 }
+
+
     // search(node, data)
     // search for a node with given data
 search(node, data)
@@ -222,17 +288,55 @@ search(node, data)
  
     // if data is less than node's data
     // move left
-    else if(data < node.data)
+    else if(data < node.data){
+
+        console.log(`found number, ${node.left.data}`)
         return this.search(node.left, data);
+    }
+    
  
     // if data is less than node's data
     // move left
     else if(data > node.data)
-        return this.search(node.right, data);
- 
+   { console.log(`found number, ${node.right.data}`)
+   return this.search(node.right, data);}
+
     // if data is equal to the node data
     // return node
     else
+    console.log("found number", {node})
         return node;
 }
+
 }
+const BST = new BinarySearchTree();
+
+insertButton.addEventListener("click", ()=>{
+    // displayRes.replaceChildren();
+    BST.insert(insertValue.value)
+   
+    console.log(insertValue.value)
+    insertValue.value ="";
+})
+// removeButton.addEventListener("click", ()=>{
+//     BST.insert(insertValue.value)
+//     console.log(insertValue.value)
+// })
+
+// for (var i = 0; i < 5; i++ ){
+//     BST.insert(Math.floor(Math.random()*5))
+// }
+// BST.insert(11);
+// BST.insert(2);
+
+var root = BST.getRootNode();
+             
+// prints 5 7 9 10 13 15 17 22 25 27
+// BST.preorder(root);
+BST.search(root, 4);
+// BST.insert(6);
+// BST.insert(66);
+// BST.insert(12);
+// BST.insert(29);
+
+
