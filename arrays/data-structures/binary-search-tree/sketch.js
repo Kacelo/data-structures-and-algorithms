@@ -23,6 +23,9 @@ function Tree() {
   Tree.prototype.traverse = function() {
     this.root.visit(this.root);
   }
+  Tree.prototype.findSmallest = function(){
+     return this.root.findMinNode();
+  }
   
   // Start by searching the root
   Tree.prototype.search = function(val) {
@@ -146,15 +149,15 @@ Tree.prototype.removeNode = function(node, key)
   
     // Search the tree for 10
     searchButton.addEventListener("click", ()=>{
+        displayRes.replaceChildren();
         var result = tree.search(searchValue.value);
         if (result == null) {
-            displayRes.innerHTML += `node has not been found`;
+            displayRes.innerHTML += `node does not exist in the tree`;
         } else {
           console.log(result.value);
-          displayRes.innerHTML += `${result.value} has been found`;
-
-          
+          displayRes.innerHTML += `${result.value} has been found`; 
         }
+        searchValue.value ="";
     })
  
   }
@@ -187,6 +190,23 @@ Tree.prototype.removeNode = function(node, key)
     }
     return null;
   }
+
+   // findMinNode()
+    //  finds the minimum node in tree
+// searching starts from given node
+Node.prototype.findMinNode = function()
+{
+    // if left of a node is null
+    // then it must be minimum node
+    if(this.left === null)
+      {console.log(this.left.value)
+        return this.left;}
+    else {
+      console.log("left node",this.left)
+      return  displayRes.innerHTML += `${this.left.value} has been found`; 
+    }
+}
+
   
   Node.prototype.visit = function(parent) {
     // Recursively go left
@@ -202,7 +222,7 @@ Tree.prototype.removeNode = function(node, key)
     // Draw a circle
     stroke(255);
     fill(map(this.value,0,100,0,255),100,100);
-    ellipse(this.x, this.y, 24, 24);
+    ellipse(this.x, this.y, 30, 30);
     noStroke();
     // Display the value
     fill(255);
