@@ -118,7 +118,7 @@ Tree.prototype.removeNode = function(node, key)
   
   
   function setup() {
-    createCanvas(800, 600);
+    createCanvas(1000, 500);
   
     // New tree
     tree = new Tree();
@@ -222,7 +222,7 @@ Node.prototype.findMinNode = function()
     // Draw a circle
     stroke(255);
     fill(map(this.value,0,100,0,255),100,100);
-    ellipse(this.x, this.y, 30, 30);
+    ellipse(this.x, this.y, 27, 27);
     noStroke();
     // Display the value
     fill(255);

@@ -313,10 +313,16 @@ const BST = new BinarySearchTree();
 
 insertButton.addEventListener("click", ()=>{
     // displayRes.replaceChildren();
-    BST.insert(insertValue.value)
+    if(insertValue.value){
+        BST.insert(insertValue.value)
    
-    console.log(insertValue.value)
-    insertValue.value ="";
+        console.log(insertValue.value)
+        insertValue.value ="";
+    }
+    else if(insertValue.value===""){
+        displayRes.innerHTML += `Error! please enter a number`
+    }
+   
 })
 // removeButton.addEventListener("click", ()=>{
 //     BST.insert(insertValue.value)
