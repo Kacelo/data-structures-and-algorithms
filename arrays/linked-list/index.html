@@ -1,44 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Linked List</title>
-</head>
-<body>
-    <div class="main"> 
-       
-        <div class="container">
-            <h2 class="header">
-                Linked List implementation
-            </h2>
-             <!-- Input element to accept user input -->
-             <br>
-        <input type="text" id="array-input" class="valueEntry" placeholder="push a value">
-        <!-- button to add input to array -->
-        <button id="removeBtn" class="button">remove</button>
-        <button id="insertHeadBtn" class="button">insert head</button> 
-        <button id="removeHeadBtn" class="button">remove head</button> 
-        <!-- alue" placeholder="insert index" class="valueEntry"> -->
-        <input type="text" id="insertValue" placeholder="insert Value"class="valueEntry">
-        <button id="insert-button" class="btn1">insert</button>
+  </head>
+  <body>
+    <div class="main">
+      <div class="container">
+        <h2 class="header">Linked List implementation</h2>
+        <!-- Input element to accept user input -->
+        <br />
 
-        <input type="text" id="deleteValue" placeholder="insert index to delete" class="valueEntry">
-        <button id="delete-button" class="btn1">delete</button>
-        <!-- <input type="text" id="findValue" placeholder="insert index to find" class="valueEntry">
-        <button id="find-button" class="btn1">find</button> -->
-         <!-- un ordered list to display array elements -->
-            <ul class="result">
-                 
-            </ul>
-        
+        <!-- div container for buttons without input fields -->
+        <div class="first-button-group">
+         
+          <!-- button to add input to array -->
+          <button id="displayList" class="button">Display</button>
+          <!-- Button to remove the first element in the List -->
+          <button id="removeHeadBtn" class="button">Remove Head</button>
+          <!-- Button to remove the last element in the list -->
+          <button id="removeTailBtn" class="button">Remove Tail</button>
         </div>
-       
+         
+        <input
+          type="text"
+          id="insertValue"
+          placeholder="Insert value at the end"
+          class="valueEntry"
+        />
+        <button id="insert-button" class="button">Insert Tail</button>
+      
+        <input
+        type="text"
+        id="array-input"
+        class="insertHeadInput"
+        placeholder="Insert value at the start"
+      />
+      <button id="insertHeadBtn" class="button">Insert Head</button>
 
+      <!-- Delete value input field -->
+      <input
+        type="number"
+        id="deleteValue"
+        placeholder="Insert value to delete"
+        class="valueEntry"
+      />
+      <button id="delete-button" class="button">Delete</button>
+      <ul class="result"></ul>
+
+      <div class="result-container">
+        <p class="result-text"></p>
+      </div>
+      </div>
     </div>
-   
+
     <script src="./linked-list.js"></script>
-</body>
+  </body>
 </html>
