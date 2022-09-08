@@ -16,7 +16,6 @@
 
         <!-- div container for buttons without input fields -->
         <div class="first-button-group">
-         
           <!-- button to add input to array -->
           <button id="displayList" class="button">Display</button>
           <!-- Button to remove the first element in the List -->
@@ -24,7 +23,7 @@
           <!-- Button to remove the last element in the list -->
           <button id="removeTailBtn" class="button">Remove Tail</button>
         </div>
-         
+
         <input
           type="text"
           id="insertValue"
@@ -32,31 +31,50 @@
           class="valueEntry"
         />
         <button id="insert-button" class="button">Insert Tail</button>
-      
+
         <input
-        type="text"
-        id="array-input"
-        class="insertHeadInput"
-        placeholder="Insert value at the start"
-      />
-      <button id="insertHeadBtn" class="button">Insert Head</button>
+          type="text"
+          id="array-input"
+          class="insertHeadInput"
+          placeholder="Insert value at the start"
+        />
+        <button id="insertHeadBtn" class="button">Insert Head</button>
 
-      <!-- Delete value input field -->
-      <input
-        type="number"
-        id="deleteValue"
-        placeholder="Insert value to delete"
-        class="valueEntry"
-      />
-      <button id="delete-button" class="button">Delete</button>
-      <ul class="result"></ul>
+        <!-- Delete value input field -->
+        <input
+          type="number"
+          id="deleteValue"
+          placeholder="Insert value to delete"
+          class="valueEntry"
+        />
+        <button id="delete-button" class="button">Delete</button>
+        <ul class="result"></ul>
 
-      <div class="result-container">
-        <p class="result-text"></p>
-      </div>
+        <div class="result-container">
+          <p class="result-text"></p>
+        </div>
       </div>
     </div>
+    <div class="bottom-content">
+      <p class="buttom-text">
+        A linked list is a data structure that is linear and includes nodes
+        connect together. The nodes stores data and the address of the next node
+      </p>
+      <p class="buttom-text">Three types of linked list:</p>
+      <div>
+        <ul class="linktypes">
+          <li>Singly</li>
+          <li>Doubly</li>
+          <li>Circular</li>
+        </ul>
+      </div>
 
+      <p class="Ltypes-text">
+        The image below shows how a linked list works and the different parts
+        that makes up a linked list
+      </p>
+      <img src="./assets/linked-list.png" />
+    </div>
     <script src="./linked-list.js"></script>
   </body>
 </html>
