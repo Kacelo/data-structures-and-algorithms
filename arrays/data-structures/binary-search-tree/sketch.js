@@ -65,6 +65,7 @@ Tree.prototype.rmNode= function (val){
 // given data
 // it recur over the tree to find the
 // data and removes it
+
 // Node.prototype.removeNode = function (key) {
 //   // if the root is null then tree is
 //   // empty
@@ -78,6 +79,101 @@ Tree.prototype.rmNode= function (val){
 //     this.left.x = null
 //     this.left.y = null
 //   }
+
+Tree.prototype.removeNode = function(node, key)
+{
+         
+    // if the root is null then tree is
+    // empty
+    if(node === null)
+        return null;
+ 
+    // if data to be delete is less than
+    // roots data then move to left subtree
+    else if(key < node.data)
+    {
+        node.left = this.removeNode(node.left, key);
+        return node;
+    }
+ 
+    // if data to be delete is greater than
+    // roots data then move to right subtree
+    else if(key > node.data)
+    {
+        node.right = this.removeNode(node.right, key);
+        return node;
+    }
+ 
+    // if data is similar to the root's data
+    // then delete this node
+    else
+    {
+         // deleting node with no children
+        if(node.left === null && node.right === null)
+        {
+            node = null;
+            return node;
+        }
+ 
+        // deleting node with one children
+        if(node.left === null)
+        {
+            node = node.right;
+            return node;
+        }
+         
+        else if(node.right === null)
+        {
+            node = node.left;
+            return node;
+        }
+ 
+        // Deleting node with two children
+        // minimum node of the right subtree
+        // is stored in aux
+        var aux = this.findMinNode(node.right);
+        node.data = aux.data;
+ 
+        node.right = this.removeNode(node.right, aux.data);
+        return node;
+    }
+ 
+}     
+  // Daniel Shiffman
+  // Nature of Code: Intelligence and Learning
+  // https://github.com/shiffman/NOC-S17-2-Intelligence-Learning
+  
+  // Binary tree
+  var tree;
+  
+  
+  // function setup() {
+  //   createCanvas(1000, 500);
+  
+  //   // New tree
+  //   tree = new Tree();
+  
+  //   // Add ten random values
+  //   for (var i = 0; i < 5; i++) {
+  //     tree.addValue(floor(random(0, 100)));
+  //     insertButton.addEventListener("click", () => {
+  //       // displayRes.replaceChildren();
+  //       tree.addValue(insertValue.value);
+  //       // tree.inorder()
+  //       console.log(insertValue.value);
+  //       tree.traverse();
+  //       insertValue.value = "";
+  //     });
+    
+  //     findMinNodeButton.addEventListener("click", () => {
+  //       displayRes.replaceChildren();
+  //       tree.findSmallest();
+  //     });
+  //   }
+
+  // }
+
+
 
 //   // if data to be delete is greater than
 //   // roots data then move to right subtree
@@ -132,10 +228,12 @@ function setup() {
     tree.addValue(floor(random(0, 100)));
   }
 
+
   insertButton.addEventListener("click", () => {
     // displayRes.replaceChildren();
     tree.addValue(insertValue.value);
-    // tree.inorder()
+    
+
     console.log(insertValue.value);
     tree.traverse();
     insertValue.value = "";
@@ -255,7 +353,37 @@ Node.prototype.visit = function (parent) {
   if (this.right != null) {
     this.right.visit(this);
   }
-};
+}
+  
+  // Node.prototype.visit = function(parent) {
+  //   // Recursively go left
+  //   if (this.left != null) {
+  //     this.left.visit(this);
+  //   }
+  //   // Print out the value
+  //   console.log(this.value);
+  
+  //   // Draw a line from the parent
+  //   stroke(100);
+  //   line(parent.x, parent.y, this.x, this.y);
+  //   // Draw a circle
+  //   stroke(255);
+  //   fill(map(this.value,0,100,0,255),100,100);
+  //   ellipse(this.x, this.y, 27, 27);
+  //   noStroke();
+  //   // Display the value
+  //   fill(255);
+  //   textAlign(CENTER);
+  //   textSize(12);
+  //   text(this.value, this.x, this.y + 4);
+  
+  //   // Go right
+  //   if (this.right != null) {
+  //     this.right.visit(this);
+  //   }
+  
+  // }
+
 // Node.prototype.inOrder = function (parent) {
 //   if (this.left) {
 //     this.left.inOrder(this);
