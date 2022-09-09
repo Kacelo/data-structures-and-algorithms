@@ -7,15 +7,26 @@
    text-align: center;
 }
 
-.button{
+.btn1{
     padding: 12px;
 	font-weight: bolder;
-	background-color: #6f459e;
+	background-color: #5d2cff;
 	border-radius: 10px;
 	color: white;
 	font-size: 16px;
 	border: white;
 	cursor: pointer;
+}
+#result{
+    
+	margin:20px 30vw;
+	text-align: center;
+	font-size: 30px;
+	background-color: #5d2cff;
+	color: white;
+	border-radius: 19px;
+	font-weight: bolder;
+    font-family: sans-serif;
 }
 
 .header {
@@ -24,13 +35,13 @@
 	margin-left: 20vw;
 	text-align: center;
 	font-size: 30px;
-	background-color: #6f459e;
+	background-color: #5d2cff;
 	color: white;
 	border-radius: 19px;
 	font-weight: bolder;
     font-family: sans-serif;
 }
-#array-input{
+.inputField{
     margin-bottom: 5px;
     padding: 10px;
 }
@@ -41,7 +52,7 @@ li{
     margin-left: -20px;
     list-style: none;
     color: white;
-    background-color: #6f459e;
+    background-color: #5d2cff;
     display: table-cell;
     font-family: sans-serif;
 }
@@ -49,7 +60,7 @@ ul{
    margin-top: 20%;
 }
 
-.box{
+/* .box{
     border-style: solid;
     padding: 25px;
-}
+} */
