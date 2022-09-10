@@ -78,3 +78,8 @@
 #array-input{
 	padding: 10px;
 }
+.listCss{
+	font-size: 20px;
+	/* font-weight: bold; */
+	font-family: sans-serif;
+}

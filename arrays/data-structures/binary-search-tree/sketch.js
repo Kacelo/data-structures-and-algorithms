@@ -226,6 +226,7 @@ function setup() {
   // Add ten random values
   for (var i = 0; i < 5; i++) {
     tree.addValue(floor(random(0, 100)));
+    console.log('5 value added')
   }
 
 
