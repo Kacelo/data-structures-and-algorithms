@@ -1,6 +1,7 @@
 const container = document.getElementById("array");
 let currentArray = [];
 const setCountValue = document.getElementById("countValue");
+let codeExplaination = document.getElementById('codeExplaination');
 const header = document.querySelector(".header");
 let pseudo = ['1. for i ← 0, a.length − 1 do', 'if (a[i] == e) then', '3 return true', 'end if', 'end for', 'return false'];
 function reset(blocks) {
@@ -8,6 +9,7 @@ function reset(blocks) {
     blocks[index].style.backgroundColor = "#6b5b95";
   }
 }
+
 
 function disable() {
   // To disable the button "Generate New Array"
@@ -164,6 +166,7 @@ async function maximum(delay = 500) {
   reset(blocks);
 
   //Setting the first element as the minimum
+  codeExplaination.innerHTML += `Setting the first element as the minimum`
   document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
   let max = Number(blocks[0].childNodes[0].innerHTML);
 
@@ -191,10 +194,14 @@ async function maximum(delay = 500) {
     var index = blocks.length - (blocks.length - i);
 
     // if the minimum is greater than the current value set the minimum to the current value
+    
     document.getElementById("setCountValue2").style.backgroundColor = "white";
     document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
     if (max < cuurentValue) {
      
+      
+      codeExplaination.replaceChildren();
+      codeExplaination.innerHTML += `swap ${max} with ${currentArray}` 
       max = cuurentValue;
       blocks[i].style.backgroundColor = "#13CE66";
       document.getElementById("setCountValue3").style.backgroundColor = "white";

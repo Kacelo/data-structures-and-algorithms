@@ -6,21 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.js"></script>
     <link rel="stylesheet" href="./styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
     <title>Binary search tree</title>
 </head>
 <body>
     <div class="main">
         <div class="header">
-            <h1></h1>
+            <h1>
+                Binary search Tree
+            </h1>
             
         </div>
-            <div>
+            <div class="container">
                 <input type="number" placeholder="insert node" id="insertValue" class="inputField">
                 <button id="insertButton" class="btn1">insert node</button>
-                <input type="text" placeholder="remove node" class="inputField" id="removeValue">
-                <button id="removeButton" class="btn1">remove node</button>
+                <!-- <input type="text" placeholder="remove node" class="inputField" id="removeValue">
+                <button id="removeButton" class="btn1">remove node</button> -->
                 <input type="text" placeholder="search node" id="searchValue" class="inputField">
-                <button id="searchButton" class="btn1">search node</button>
+                <button id="searchButton" class="btn1 btn-btn">search node</button>
                 <button id="printInOrder" class="btn1">print InOrder</button>
                 <button id="printPostOrder" class="btn1">print PostOrder</button>
                 <button id="printPreOrder" class="btn1">print preOrder</button>
@@ -31,11 +35,43 @@
                
             </div>
             <div class="box" id="rootNode"></div>
-            <div id="level2"></div>
-            <div id="level3"></div>
+         
+           
             <div id="level4"></div>
+            <div class="container text-center">
+                <div class="row">
+                  <div class="col">
+                    <div id="descriptionDiv">
+                        <h4>What is a Binary Search Tree?</h4>
+                        <p id="description">
+                            A Binary Search Tree (BST) is a binary tree in which each vertex has only up to 2 children
+                            that satisfies BST property
+                        </p>
+                        <p>
+                            All vertices in the left subtree of a vertex must hold
+                            a value smaller than its own and all vertices in the right subtree of a vertex must hold a value larger than its own
+                        </p>
+                        <p>
+                            Attributes: Each vertex has at least 4 attributes: parent, left, right, key/value/data (there are potential other attributes)
+                        </p>
+                        <div>
+                            <h6>Trasversal Functions</h6>
+                            <ul>
+                                <li>Inorder, you traverse from the left subtree to the root then to the right subtree. (Left, Root, Right)</li>
+                                <li> Preorder, you traverse from the root to the left subtree then to the right subtree. (Root, Left, Right)</li>
+                                <li>Post order, you traverse from the left subtree to the right subtree then to the root. (Left, Right, Root.)</li>
+                            </ul>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div id="level3"></div>
+                  </div>
+                </div>
+              </div>
     </div>
     <!-- <script src="./binary-search-tree.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script> 
     <script src="./sketch.js"></script>
     
 </body>

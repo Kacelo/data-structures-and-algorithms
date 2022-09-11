@@ -13,6 +13,9 @@ const printPreOrder = document.getElementById("printPreOrder");
 const printPostOrder = document.getElementById("printPostOrder");
 const findMinNodeButton = document.getElementById("findMinNodeButton");
 const displayRes = document.getElementById("result");
+const main = document.getElementsByName('main')
+
+
 // Tree object
 function Tree() {
   // Just store the root
@@ -23,7 +26,7 @@ function Tree() {
 Tree.prototype.traverse = function () {
   this.root.visit(this.root);
 
-  console.log(this.root)
+  console.log(this.root);
 };
 Tree.prototype.viewPreorder = function () {
   this.root.preorder(this.root);
@@ -57,9 +60,9 @@ Tree.prototype.addValue = function (val) {
   }
 };
 
-Tree.prototype.rmNode= function (val){
- return this.root.removeNode(this.root, val);
-}
+Tree.prototype.rmNode = function (val) {
+  return this.root.removeNode(this.root, val);
+};
 
 // Method to remove node with a
 // given data
@@ -80,106 +83,90 @@ Tree.prototype.rmNode= function (val){
 //     this.left.y = null
 //   }
 
-Tree.prototype.removeNode = function(node, key)
-{
-         
-    // if the root is null then tree is
-    // empty
-    if(node === null)
-        return null;
- 
-    // if data to be delete is less than
-    // roots data then move to left subtree
-    else if(key < node.data)
-    {
-        node.left = this.removeNode(node.left, key);
-        return node;
-    }
- 
-    // if data to be delete is greater than
-    // roots data then move to right subtree
-    else if(key > node.data)
-    {
-        node.right = this.removeNode(node.right, key);
-        return node;
-    }
- 
-    // if data is similar to the root's data
-    // then delete this node
-    else
-    {
-         // deleting node with no children
-        if(node.left === null && node.right === null)
-        {
-            node = null;
-            return node;
-        }
- 
-        // deleting node with one children
-        if(node.left === null)
-        {
-            node = node.right;
-            return node;
-        }
-         
-        else if(node.right === null)
-        {
-            node = node.left;
-            return node;
-        }
- 
-        // Deleting node with two children
-        // minimum node of the right subtree
-        // is stored in aux
-        var aux = this.findMinNode(node.right);
-        node.data = aux.data;
- 
-        node.right = this.removeNode(node.right, aux.data);
-        return node;
-    }
- 
-}     
-  // Daniel Shiffman
-  // Nature of Code: Intelligence and Learning
-  // https://github.com/shiffman/NOC-S17-2-Intelligence-Learning
-  
-  // Binary tree
-  var tree;
-  
-  
-  // function setup() {
-  //   createCanvas(1000, 500);
-  
-  //   // New tree
-  //   tree = new Tree();
-  
-  //   // Add ten random values
-  //   for (var i = 0; i < 5; i++) {
-  //     tree.addValue(floor(random(0, 100)));
-  //     insertButton.addEventListener("click", () => {
-  //       // displayRes.replaceChildren();
-  //       tree.addValue(insertValue.value);
-  //       // tree.inorder()
-  //       console.log(insertValue.value);
-  //       tree.traverse();
-  //       insertValue.value = "";
-  //     });
-    
-  //     findMinNodeButton.addEventListener("click", () => {
-  //       displayRes.replaceChildren();
-  //       tree.findSmallest();
-  //     });
-  //   }
+Tree.prototype.removeNode = function (node, key) {
+  // if the root is null then tree is
+  // empty
+  if (node === null) return null;
+  // if data to be delete is less than
+  // roots data then move to left subtree
+  else if (key < node.data) {
+    node.left = this.removeNode(node.left, key);
+    return node;
+  }
 
-  // }
+  // if data to be delete is greater than
+  // roots data then move to right subtree
+  else if (key > node.data) {
+    node.right = this.removeNode(node.right, key);
+    return node;
+  }
 
+  // if data is similar to the root's data
+  // then delete this node
+  else {
+    // deleting node with no children
+    if (node.left === null && node.right === null) {
+      node = null;
+      return node;
+    }
 
+    // deleting node with one children
+    if (node.left === null) {
+      node = node.right;
+      return node;
+    } else if (node.right === null) {
+      node = node.left;
+      return node;
+    }
+
+    // Deleting node with two children
+    // minimum node of the right subtree
+    // is stored in aux
+    var aux = this.findMinNode(node.right);
+    node.data = aux.data;
+
+    node.right = this.removeNode(node.right, aux.data);
+    return node;
+  }
+};
+// Daniel Shiffman
+// Nature of Code: Intelligence and Learning
+// https://github.com/shiffman/NOC-S17-2-Intelligence-Learning
+
+// Binary tree
+var tree;
+
+// function setup() {
+//   createCanvas(1000, 500);
+
+//   // New tree
+//   tree = new Tree();
+
+//   // Add ten random values
+//   for (var i = 0; i < 5; i++) {
+//     tree.addValue(floor(random(0, 100)));
+//     insertButton.addEventListener("click", () => {
+//       // displayRes.replaceChildren();
+//       tree.addValue(insertValue.value);
+//       // tree.inorder()
+//       console.log(insertValue.value);
+//       tree.traverse();
+//       insertValue.value = "";
+//     });
+
+//     findMinNodeButton.addEventListener("click", () => {
+//       displayRes.replaceChildren();
+//       tree.findSmallest();
+//     });
+//   }
+
+// }
 
 //   // if data to be delete is greater than
 //   // roots data then move to right subtree
 //   else if (key > this.value) {
 //     this.right =  this.right.removeNode(key);
-   
+
 //     return this;
 //   }
 
@@ -218,7 +205,9 @@ Tree.prototype.removeNode = function(node, key)
 // Binary tree
 
 function setup() {
-  createCanvas(800, 600);
+ var canvas = createCanvas(750, 600);
+
+  canvas.parent("level3");
 
   // New tree
   tree = new Tree();
@@ -226,14 +215,12 @@ function setup() {
   // Add ten random values
   for (var i = 0; i < 5; i++) {
     tree.addValue(floor(random(0, 100)));
-    console.log('5 value added')
+    console.log("5 value added");
   }
-
 
   insertButton.addEventListener("click", () => {
     // displayRes.replaceChildren();
     tree.addValue(insertValue.value);
-    
 
     console.log(insertValue.value);
     tree.traverse();
@@ -274,10 +261,10 @@ function setup() {
     displayRes.replaceChildren();
     tree.viewPreorder();
   });
-  removeButton.addEventListener("click", ()=>{
-    tree.rmNode(removeValue.value)
-    removeValue.value ='';
-  })
+  // removeButton.addEventListener("click", ()=>{
+  //   tree.rmNode(removeValue.value)
+  //   removeValue.value ='';
+  // })
 }
 
 // Daniel Shiffman
@@ -296,6 +283,8 @@ function Node(val, x, y) {
   this.x = x;
   this.y = y;
 }
+
+
 
 // Search the tree for a value
 Node.prototype.search = function (val) {
@@ -354,36 +343,36 @@ Node.prototype.visit = function (parent) {
   if (this.right != null) {
     this.right.visit(this);
   }
-}
-  
-  // Node.prototype.visit = function(parent) {
-  //   // Recursively go left
-  //   if (this.left != null) {
-  //     this.left.visit(this);
-  //   }
-  //   // Print out the value
-  //   console.log(this.value);
-  
-  //   // Draw a line from the parent
-  //   stroke(100);
-  //   line(parent.x, parent.y, this.x, this.y);
-  //   // Draw a circle
-  //   stroke(255);
-  //   fill(map(this.value,0,100,0,255),100,100);
-  //   ellipse(this.x, this.y, 27, 27);
-  //   noStroke();
-  //   // Display the value
-  //   fill(255);
-  //   textAlign(CENTER);
-  //   textSize(12);
-  //   text(this.value, this.x, this.y + 4);
-  
-  //   // Go right
-  //   if (this.right != null) {
-  //     this.right.visit(this);
-  //   }
-  
-  // }
+};
+
+// Node.prototype.visit = function(parent) {
+//   // Recursively go left
+//   if (this.left != null) {
+//     this.left.visit(this);
+//   }
+//   // Print out the value
+//   console.log(this.value);
+
+//   // Draw a line from the parent
+//   stroke(100);
+//   line(parent.x, parent.y, this.x, this.y);
+//   // Draw a circle
+//   stroke(255);
+//   fill(map(this.value,0,100,0,255),100,100);
+//   ellipse(this.x, this.y, 27, 27);
+//   noStroke();
+//   // Display the value
+//   fill(255);
+//   textAlign(CENTER);
+//   textSize(12);
+//   text(this.value, this.x, this.y + 4);
+
+//   // Go right
+//   if (this.right != null) {
+//     this.right.visit(this);
+//   }
+
+// }
 
 // Node.prototype.inOrder = function (parent) {
 //   if (this.left) {
@@ -428,7 +417,6 @@ Node.prototype.inorder = async function (parent) {
     this.left.inorder(this);
   }
 
-  console.log("get the money", this.value);
   displayRes.innerHTML += `${this.value}, `;
   if (this.right != null) {
     this.right.inorder(this);
@@ -456,7 +444,5 @@ Node.prototype.postorder = async function (parent) {
   if (this.right != null) {
     this.right.postorder(this);
   }
-
-  console.log("get the money", this.value);
   displayRes.innerHTML += `${this.value}, `;
 };

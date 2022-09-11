@@ -19,7 +19,7 @@
 }
 .function-result{
     
-	margin:2px 30vw;
+	margin:2px 10vw;
 	text-align: center;
 	font-size: 20px;
 	background-color: #5d2cff;
@@ -46,16 +46,13 @@
 	padding: 10px;
 }
 
-li {
-    width: 14em;
-	font-size: 16px;
-	font-weight: bolder;
-	margin-left: -20px;
+.stack-ul {
+
 	list-style: none;
-	color: white;
-	background-color: #5d2cff;
-	display: table-cell;
-	font-family: sans-serif;
+	
+}
+.stack-ol{
+	text-align: left;
 }
 ul {
 	display: flex;
@@ -68,4 +65,13 @@ ul {
 .box {
 	border-style: solid;
 	padding: 25px;
+	width: 14em;
+	font-size: 16px;
+	font-weight: bolder;
+	margin-left: -20px;
+	list-style: none;
+	color: white;
+	background-color: #5d2cff;
+	display: table-cell;
+	font-family: sans-serif;
 }

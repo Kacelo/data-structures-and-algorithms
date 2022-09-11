@@ -1,6 +1,6 @@
 .main{
     /* width: 0%; */
-    margin: auto;
+    margin: 0 -3em;
     justify-content: center;
 }
 .container{
@@ -19,7 +19,7 @@
 }
 .searchResult{
     
-	margin:20px 30vw;
+	margin:20px 25vw;
 	text-align: center;
 	font-size: 30px;
 	background-color: #5d2cff;
@@ -46,7 +46,7 @@
     padding: 10px;
 }
 
-li{
+.array-list{
     font-size: 16px;
     font-weight: bolder;
     margin-left: -20px;
@@ -56,6 +56,9 @@ li{
     display: table-cell;
     font-family: sans-serif;
 }
+li{
+	text-align: left;
+}
 ul{
    margin-top: 20%;
 }
@@ -63,4 +66,7 @@ ul{
 .box{
     border-style: solid;
     padding: 25px;
+}
+.array-img{
+	width: 80%;
 }

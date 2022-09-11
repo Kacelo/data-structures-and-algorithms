@@ -46,7 +46,7 @@
     padding: 10px;
 }
 
-li{
+/* li{
     font-size: 16px;
     font-weight: bolder;
     margin-left: -20px;
@@ -55,9 +55,22 @@ li{
     background-color: #5d2cff;
     display: table-cell;
     font-family: sans-serif;
-}
+} */
 ul{
    margin-top: 20%;
+}
+#descriptionDiv{
+	/* display: flex; */
+}
+
+main{
+	text-align: center;
+}
+#level3{
+
+}
+.container.text-center{
+	margin-top: 5rem;
 }
 
 /* .box{

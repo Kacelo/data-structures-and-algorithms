@@ -127,7 +127,7 @@ function showElements() {
   let contents = items
     .map(
       (content, index) =>
-        `<li><div class='box'>${content} index:${index} </div></li>`
+        `<li class ="array-list"><div class='box'>${content} index:${index} </div></li>`
     )
     .join("\n");
   document.querySelector("ul").innerHTML = contents;

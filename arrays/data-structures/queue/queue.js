@@ -43,10 +43,11 @@ Queue.prototype.dequeue = function () {
     return (functionRes.innerHTML = "Underflow: no more elements to remove");
   }
 
+ 
   this.length -= 1;
-
+ 
   functionRes.innerHTML =
-    this.items[this.length] + " is removed from the front of queue";
+  this.items[length] + " is removed from the front of queue";
 
   return this.items.shift();
 };
@@ -58,7 +59,7 @@ Queue.prototype.display = function () {
   }
 
   for (let i = 0; i < this.length; i++) {
-    resEle.innerHTML += `<li><div class='box'>${this.items[i]} index: ${i}</div></li>`;
+    resEle.innerHTML += `<li class ="queue-list"><div class='box'>${this.items[i]} index: ${i}</div></li>`;
   }
 };
 
@@ -96,6 +97,7 @@ function isEmpty() {
 
 let queue1 = new Queue();
 BtnEle.addEventListener("click", () => {
+  functionRes.replaceChildren();
   resEle.innerHTML = "";
   queue1.display();
 });
