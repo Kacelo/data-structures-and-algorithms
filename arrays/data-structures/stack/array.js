@@ -1,4 +1,4 @@
-let elements = ["sample ", "Sample"];
+let elements = [];
 //maximum number of elements in the stack
 let limit = 5;
 // buttons

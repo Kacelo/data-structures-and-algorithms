@@ -55,6 +55,7 @@ Tree.prototype.addValue = function (val) {
     // An initial position for the root node
     this.root.x = width / 2;
     this.root.y = 16;
+    tree.traverse();
   } else {
     this.root.addNode(n);
   }
@@ -213,15 +214,14 @@ function setup() {
   tree = new Tree();
 
   // Add ten random values
-  for (var i = 0; i < 5; i++) {
-    tree.addValue(floor(random(0, 100)));
-    console.log("5 value added");
-  }
+  // for (var i = 0; i < 1; i++) {
+  //   tree.addValue(floor(random(0, 100)));
+  //   console.log("5 value added");
+  // }
 
   insertButton.addEventListener("click", () => {
     // displayRes.replaceChildren();
-    tree.addValue(insertValue.value);
-
+    tree.addValue(parseInt (insertValue.value, 10));
     console.log(insertValue.value);
     tree.traverse();
     insertValue.value = "";
@@ -235,7 +235,7 @@ function setup() {
   background(255);
 
   // Traverse the tree
-  tree.traverse();
+  // tree.traverse();
 
   // Search the tree for 10
   searchButton.addEventListener("click", () => {

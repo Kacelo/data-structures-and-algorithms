@@ -130,7 +130,7 @@ function showElements() {
         `<li class ="array-list"><div class='box'>${content} index:${index} </div></li>`
     )
     .join("\n");
-  document.querySelector("ul").innerHTML = contents;
+  document.querySelector(".list").innerHTML = contents;
 
   console.log(contents);
 }
