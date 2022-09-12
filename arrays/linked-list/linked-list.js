@@ -205,6 +205,7 @@ removeTailButton.addEventListener("click", function () {
 
   //log the list
   console.log("This is the list after remove tail", list);
+  resEle.innerHTML += `${LinkedListpseudo[1]}`
 });
 
 //delete button event listener executes removeNode method when the remove node button is clicked
@@ -220,3 +221,29 @@ deleteButton.addEventListener("click", function () {
   //log the list
   console.log("This is the list after remove node", list);
 });
+
+
+//Pseudocode
+const container = document.getElementById("array");
+let currentArray = [];
+const setCountValue = document.getElementById("countValue");
+let codeExplaination = document.getElementById('codeExplaination');
+const header = document.querySelector(".header");
+let pseudo = ['1. for i ← 0, a.length − 1 do', 'if (a[i] == e) then', '3 return true', 'end if', 'end for', 'return false'];
+
+let LinkedListpseudo = ['AddToTail, if tail.next = newNode, else head = newNode', 
+'RemoveHead, if head.prev = null, else tail = null', 
+'AddToHead, if head.prev = newNode, else tail = newNode', 
+'DeleteNode, while node, if node.value === value, node.prev.next = node.next, else head = node.next, if node.next, node.next.prev = node.prev, else tail = node.prev', 
+'RemoveTail, if not tail RETURN, if tail.next = null, else head = null', 
+];
+
+
+setCountValue.innerHTML +=`
+  <li id='setCountValue1' class = 'listCss'>${countingPsuedo[0]}</li>
+  <li id='setCountValue2'  class = 'listCss'>${countingPsuedo[1]}</li>
+  <li id='setCountValue3'  class = 'listCss'>${countingPsuedo[2]}</li>
+  <li id='setCountValue4'  class = 'listCss'>${countingPsuedo[3]}</li>
+  <li id='setCountValue5'  class = 'listCss'>${countingPsuedo[4]}</li>
+  <li id='setCountValue6'  class = 'listCss'>${countingPsuedo[5]}</li>
+  `
