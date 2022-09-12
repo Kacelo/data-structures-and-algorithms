@@ -6,6 +6,7 @@ const btnPush = document.getElementById("push-button");
 const arrInput = document.getElementById("array-input");
 const btnPop = document.getElementById("pop-button");
 const btnPeek = document.getElementById("peek-button");
+const btnEmpty = document.getElementById("empty-button");
 let functionRes = document.querySelector(".function-result");
 
 //check if stack is full
@@ -37,6 +38,16 @@ function displayElements() {
 // to display stack elements
 displayElements();
 
+// isEmpty button
+btnEmpty.addEventListener("click", () => {
+  if (isEmpty()) {
+    functionRes.innerHTML += `Stack is empty`;
+  } else {
+    functionRes.innerHTML += `Stack is not empty`;
+  }
+});
+
+
 // event listeners
 btnPop.addEventListener("click", async () => {
 	functionRes.replaceChildren();
@@ -62,7 +73,7 @@ btnPop.addEventListener("click", async () => {
 btnPeek.addEventListener("click", () => {
 	functionRes.replaceChildren();
   if (isEmpty()) {
-    return  functionRes.innerHTML += `stack is empty!`;;
+    return  functionRes.innerHTML += `Stack is empty`;
   }
 
   const lastElement = elements[elements.length - 1];
