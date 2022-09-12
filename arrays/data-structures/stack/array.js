@@ -1,4 +1,4 @@
-let elements = ["sample ", "Sample"];
+let elements = [];
 //maximum number of elements in the stack
 let limit = 5;
 // buttons
@@ -7,7 +7,6 @@ const arrInput = document.getElementById("array-input");
 const btnPop = document.getElementById("pop-button");
 const btnPeek = document.getElementById("peek-button");
 const btnEmpty = document.getElementById("empty-button");
-const isEmptyLabel = document.getElementById("isEmpty");
 let functionRes = document.querySelector(".function-result");
 
 //check if stack is full
@@ -42,9 +41,9 @@ displayElements();
 // isEmpty button
 btnEmpty.addEventListener("click", () => {
   if (isEmpty()) {
-    isEmptyLabel.innerHTML = "Stack is empty";
+    functionRes.innerHTML += `Stack is empty`;
   } else {
-    isEmptyLabel.innerHTML = "Stack is not empty";
+    functionRes.innerHTML += `Stack is not empty`;
   }
 });
 
@@ -52,7 +51,6 @@ btnEmpty.addEventListener("click", () => {
 // event listeners
 btnPop.addEventListener("click", async () => {
 	functionRes.replaceChildren();
-  isEmptyLabel.innerHTML = "";
   if (!isEmpty()) {
     disableButton(btnPop);
     //enable push button
@@ -73,10 +71,9 @@ btnPop.addEventListener("click", async () => {
 
 // Check the last element of the stack
 btnPeek.addEventListener("click", () => {
-  isEmptyLabel.innerHTML = "";
 	functionRes.replaceChildren();
   if (isEmpty()) {
-    return  functionRes.innerHTML += `stack is empty!`;;
+    return  functionRes.innerHTML += `Stack is empty`;;
   }
 
   const lastElement = elements[elements.length - 1];
@@ -87,7 +84,6 @@ btnPeek.addEventListener("click", () => {
 btnPush.addEventListener("click", async () => {
 	functionRes.replaceChildren();
   const value = arrInput.value;
-  isEmptyLabel.innerHTML = "";
   const lastElement = elements[elements.length - 1];
 
   if (!isEmpty()) {
