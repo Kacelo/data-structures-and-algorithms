@@ -5,6 +5,7 @@ let codeExplaination = document.getElementById("codeExplaination");
 let insertValuesBtn = document.getElementById("insertValuesBtn");
 let insertValuesInput = document.getElementById("insertValuesInput");
 const header = document.querySelector(".header");
+let customRange1 = document.getElementById("customRange1");
 let count = 0;
 let pseudo = [
   "1. for i ← 0, a.length − 1 do",
@@ -14,6 +15,24 @@ let pseudo = [
   "end for",
   "return false"
 ];
+const vall = null;
+function showVal(){
+  //  customRange1 = document.getElementById("customRange1");
+
+  console.log("in index",customRange1.value)
+  return customRange1.value;
+// document.getElementById("valBox").innerHTML=newVal;
+}
+
+
+
+function getNewSliderValue () {
+  return setTimeout(()=>{
+    customRange1.value
+  }, customRange1.value)
+}
+
+console.log(customRange1.value)
 function reset(blocks) {
   for (let index = 0; index < blocks.length; index++) {
     blocks[index].style.backgroundColor = "#6b5b95";
@@ -138,7 +157,8 @@ function generate() {
   generateArray();
 }
 
-async function counting(delay = 500) {
+async function counting(delay = showVal()) {
+  console.log("show",showVal())
   setCountValue.replaceChildren();
   header.replaceChildren();
   header.innerHTML += "Counting Algorithm";
