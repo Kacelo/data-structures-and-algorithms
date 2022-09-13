@@ -12,7 +12,7 @@ let pseudo = [
   "3 return true",
   "end if",
   "end for",
-  "return false",
+  "return false"
 ];
 function reset(blocks) {
   for (let index = 0; index < blocks.length; index++) {
@@ -21,8 +21,11 @@ function reset(blocks) {
 }
 
 insertValuesBtn.addEventListener("click", function () {
+  // clear the array if the elements are 20
+  if (currentArray.length === 20) {
+    clear();
+  }
   let value = insertValuesInput.value;
-
   //Populating the array
   currentArray.push(value);
 
@@ -46,7 +49,7 @@ insertValuesBtn.addEventListener("click", function () {
   array_ele.appendChild(array_ele_label);
   container.appendChild(array_ele);
   count++;
-  insertValuesInput.value='';
+  insertValuesInput.value = "";
 });
 function disable() {
   // To disable the button "Generate New Array"
@@ -67,6 +70,11 @@ function disable() {
   // to disable the button "searching"
   document.getElementById("search").disabled = true;
   document.getElementById("search").style.backgroundColor = "#d8b6ff";
+}
+function clear() {
+  // clear the array and the container
+  currentArray = [];
+  container.innerHTML = "";
 }
 function enable() {
   // To enable the button "Generate New Array"
@@ -93,7 +101,42 @@ function enable() {
 function generate() {
   window.location.reload();
 }
-// generateArray();
+function generateArray() {
+  // Clear the array and the container
+  clear();
+  for (var i = 0; i < 20; i++) {
+    // Return a value from 1 to 100 (both inclusive)
+    var value = Math.ceil(Math.random() * 100);
+
+    //Populating the array
+    currentArray.push(value);
+
+    // Creating element div
+    var array_ele = document.createElement("div");
+
+    // Adding class 'block' to div
+    array_ele.classList.add("block");
+
+    // Adding style to div
+    array_ele.style.height = `${value * 3}px`;
+    array_ele.style.transform = `translate(${i * 30}px)`;
+
+    // Creating label element for displaying
+    // size of particular block
+    var array_ele_label = document.createElement("label");
+    array_ele_label.classList.add("block_id");
+    array_ele_label.innerText = value;
+
+    // Appending created elements to index.html
+    array_ele.appendChild(array_ele_label);
+    container.appendChild(array_ele);
+  }
+}
+
+// function to generate new random array
+function generate() {
+  generateArray();
+}
 
 async function counting(delay = 500) {
   setCountValue.replaceChildren();
@@ -107,7 +150,7 @@ async function counting(delay = 500) {
     "c ← c + 1",
     " end i",
     "end for",
-    "return c",
+    "return c"
   ];
   setCountValue.innerHTML += `
   <li id='setCountValue1' class = 'listCss'>${countingPsuedo[0]}</li>
@@ -169,7 +212,7 @@ async function maximum(delay = 500) {
     "max ← a[i]",
     "end if",
     "end for",
-    "return max",
+    "return max"
   ];
   setCountValue.innerHTML += `
   <li id='setCountValue1'  class = 'listCss'>${minimumPsuedo[0]}</li>
@@ -258,7 +301,7 @@ async function minimum(delay = 500) {
     "min ← a[i]",
     "end if",
     "end for",
-    "return min",
+    "return min"
   ];
   setCountValue.innerHTML += `
   <li id='setCountValue1'  class = 'listCss'>${minimumPsuedo[0]}</li>
@@ -333,7 +376,7 @@ async function summing(delay = 500) {
     "s ← s + a[i]",
     " end i",
     "end for",
-    "return s",
+    "return s"
   ];
   setCountValue.innerHTML += `
   <li id='setCountValue1' class = 'listCss'>${summingPseudo[0]}</li>
@@ -363,7 +406,7 @@ async function summing(delay = 500) {
     // To change background-color of the
     // blocks to be compared
     blocks[i].style.backgroundColor = "#FF4949";
-    sum += parseInt (currentArray[i], 10);
+    sum += parseInt(currentArray[i], 10);
     header.innerText = `The total is: ${sum}`;
 
     // To wait for .5 sec
@@ -402,7 +445,7 @@ async function searchAlgorithm(delay = 500) {
     "return true",
     "end if",
     "end for",
-    "return false",
+    "return false"
   ];
   pseudo.push("for i ← 0, a.length − 1 do");
   setCountValue.innerHTML += `
