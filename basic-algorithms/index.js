@@ -222,7 +222,7 @@ async function counting(delay = showVal()) {
   //enabling the buttons once operation is complete
   enable();
 }
-async function maximum(delay = 500) {
+async function maximum(delay = showVal()) {
   setCountValue.replaceChildren();
   header.replaceChildren();
   let minimumPsuedo = [
@@ -310,7 +310,7 @@ async function maximum(delay = 500) {
   document.getElementById("setCountValue7").style.backgroundColor = "#d8b6ff";
 }
 
-async function minimum(delay = 500) {
+async function minimum(delay = showVal()) {
   setCountValue.replaceChildren();
   header.replaceChildren();
   header.innerHTML += "Minimum Algorithm";
@@ -385,7 +385,8 @@ async function minimum(delay = 500) {
   document.getElementById("setCountValue3").style.backgroundColor = "white";
   document.getElementById("setCountValue7").style.backgroundColor = "#d8b6ff";
 }
-async function summing(delay = 500) {
+async function summing(delay = showVal()) {
+  console.log(delay)
   header.replaceChildren();
   setCountValue.replaceChildren();
   header.innerHTML += "Summing Algorithm";
@@ -455,7 +456,7 @@ function searching(number) {
   }
 }
 
-async function searchAlgorithm(delay = 500) {
+async function searchAlgorithm(delay = showVal()) {
   header.replaceChildren();
   setCountValue.replaceChildren();
   header.innerHTML += "Searching Algorithm";
