@@ -112,8 +112,7 @@
     let removeToNode = document.getElementById("removeToNode");
     var jsav = new JSAV("av");
     jsav.label("Layered graph layout")
-    const graph = jsav.ds.graph($.extend({ width: 500, height: 350 }, { layout: "layered" }));
-    // const graph = initGraph({ layout: "layered" });
+    const graph = jsav.ds.graph($.extend({ width: 500, height: 350 }, { layout: "layered" }, { directed: true }));
     graph.layout();
     jsav.displayInit();
 
