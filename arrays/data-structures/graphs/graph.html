@@ -37,6 +37,29 @@
       font-size: 2em;
       text-align: center;
     }
+
+    .buttons-container {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+    }
+    .node-number{
+      margin: 1rem;
+    }
+    .add-node{
+      margin: 1rem;
+    }
+    .remove-node{
+      margin: 1rem;
+    }
+    .connect-nodes{
+      margin: 1rem;
+    }
+    .disconnect-nodes{
+      margin: 1rem;
+    }
   </style>
 </head>
 
@@ -46,20 +69,33 @@
 
     <div class="jsavcontrols"></div>
     <div class="buttons-container">
-      <button onclick="numberOfNodes()">Number of Nodes</button>
-      <input type="text" id="addNodeInput">
-      <button onclick="addNode()">Add A Node</button>
-      <input type="text" id="removeNodeInput">
-      <button onclick="removeNode()">Remove A Node</button>
-      <input type="text" id="addFromNode" placeholder="Add edge from node">
-      <input type="text" id="addToNode" placeholder="Add edge to node">
-      <button onclick="connectNodes()">Add An Edge</button>
-      <input type="text" id="removeFromNode" placeholder="Remove edge from node">
-      <input type="text" id="removeToNode" placeholder="Remove edge to node">
-      <button onclick="disconnectNodes()">Remove An Edge</button>
+      <div class="node-number"> 
+        <button onclick="numberOfNodes()">Number of Nodes</button>
+      </div>
+      <div class="add-node">
+        <input type="text" id="addNodeInput">
+        <button onclick="addNode()">Add A Node</button>
+      </div>
+      <div class="remove-node">
+        <input type="text" id="removeNodeInput">
+        <button onclick="removeNode()">Remove A Node</button>
+      </div>
+      <div class="connect-nodes"><input type="text" id="addFromNode" placeholder="Add edge from node">
+        <input type="text" id="addToNode" placeholder="Add edge to node">
+        <button onclick="connectNodes()">Add An Edge</button>
+      </div>
+      <div class="disconnect-nodes"><input type="text" id="removeFromNode" placeholder="Remove edge from node">
+        <input type="text" id="removeToNode" placeholder="Remove edge to node">
+        <button onclick="disconnectNodes()">Remove An Edge</button>
+      </div>
+
+
+
+
+
     </div>
     <span class="jsavcounter"></span>
-    <label for="" id="outputText"></label>
+
     <p class="jsavoutput jsavline"></p>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
@@ -69,7 +105,6 @@
   <script src="../../../JSAV/lib/dagre.min.js"></script>
   <script src="../../../JSAV/build/JSAV.js"></script>
   <script>
-    let label = document.getElementById("outputText");
     let addNodeInput = document.getElementById("addNodeInput");
     let removeNodeInput = document.getElementById("removeNodeInput");
     let addFromNode = document.getElementById("addFromNode");
@@ -97,9 +132,114 @@
     jsav.label("Layered graph layout")
     const graph = jsav.ds.graph($.extend({ width: 500, height: 350 }, { layout: "layered" }));
     // const graph = initGraph({ layout: "layered" });
-    let h = graph.addNode("H");
     graph.layout();
     jsav.displayInit();
+
+    // function to get the number of nodes in the graph
+    function numberOfNodes() {
+      console.log(graph.nodes());
+      jsav.umsg("Number of nodes in the graph: " + graph.nodeCount());
+      return graph.nodeCount();
+    }
+
+    // function to get a node by its value
+    function getNode(value) {
+      let nodes = graph.nodes();
+      for (let i = 0; i < nodes.length; i++) {
+        if (nodes[i].value() === value) {
+          return nodes[i];
+        }
+      }
+      return null;
+    }
+
+    // function to add a node to the graph
+    function addNode() {
+      const { value } = addNodeInput;
+      if (value != "") {
+        graph.addNode(value);
+        jsav.umsg(`Added ${value} to the graph`);
+      }
+      else {
+        jsav.umsg("Please enter a value");
+      }
+      graph.layout();
+      jsav.displayInit();
+    }
+    // function to remove a node from the graph
+    function removeNode() {
+      const { value } = removeNodeInput;
+      if (value != "") {
+        // check if the node exists
+        if (isNodeInGraph(value)) {
+          const currentNode = getNode(value);
+          graph.removeNode(currentNode);
+          jsav.umsg(`Removed ${value} from the graph`);
+        }
+        else {
+          jsav.umsg(`Node ${value} does not exist`);
+
+        }
+      }
+      else {
+        jsav.umsg("Please enter a value");
+
+      }
+      graph.layout();
+      jsav.displayInit();
+
+    }
+    // function to connect two nodes
+    function connectNodes() {
+      const { value: from } = addFromNode;
+      const { value: to } = addToNode;
+
+      console.log("Value of form and to", from, to);
+      if (from != "" && to != "") {
+        // check if the nodes exist
+        if (isNodeInGraph(from) && isNodeInGraph(to)) {
+          const fromNode = getNode(from);
+          const toNode = getNode(to);
+          graph.addEdge(fromNode, toNode);
+          jsav.umsg(`Added edge from ${from} to ${to}`);
+          graph.layout();
+          jsav.displayInit();
+        }
+        else {
+          jsav.umsg(`Node ${from} or ${to} does not exist`);
+        }
+      }
+      else {
+        jsav.umsg("Please enter a value");
+
+      }
+
+    }
+    // function to disconnect two nodes
+    function disconnectNodes() {
+      const { value: from } = removeFromNode;
+      const { value: to } = removeToNode;
+      if (from != "" && to != "") {
+        // check if the nodes exist
+        if (isNodeInGraph(from) && isNodeInGraph(to)) {
+          const fromNode = getNode(from);
+          const toNode = getNode(to);
+          graph.removeEdge(fromNode, toNode);
+          jsav.umsg(`Removed edge from ${from} to ${to}`);
+        }
+        else {
+          jsav.umsg(`Node ${from} or ${to} does not exist`);
+        }
+      }
+      else {
+        jsav.umsg("Please enter a value");
+
+      }
+      graph.layout();
+      jsav.displayInit();
+
+    }
+
 
     var preVisit = function (node, prev) {
       node.addClass("processing");
@@ -149,89 +289,7 @@
       return false;
     }
 
-    // function to get the number of nodes in the graph
-    function numberOfNodes() {
-      console.log(graph.nodes());
-      label.innerHTML = "Number of nodes in the graph: " + graph.nodeCount();
-      jsav.umsg("Number of nodes in the graph: " + graph.nodeCount());
-      return graph.nodeCount();
-    }
-    // function to add a node to the graph
-    function addNode() {
-      const { value } = addNodeInput;
-      if (value != "") {
-        graph.addNode(value);
-        label.innerHTML = `Added ${value} to the graph`;
-      }
-      else {
-        label.innerHTML = "Please enter a value";
-      }
-      graph.layout();
-      jsav.displayInit();
 
-    }
-    // function to remove a node from the graph
-    function removeNode() {
-      const { value } = removeNodeInput;
-      if (value != "") {
-        // check if the node exists
-        if (isNodeInGraph(value)) {
-          graph.removeNode(value);
-          label.innerHTML = `Removed ${value} from the graph`;
-        }
-        else {
-          label.innerHTML = `Node ${value} does not exist`;
-        }
-      }
-      else {
-        label.innerHTML = "Please enter a value";
-      }
-      graph.layout();
-      jsav.displayInit();
-
-    }
-    // function to connect two nodes
-    function connectNodes() {
-      const { value: from } = addFromNode;
-      const { value: to } = addToNode;
-      if (from != "" && to != "") {
-        // check if the nodes exist
-        if (isNodeInGraph(from) && isNodeInGraph(to)) {
-          graph.addEdge(from, to);
-          label.innerHTML = `Added edge from ${from} to ${to}`;
-        }
-        else {
-          label.innerHTML = `Node ${from} or ${to} does not exist`;
-        }
-      }
-      else {
-        label.innerHTML = "Please enter a value";
-      }
-      graph.layout();
-      jsav.displayInit();
-
-    }
-    // function to disconnect two nodes
-    function disconnectNodes() {
-      const { value: from } = removeFromNode;
-      const { value: to } = removeToNode;
-      if (from != "" && to != "") {
-        // check if the nodes exist
-        if (isNodeInGraph(from) && isNodeInGraph(to)) {
-          graph.removeEdge(from, to);
-          label.innerHTML = `Removed edge from ${from} to ${to}`;
-        }
-        else {
-          label.innerHTML = `Node ${from} or ${to} does not exist`;
-        }
-      }
-      else {
-        label.innerHTML = "Please enter a value";
-      }
-      graph.layout();
-      jsav.displayInit();
-
-    }
   </script>
 </body>
 
