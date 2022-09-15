@@ -39,25 +39,17 @@
     }
 
     .buttons-container {
-      margin-top: 10px;
+      margin: auto;
       display: flex;
       flex-direction: row;
-      width: 100%;
+      width: 80%;
       justify-content: space-between;
     }
-    .node-number{
-      margin: 1rem;
-    }
-    .add-node{
-      margin: 1rem;
-    }
-    .remove-node{
-      margin: 1rem;
-    }
-    .connect-nodes{
-      margin: 1rem;
-    }
-    .disconnect-nodes{
+
+    .node-number {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       margin: 1rem;
     }
   </style>
@@ -66,30 +58,35 @@
 <body>
   <h1>JSAV slideshow for graphs</h1>
   <div id="av">
+    <!-- <div class="start-slideshow">
+      <button onclick="startSlideShow()">Slideshow</button>
+    </div> -->
     <div class="jsavcontrols"></div>
     <div class="buttons-container">
-      <div class="node-number"> 
+      <div class="node-number">
         <button onclick="clearGraph()">Clear</button>
       </div>
-      <div class="node-number"> 
+      <div class="node-number">
         <button onclick="numberOfNodes()">Number of Nodes</button>
       </div>
-      <div class="node-number"> 
+      <div class="node-number">
         <button onclick="numberOfEdges()">Number of Edges</button>
       </div>
-      <div class="add-node">
+      <div class="node-number">
         <input type="text" id="addNodeInput" placeholder=" Add node to graph">
         <button onclick="addNode()">Add A Node</button>
       </div>
-      <div class="remove-node">
+      <div class="node-number">
         <input type="text" id="removeNodeInput" placeholder="Remove node from graph">
         <button onclick="removeNode()">Remove A Node</button>
       </div>
-      <div class="connect-nodes"><input type="text" id="addFromNode" placeholder="Add edge from node">
+      <div class="node-number">
+        <input type="text" id="addFromNode" placeholder="Add edge from node">
         <input type="text" id="addToNode" placeholder="Add edge to node">
         <button onclick="connectNodes()">Add An Edge</button>
       </div>
-      <div class="disconnect-nodes"><input type="text" id="removeFromNode" placeholder="Remove edge from node">
+      <div class="node-number">
+        <input type="text" id="removeFromNode" placeholder="Remove edge from node">
         <input type="text" id="removeToNode" placeholder="Remove edge to node">
         <button onclick="disconnectNodes()">Remove An Edge</button>
       </div>
@@ -110,69 +107,80 @@
     let addToNode = document.getElementById("addToNode");
     let removeFromNode = document.getElementById("removeFromNode");
     let removeToNode = document.getElementById("removeToNode");
-    var jsav = new JSAV("av");
+    let jsav = new JSAV("av");
     jsav.label("Layered graph layout")
-    const graph = jsav.ds.graph($.extend({ width: 500, height: 350 }, { layout: "layered" }, { directed: true }));
+    let graph = jsav.ds.graph($.extend({ width: 500, height: 350 }, { layout: "layered" }, { directed: true }));
+    // add a node 
     graph.layout();
     jsav.displayInit();
+
+    // start the slideshow
+    function startSlideShow() {
+      visit(graph.nodes()[0]);
+      dfs(graph.nodes()[0]);
+      jsav.recorded();
+    }
 
     // function to get the number of nodes in the graph
     function numberOfNodes() {
       jsav.umsg("Number of nodes in the graph: " + graph.nodeCount());
       return graph.nodeCount();
     }
-
     // function to get the number of edges in the graph
     function numberOfEdges() {
       jsav.umsg("Number of edges in the graph: " + graph.edgeCount());
       return graph.edgeCount();
     }
-
     // function to get a node by its value
     function getNode(value) {
       let nodes = graph.nodes();
       for (let i = 0; i < nodes.length; i++) {
-        if (nodes[i].value() === value) {
+        if (nodes[i].value() === value.toUpperCase()) {
           return nodes[i];
         }
       }
       return null;
     }
-
     // function to add a node to the graph
     function addNode() {
       const { value } = addNodeInput;
       if (value != "") {
         // check if the node already exists
-        if (getNode(value) === null) {
-          graph.addNode(value);
-          jsav.umsg("Added node " + value);
+        if (getNode(value.toUpperCase()) === null) {
+          graph.addNode(value.toUpperCase());
+          jsav.umsg("Added node " + value.toUpperCase());
           // clear input field
           addNodeInput.value = "";
+          graph.layout();
+      jsav.displayInit();
+          
         } else {
-          jsav.umsg("Node " + value + " already exists");
+          jsav.umsg("Node " + value.toUpperCase() + " already exists");
         }
       }
       else {
         jsav.umsg("Please enter a value");
       }
-      graph.layout();
-      jsav.displayInit();
+
+
     }
     // function to remove a node from the graph
     function removeNode() {
       const { value } = removeNodeInput;
       if (value != "") {
         // check if the node exists
-        if (isNodeInGraph(value)) {
-          const currentNode = getNode(value);
+        if (isNodeInGraph(value.toUpperCase())) {
+          const currentNode = getNode(value.toUpperCase());
           graph.removeNode(currentNode);
           jsav.umsg(`Removed ${value} from the graph`);
           // clear input field
           removeNodeInput.value = "";
+          graph.layout();
+      jsav.displayInit();
+         
         }
         else {
-          jsav.umsg(`Node ${value} does not exist`);
+          jsav.umsg(`Node ${value.toUpperCase()} does not exist`);
 
         }
       }
@@ -180,8 +188,6 @@
         jsav.umsg("Please enter a value");
 
       }
-      graph.layout();
-      jsav.displayInit();
 
     }
     // function to connect two nodes
@@ -192,19 +198,19 @@
       console.log("Value of form and to", from, to);
       if (from != "" && to != "") {
         // check if the nodes exist
-        if (isNodeInGraph(from) && isNodeInGraph(to)) {
-          const fromNode = getNode(from);
-          const toNode = getNode(to);
+        if (isNodeInGraph(from.toUpperCase()) && isNodeInGraph(to.toUpperCase())) {
+          const fromNode = getNode(from.toUpperCase());
+          const toNode = getNode(to.toUpperCase());
           graph.addEdge(fromNode, toNode);
-          jsav.umsg(`Added edge from ${from} to ${to}`);
+          jsav.umsg(`Added edge from ${from.toUpperCase()} to ${to.toUpperCase()}`);
           graph.layout();
-          jsav.displayInit();
+      jsav.displayInit();
           // clear input fields
           addFromNode.value = "";
           addToNode.value = "";
         }
         else {
-          jsav.umsg(`Node ${from} or ${to} does not exist`);
+          jsav.umsg(`Node ${from.toUpperCase()} or ${to.toUpperCase()} does not exist`);
         }
       }
       else {
@@ -219,37 +225,34 @@
       const { value: to } = removeToNode;
       if (from != "" && to != "") {
         // check if the nodes exist
-        if (isNodeInGraph(from) && isNodeInGraph(to)) {
-          const fromNode = getNode(from);
-          const toNode = getNode(to);
+        if (isNodeInGraph(from.toUpperCase()) && isNodeInGraph(to.toUpperCase())) {
+          const fromNode = getNode(from.toUpperCase());
+          const toNode = getNode(to.toUpperCase());
           graph.removeEdge(fromNode, toNode);
-          jsav.umsg(`Removed edge from ${from} to ${to}`);
+          jsav.umsg(`Removed edge from ${from.toUpperCase()} to ${to.toUpperCase()}`);
           graph.layout();
-          jsav.displayInit();
+      jsav.displayInit();
           // clear input fields
           removeFromNode.value = "";
           removeToNode.value = "";
         }
         else {
-          jsav.umsg(`Node ${from} or ${to} does not exist`);
+          jsav.umsg(`Node ${from.toUpperCase()} or ${to.toUpperCase()} does not exist`);
         }
       }
       else {
         jsav.umsg("Please enter a value");
 
       }
-     
+
 
     }
-
     // function to clear the graph
     function clearGraph() {
-    //  reload the window
+      //  reload the window
       window.location.reload();
-    } 
-
-
-    var preVisit = function(node, prev) {
+    }
+    var preVisit = function (node, prev) {
       node.addClass("processing");
       jsav.umsg("Add node " + node.value() + " to the DFS search tree");
       if (prev) {
@@ -258,20 +261,20 @@
       }
       jsav.step();
     };
-    var visit = function(node) {
+    var visit = function (node) {
       node.addClass("visited");
       jsav.umsg("Call DFS for node " + node.value());
       jsav.step();
-   
+
     };
-    var postVisit = function(node) {
+    var postVisit = function (node) {
       node.addClass("finished");
       jsav.umsg("Done with node " + node.value());
       jsav.step();
     };
-    var dfs = function(start, prev) {
+    var dfs = function (start, prev) {
       var successors,
-          next;
+        next;
       preVisit(start, prev);
       successors = start.neighbors();
       for (next = successors.next(); next; next = successors.next()) {
@@ -282,9 +285,8 @@
       }
       postVisit(start);
     };
-    visit(graph.nodes()[0]);
-    dfs(graph.nodes()[0]);
-    jsav.recorded();
+
+
 
     //check if a node is in the graph
     function isNodeInGraph(node) {
@@ -296,8 +298,6 @@
       }
       return false;
     }
-
-
   </script>
 </body>
 
