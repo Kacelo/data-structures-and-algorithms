@@ -5,6 +5,11 @@ let codeExplaination = document.getElementById("codeExplaination");
 let insertValuesBtn = document.getElementById("insertValuesBtn");
 let insertValuesInput = document.getElementById("insertValuesInput");
 const header = document.querySelector(".header");
+// const lessThanBtn = document.getElementById("LessValuesBtn");
+// const greaterThanBtn = document.getElementById("GreaterValuesBtn");
+// const oddValuesBtn = document.getElementById("oddValuesBtn");
+let hideStuff = false;
+const conditionValue = document.getElementById("ConditionsValuesInput")
 let count = 0;
 let pseudo = [
   "1. for i ← 0, a.length − 1 do",
@@ -96,6 +101,23 @@ function enable() {
   document.getElementById("search").disabled = false;
   document.getElementById("search").style.backgroundColor = "#6b5b95";
 }
+function hideElements(){
+  // document.getElementById("InsertValuesContainer")
+  hideStuff = !hideStuff;
+  if(hideStuff){
+    document.querySelector( '.hiddenDiv' ).style.display = 'none';
+  }
+  else{
+    document.querySelector( '.hiddenDiv' ).style.display = 'flex';
+
+  }
+  console.log(hideStuff)
+  // document.getElementById( 'InsertValuesContainer' ).style.display = 'none';
+
+  
+}
+hideElements()
+
 
 // function to generate new random array
 function generate() {
@@ -202,11 +224,13 @@ async function counting(delay = 500) {
   //enabling the buttons once operation is complete
   enable();
 }
+
+
 async function maximum(delay = 2000) {
   setCountValue.replaceChildren();
   header.replaceChildren();
   let minimumPsuedo = [
-    "min ← a[0]",
+    "max ← a[0]",
     "for i ← 0, a.length − 1 do",
     "if (a[i] > max) then",
     "max ← a[i]",
@@ -234,11 +258,13 @@ async function maximum(delay = 2000) {
   //Setting the first element as the minimum
   codeExplaination.innerHTML += `Setting the first element as the maximum`;
   document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
+  console.log("step1")
   let max = Number(blocks[0].childNodes[0].innerHTML);
 
   blocks[0].style.backgroundColor = "#13CE66";
 
   for (var i = 1; i < blocks.length; i += 1) {
+    console.log("step 2")
     document.getElementById("setCountValue1").style.backgroundColor = "white";
     document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
 
@@ -260,30 +286,44 @@ async function maximum(delay = 2000) {
 
     // if the minimum is greater than the current value set the minimum to the current value
 
-    document.getElementById("setCountValue2").style.backgroundColor = "white";
-    document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
+    
     codeExplaination.replaceChildren();
+
     codeExplaination.innerHTML += `Trasverse through array to find greater values`
     if (max < cuurentValue) {
+      console.log("step3")
+      document.getElementById("setCountValue2").style.backgroundColor = "white";
+    document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
+     
       codeExplaination.replaceChildren();
       codeExplaination.innerHTML += `swap old max value: ${max} with the current value: ${cuurentValue}`;
+     
+     
       max = cuurentValue;
-      blocks[i].style.backgroundColor = "#13CE66";
-      document.getElementById("setCountValue3").style.backgroundColor = "white";
+      console.log("step4")
+       document.getElementById("setCountValue3").style.backgroundColor = "white";
       document.getElementById("setCountValue4").style.backgroundColor =
-        "#d8b6ff";
+      "#d8b6ff";
 
-      document.getElementById("setCountValue4").style.backgroundColor = "white";
+      blocks[i].style.backgroundColor = "#13CE66";
+      
+      
       document.getElementById("setCountValue5").style.backgroundColor =
         "#d8b6ff";
 
       // display message
       
       header.innerText = `The maximum value is: ${max} at index ${index}`;
-      document.getElementById("setCountValue5").style.backgroundColor = "white";
-      document.getElementById("setCountValue6").style.backgroundColor =
-        "#d8b6ff";
+      console.log("end")
+
     }
+    // document.getElementById("setCountValue4").style.backgroundColor =
+    //   "white";
+    
+
+    document.getElementById("setCountValue5").style.backgroundColor = "white";
+    document.getElementById("setCountValue6").style.backgroundColor =
+      "#d8b6ff";
     
     console.log(
       "if the minimum is greater than the current value set the minimum to the current value"
@@ -380,14 +420,15 @@ async function minimum(delay = 2000) {
   document.getElementById("setCountValue3").style.backgroundColor = "white";
   document.getElementById("setCountValue7").style.backgroundColor = "#d8b6ff";
 }
-async function summing(delay = 500) {
+// summing even numbers
+async function summingEvenNumbers(delay = 500) {
   header.replaceChildren();
   setCountValue.replaceChildren();
   header.innerHTML += "Summing Algorithm";
   let summingPseudo = [
     "c ← 0",
     "for i ← 0, a.length − 1 do",
-    "if (< condition >) then",
+    "if (a[i] % 2 === 0) then",
     "s ← s + a[i]",
     " end i",
     "end for",
@@ -414,6 +455,10 @@ async function summing(delay = 500) {
   document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
 
   for (var i = 0; i < blocks.length; i += 1) {
+    if(currentArray[i] % 2 === 0){
+      codeExplaination.replaceChildren()
+      codeExplaination.innerHTML += `Trasversing through array to find odd numbers`
+
     document.getElementById("setCountValue2").style.backgroundColor = "white";
     document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
     document.getElementById("setCountValue4").style.backgroundColor = "#d8b6ff";
@@ -421,9 +466,10 @@ async function summing(delay = 500) {
     // To change background-color of the
     // blocks to be compared
     blocks[i].style.backgroundColor = "#FF4949";
-    sum += parseInt(currentArray[i], 10);
-    header.innerText = `The total is: ${sum}`;
-
+    sum = sum+ currentArray[i];
+    // sum += sum + currentArray[i]
+    header.innerText = `The sum of even numbers is: ${sum}`;
+    }
     // To wait for .5 sec
     await new Promise((resolve) =>
       setTimeout(() => {
@@ -431,6 +477,9 @@ async function summing(delay = 500) {
       }, delay)
     );
   }
+  codeExplaination.replaceChildren()
+
+    codeExplaination.innerHTML += `return sum of even numbers`
   document.getElementById("setCountValue3").style.backgroundColor = "white";
   document.getElementById("setCountValue4").style.backgroundColor = "white";
   document.getElementById("setCountValue5").style.backgroundColor = "#d8b6ff";
@@ -439,6 +488,211 @@ async function summing(delay = 500) {
   //enabling the buttons once operation is complete
   enable();
 }
+async function summingOddNumbers(delay = 500) {
+  header.replaceChildren();
+  setCountValue.replaceChildren();
+  header.innerHTML += "Summing Algorithm";
+  let summingPseudo = [
+    "c ← 0",
+    "for i ← 0, a.length − 1 do",
+    "if (a[i] % 2 !=0) then",
+    "s ← s + a[i]",
+    " end i",
+    "end for",
+    "return s"
+  ];
+  setCountValue.innerHTML += `
+  <li id='setCountValue1' class = 'listCss'>${summingPseudo[0]}</li>
+  <li id='setCountValue2' class = 'listCss' >${summingPseudo[1]}</li>
+  <li id='setCountValue3' class = 'listCss'>${summingPseudo[2]}</li>
+  <li id='setCountValue4' class = 'listCss'>${summingPseudo[3]}</li>
+  <li id='setCountValue5' class = 'listCss'>${summingPseudo[4]}</li>
+  <li id='setCountValue6' class = 'listCss'>${summingPseudo[5]}</li>
+  `;
+  //disable the buttons
+  disable();
+  //selecting all the blocks on the graph
+  var blocks = document.querySelectorAll(".block");
+  //reset the blocks to the default color
+  reset(blocks);
+  document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
+  //Setting the count to 0
+  let sum = 0;
+  document.getElementById("setCountValue1").style.backgroundColor = "white";
+  document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
+
+  for (var i = 0; i < blocks.length; i += 1) {
+    if(currentArray[i] % 2 !=0){
+      codeExplaination.replaceChildren()
+
+    codeExplaination.innerHTML += `Trasversing through array to find odd numbers`
+    document.getElementById("setCountValue2").style.backgroundColor = "white";
+    document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
+    document.getElementById("setCountValue4").style.backgroundColor = "#d8b6ff";
+
+    // To change background-color of the
+    // blocks to be compared
+    blocks[i].style.backgroundColor = "#FF4949";
+    sum = sum+ Number(currentArray[i]);
+    // sum += sum + currentArray[i]
+    header.innerText = `The sum of odd numbers is: ${sum}`;
+    }
+    // To wait for .5 sec
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
+  }
+  codeExplaination.replaceChildren()
+  codeExplaination.innerHTML += `return sum of odd numbers`
+  document.getElementById("setCountValue3").style.backgroundColor = "white";
+  document.getElementById("setCountValue4").style.backgroundColor = "white";
+  document.getElementById("setCountValue5").style.backgroundColor = "#d8b6ff";
+  document.getElementById("setCountValue6").style.backgroundColor = "#d8b6ff";
+
+  //enabling the buttons once operation is complete
+  enable();
+}
+
+async function summingGreaterThan(delay = 500) {
+  header.replaceChildren();
+  setCountValue.replaceChildren();
+  header.innerHTML += "Summing Algorithm";
+  let summingPseudo = [
+    "c ← 0",
+    "for i ← 0, a.length − 1 do",
+    "if (a[i] > s) then",
+    "s ← s + a[i]",
+    " end i",
+    "end for",
+    "return s"
+  ];
+  setCountValue.innerHTML += `
+  <li id='setCountValue1' class = 'listCss'>${summingPseudo[0]}</li>
+  <li id='setCountValue2' class = 'listCss' >${summingPseudo[1]}</li>
+  <li id='setCountValue3' class = 'listCss'>${summingPseudo[2]}</li>
+  <li id='setCountValue4' class = 'listCss'>${summingPseudo[3]}</li>
+  <li id='setCountValue5' class = 'listCss'>${summingPseudo[4]}</li>
+  <li id='setCountValue6' class = 'listCss'>${summingPseudo[5]}</li>
+  `;
+  //disable the buttons
+  disable();
+  //selecting all the blocks on the graph
+  var blocks = document.querySelectorAll(".block");
+  //reset the blocks to the default color
+  reset(blocks);
+  document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
+  //Setting the count to 0
+  let sum = 0;
+  document.getElementById("setCountValue1").style.backgroundColor = "white";
+  document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
+
+  for (var i = 0; i < blocks.length; i += 1) {
+    if(currentArray[i] > conditionValue.value ){
+
+      codeExplaination.replaceChildren()
+
+      codeExplaination.innerHTML += `Trasversing through array to find numbers greater than ${conditionValue.value}`
+    document.getElementById("setCountValue2").style.backgroundColor = "white";
+    document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
+    document.getElementById("setCountValue4").style.backgroundColor = "#d8b6ff";
+
+    // To change background-color of the
+    // blocks to be compared
+    blocks[i].style.backgroundColor = "#FF4949";
+    sum = sum+ Number(currentArray[i]);
+    // sum += sum + currentArray[i]
+    header.innerText = `The sum of numbers greater than ${ conditionValue.value} is: ${sum}`;
+    }
+    // To wait for .5 sec
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
+  }
+  codeExplaination.replaceChildren()
+
+  codeExplaination.innerHTML += `return the sum numbers greater than ${conditionValue.value}`
+  document.getElementById("setCountValue3").style.backgroundColor = "white";
+  document.getElementById("setCountValue4").style.backgroundColor = "white";
+  document.getElementById("setCountValue5").style.backgroundColor = "#d8b6ff";
+  document.getElementById("setCountValue6").style.backgroundColor = "#d8b6ff";
+
+  //enabling the buttons once operation is complete
+  enable();
+}
+async function summingLessThan(delay = 500) {
+  header.replaceChildren();
+  setCountValue.replaceChildren();
+  header.innerHTML += "Summing Algorithm";
+  let summingPseudo = [
+    "c ← 0",
+    "for i ← 0, a.length − 1 do",
+    "if (a[i] < s) then",
+    "s ← s + a[i]",
+    " end i",
+    "end for",
+    "return s"
+  ];
+  setCountValue.innerHTML += `
+  <li id='setCountValue1' class = 'listCss'>${summingPseudo[0]}</li>
+  <li id='setCountValue2' class = 'listCss' >${summingPseudo[1]}</li>
+  <li id='setCountValue3' class = 'listCss'>${summingPseudo[2]}</li>
+  <li id='setCountValue4' class = 'listCss'>${summingPseudo[3]}</li>
+  <li id='setCountValue5' class = 'listCss'>${summingPseudo[4]}</li>
+  <li id='setCountValue6' class = 'listCss'>${summingPseudo[5]}</li>
+  `;
+  //disable the buttons
+  disable();
+  //selecting all the blocks on the graph
+  var blocks = document.querySelectorAll(".block");
+  //reset the blocks to the default color
+  reset(blocks);
+  document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
+  //Setting the count to 0
+  let sum = 0;
+  document.getElementById("setCountValue1").style.backgroundColor = "white";
+  document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
+
+  for (var i = 0; i < blocks.length; i += 1) {
+    if(currentArray[i] < conditionValue.value ){
+
+      codeExplaination.replaceChildren()
+
+      codeExplaination.innerHTML += `Trasversing through array to find numbers less than ${conditionValue.value}`
+    document.getElementById("setCountValue2").style.backgroundColor = "white";
+    document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
+    document.getElementById("setCountValue4").style.backgroundColor = "#d8b6ff";
+
+    // To change background-color of the
+    // blocks to be compared
+    blocks[i].style.backgroundColor = "#FF4949";
+    sum = sum+ Number(currentArray[i]);
+    // sum += sum + currentArray[i]
+    header.innerText = `The sum of numbers less than ${ conditionValue.value} is: ${sum}`;
+    }
+    // To wait for .5 sec
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
+  }
+  codeExplaination.replaceChildren()
+
+  codeExplaination.innerHTML += `return the sum of numbers less than ${conditionValue.value}`
+  document.getElementById("setCountValue3").style.backgroundColor = "white";
+  document.getElementById("setCountValue4").style.backgroundColor = "white";
+  document.getElementById("setCountValue5").style.backgroundColor = "#d8b6ff";
+  document.getElementById("setCountValue6").style.backgroundColor = "#d8b6ff";
+
+  //enabling the buttons once operation is complete
+  enable();
+}
+
+
 function searching(number) {
   for (let index = 0; index < currentArray.length; index++) {
     if (number === currentArray[index]) {
