@@ -3,7 +3,10 @@ let currentArray = [];
 const setCountValue = document.getElementById("countValue");
 let codeExplaination = document.getElementById("codeExplaination");
 let insertValuesBtn = document.getElementById("insertValuesBtn");
+let EvenValuesBtn = document.getElementById("EvenValuesBtn");
+let GreaterValuesBtn = document.getElementById("GreaterValuesBtn");
 let insertValuesInput = document.getElementById("insertValuesInput");
+let ConditionsValuesInput = document.getElementById("ConditionsValuesInput");
 const header = document.querySelector(".header");
 let count = 0;
 let pseudo = [
@@ -12,13 +15,290 @@ let pseudo = [
   "3 return true",
   "end if",
   "end for",
-  "return false"
+  "return false",
 ];
 function reset(blocks) {
   for (let index = 0; index < blocks.length; index++) {
     blocks[index].style.backgroundColor = "#6b5b95";
   }
 }
+
+
+//Conditional check functions
+
+async function ShowsLessThan(delay = 500) {
+  setCountValue.replaceChildren();
+  header.replaceChildren();
+  header.innerHTML += "Counting Algorithm";
+  const step = true;
+  let countingPsuedo = [
+    "c ← 0",
+    "for i ← 0, a.length − 1 do",
+    "if (currentArray[i]< ConditionsValuesInput.value) then",
+    "c ← c + 1",
+    " end i",
+    "end for",
+    "return c",
+  ];
+  setCountValue.innerHTML += `
+  <li id='setCountValue1' class = 'listCss'>${countingPsuedo[0]}</li>
+  <li id='setCountValue2'  class = 'listCss'>${countingPsuedo[1]}</li>
+  <li id='setCountValue3'  class = 'listCss'>${countingPsuedo[2]}</li>
+  <li id='setCountValue4'  class = 'listCss'>${countingPsuedo[3]}</li>
+  <li id='setCountValue5'  class = 'listCss'>${countingPsuedo[4]}</li>
+  <li id='setCountValue6'  class = 'listCss'>${countingPsuedo[5]}</li>
+  `;
+  if (step) {
+    console.log("count");
+  }
+  //disable the buttons
+  disable();
+  //selecting all the blocks on the graph
+  var blocks = document.querySelectorAll(".block");
+  //reset the blocks to the default color
+  reset(blocks);
+
+  //Setting the count to 0
+  let count = 0;
+  document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
+
+  for (var i = 0; i < blocks.length; i += 1) {
+    if(currentArray[i]< ConditionsValuesInput.value){
+      document.getElementById("setCountValue1").style.backgroundColor = "white";
+      document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
+      // To change background-color of the
+      // blocks to be compared
+      // console.log('var i = 0; i < blocks.length; i += 1')
+      document.getElementById("setCountValue2").style.backgroundColor = "white";
+      document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
+      document.getElementById("setCountValue4").style.backgroundColor = "#d8b6ff";
+      blocks[i].style.backgroundColor = "#FF4949";
+      count++;
+      header.innerText = `The number of elements less than ${ConditionsValuesInput.value} is: ${count}`;
+  
+    }
+   
+    // To wait for .5 sec
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
+  }
+  document.getElementById("setCountValue3").style.backgroundColor = "white";
+  document.getElementById("setCountValue4").style.backgroundColor = "white";
+  document.getElementById("setCountValue5").style.backgroundColor = "#d8b6ff";
+  document.getElementById("setCountValue6").style.backgroundColor = "#d8b6ff";
+
+  //enabling the buttons once operation is complete
+  enable();
+}
+async function ShowsGreaterThan(delay = 500) {
+  setCountValue.replaceChildren();
+  header.replaceChildren();
+  header.innerHTML += "Counting Algorithm";
+  const step = true;
+  let countingPsuedo = [
+    "c ← 0",
+    "for i ← 0, a.length − 1 do",
+    "if (currentArray[i]> ConditionsValuesInput.value) then",
+    "c ← c + 1",
+    " end i",
+    "end for",
+    "return c",
+  ];
+  setCountValue.innerHTML += `
+  <li id='setCountValue1' class = 'listCss'>${countingPsuedo[0]}</li>
+  <li id='setCountValue2'  class = 'listCss'>${countingPsuedo[1]}</li>
+  <li id='setCountValue3'  class = 'listCss'>${countingPsuedo[2]}</li>
+  <li id='setCountValue4'  class = 'listCss'>${countingPsuedo[3]}</li>
+  <li id='setCountValue5'  class = 'listCss'>${countingPsuedo[4]}</li>
+  <li id='setCountValue6'  class = 'listCss'>${countingPsuedo[5]}</li>
+  `;
+  if (step) {
+    console.log("count");
+  }
+  //disable the buttons
+  disable();
+  //selecting all the blocks on the graph
+  var blocks = document.querySelectorAll(".block");
+  //reset the blocks to the default color
+  reset(blocks);
+
+  //Setting the count to 0
+  let count = 0;
+  document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
+
+  for (var i = 0; i < blocks.length; i += 1) {
+    if(currentArray[i]> ConditionsValuesInput.value){
+      document.getElementById("setCountValue1").style.backgroundColor = "white";
+      document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
+      // To change background-color of the
+      // blocks to be compared
+      // console.log('var i = 0; i < blocks.length; i += 1')
+      document.getElementById("setCountValue2").style.backgroundColor = "white";
+      document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
+      document.getElementById("setCountValue4").style.backgroundColor = "#d8b6ff";
+      blocks[i].style.backgroundColor = "#FF4949";
+      count++;
+      header.innerText = `The number of elements greater than ${ConditionsValuesInput.value} is: ${count}`;
+  
+    }
+   
+    // To wait for .5 sec
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
+  }
+  document.getElementById("setCountValue3").style.backgroundColor = "white";
+  document.getElementById("setCountValue4").style.backgroundColor = "white";
+  document.getElementById("setCountValue5").style.backgroundColor = "#d8b6ff";
+  document.getElementById("setCountValue6").style.backgroundColor = "#d8b6ff";
+
+  //enabling the buttons once operation is complete
+  enable();
+}
+
+async function ShowsOddNumber(delay = 500) {
+  setCountValue.replaceChildren();
+  header.replaceChildren();
+  header.innerHTML += "Counting Algorithm";
+  const step = true;
+  let countingPsuedo = [
+    "c ← 0",
+    "for i ← 0, a.length − 1 do",
+    "if (currentArray[i] % 2 !=0) then",
+    "c ← c + 1",
+    " end i",
+    "end for",
+    "return c",
+  ];
+  setCountValue.innerHTML += `
+  <li id='setCountValue1' class = 'listCss'>${countingPsuedo[0]}</li>
+  <li id='setCountValue2'  class = 'listCss'>${countingPsuedo[1]}</li>
+  <li id='setCountValue3'  class = 'listCss'>${countingPsuedo[2]}</li>
+  <li id='setCountValue4'  class = 'listCss'>${countingPsuedo[3]}</li>
+  <li id='setCountValue5'  class = 'listCss'>${countingPsuedo[4]}</li>
+  <li id='setCountValue6'  class = 'listCss'>${countingPsuedo[5]}</li>
+  `;
+  if (step) {
+    console.log("count");
+  }
+  //disable the buttons
+  disable();
+  //selecting all the blocks on the graph
+  var blocks = document.querySelectorAll(".block");
+  //reset the blocks to the default color
+  reset(blocks);
+
+  //Setting the count to 0
+  let count = 0;
+  document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
+
+  for (var i = 0; i < blocks.length; i += 1) {
+    if(currentArray[i] % 2 !=0 ){
+      document.getElementById("setCountValue1").style.backgroundColor = "white";
+      document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
+      // To change background-color of the
+      // blocks to be compared
+      // console.log('var i = 0; i < blocks.length; i += 1')
+      document.getElementById("setCountValue2").style.backgroundColor = "white";
+      document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
+      document.getElementById("setCountValue4").style.backgroundColor = "#d8b6ff";
+      blocks[i].style.backgroundColor = "#FF4949";
+      count++;
+      header.innerText = `The number of Odd Numbers is ${ConditionsValuesInput.value} is: ${count}`;
+  
+    }
+   
+    // To wait for .5 sec
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
+  }
+  document.getElementById("setCountValue3").style.backgroundColor = "white";
+  document.getElementById("setCountValue4").style.backgroundColor = "white";
+  document.getElementById("setCountValue5").style.backgroundColor = "#d8b6ff";
+  document.getElementById("setCountValue6").style.backgroundColor = "#d8b6ff";
+
+  //enabling the buttons once operation is complete
+  enable();
+}
+
+async function ShowsEvenNumber(delay = 500) {
+  setCountValue.replaceChildren();
+  header.replaceChildren();
+  header.innerHTML += "Counting Algorithm";
+  const step = true;
+  let countingPsuedo = [
+    "c ← 0",
+    "for i ← 0, a.length − 1 do",
+    "if (currentArray[i] % 2 ==0) then",
+    "c ← c + 1",
+    " end i",
+    "end for",
+    "return c",
+  ];
+  setCountValue.innerHTML += `
+  <li id='setCountValue1' class = 'listCss'>${countingPsuedo[0]}</li>
+  <li id='setCountValue2'  class = 'listCss'>${countingPsuedo[1]}</li>
+  <li id='setCountValue3'  class = 'listCss'>${countingPsuedo[2]}</li>
+  <li id='setCountValue4'  class = 'listCss'>${countingPsuedo[3]}</li>
+  <li id='setCountValue5'  class = 'listCss'>${countingPsuedo[4]}</li>
+  <li id='setCountValue6'  class = 'listCss'>${countingPsuedo[5]}</li>
+  `;
+  if (step) {
+    console.log("count");
+  }
+  //disable the buttons
+  disable();
+  //selecting all the blocks on the graph
+  var blocks = document.querySelectorAll(".block");
+  //reset the blocks to the default color
+  reset(blocks);
+
+  //Setting the count to 0
+  let count = 0;
+  document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
+
+  for (var i = 0; i < blocks.length; i += 1) {
+    if(currentArray[i] % 2 ==0 ){
+      document.getElementById("setCountValue1").style.backgroundColor = "white";
+      document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
+      // To change background-color of the
+      // blocks to be compared
+      // console.log('var i = 0; i < blocks.length; i += 1')
+      document.getElementById("setCountValue2").style.backgroundColor = "white";
+      document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
+      document.getElementById("setCountValue4").style.backgroundColor = "#d8b6ff";
+      blocks[i].style.backgroundColor = "#FF4949";
+      count++;
+      header.innerText = `The total number of Even Numbers is ${ConditionsValuesInput.value} is: ${count}`;
+  
+    }
+   
+    // To wait for .5 sec
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
+  }
+  document.getElementById("setCountValue3").style.backgroundColor = "white";
+  document.getElementById("setCountValue4").style.backgroundColor = "white";
+  document.getElementById("setCountValue5").style.backgroundColor = "#d8b6ff";
+  document.getElementById("setCountValue6").style.backgroundColor = "#d8b6ff";
+
+  //enabling the buttons once operation is complete
+  enable();
+}
+
+
+
 
 insertValuesBtn.addEventListener("click", function () {
   // clear the array if the elements are 20
@@ -51,6 +331,8 @@ insertValuesBtn.addEventListener("click", function () {
   count++;
   insertValuesInput.value = "";
 });
+
+
 function disable() {
   // To disable the button "Generate New Array"
   document.getElementById("generteButton").disabled = true;
@@ -150,7 +432,7 @@ async function counting(delay = 500) {
     "c ← c + 1",
     " end i",
     "end for",
-    "return c"
+    "return c",
   ];
   setCountValue.innerHTML += `
   <li id='setCountValue1' class = 'listCss'>${countingPsuedo[0]}</li>
@@ -175,6 +457,7 @@ async function counting(delay = 500) {
   document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
 
   for (var i = 0; i < blocks.length; i += 1) {
+
     document.getElementById("setCountValue1").style.backgroundColor = "white";
     document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
     // To change background-color of the
@@ -212,7 +495,7 @@ async function maximum(delay = 500) {
     "max ← a[i]",
     "end if",
     "end for",
-    "return max"
+    "return max",
   ];
   setCountValue.innerHTML += `
   <li id='setCountValue1'  class = 'listCss'>${minimumPsuedo[0]}</li>
@@ -230,6 +513,8 @@ async function maximum(delay = 500) {
   var blocks = document.querySelectorAll(".block");
   //reset the blocks to the default color
   reset(blocks);
+
+  
 
   //Setting the first element as the minimum
   codeExplaination.innerHTML += `Setting the first element as the minimum`;
@@ -259,7 +544,7 @@ async function maximum(delay = 500) {
     var index = blocks.length - (blocks.length - i);
 
     // if the minimum is greater than the current value set the minimum to the current value
-
+    codeExplaination.innerHTML +="if the minimum is greater than the current value set the minimum to the current value"
     document.getElementById("setCountValue2").style.backgroundColor = "white";
     document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
     if (max < cuurentValue) {
@@ -301,7 +586,7 @@ async function minimum(delay = 500) {
     "min ← a[i]",
     "end if",
     "end for",
-    "return min"
+    "return min",
   ];
   setCountValue.innerHTML += `
   <li id='setCountValue1'  class = 'listCss'>${minimumPsuedo[0]}</li>
@@ -365,6 +650,7 @@ async function minimum(delay = 500) {
   document.getElementById("setCountValue3").style.backgroundColor = "white";
   document.getElementById("setCountValue7").style.backgroundColor = "#d8b6ff";
 }
+
 async function summing(delay = 500) {
   header.replaceChildren();
   setCountValue.replaceChildren();
@@ -376,7 +662,7 @@ async function summing(delay = 500) {
     "s ← s + a[i]",
     " end i",
     "end for",
-    "return s"
+    "return s",
   ];
   setCountValue.innerHTML += `
   <li id='setCountValue1' class = 'listCss'>${summingPseudo[0]}</li>
@@ -445,7 +731,7 @@ async function searchAlgorithm(delay = 500) {
     "return true",
     "end if",
     "end for",
-    "return false"
+    "return false",
   ];
   pseudo.push("for i ← 0, a.length − 1 do");
   setCountValue.innerHTML += `
