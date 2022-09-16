@@ -78,7 +78,7 @@ Array.prototype.deleteAt = function (index) {
       ? (resEle.innerHTML += `Array Index ${index} is Out Of Bounds`)
       : this.splice(index, 1);
   } else {
-    resEle.innerHTML += `Error! Please enter an index`;
+   return resEle.innerHTML += `Error! Please enter an index`;
   }
 };
 // function to search through array with index
