@@ -31,6 +31,21 @@
   <button id="insertValuesBtn" class="button">Submit Values</button>
 
 </div>
+
+<div class="InsertValuesContainer">
+    <input
+    type="text"
+    id="ConditionsValuesInput"
+    placeholder="Enter Values for Conditions"
+    class="valueEntry"
+  />
+  <button id="LessValuesBtn" class="button" onclick="ShowsLessThan()"> < </button>
+  <button id="GreaterValuesBtn" class="button" onclick="ShowsGreaterThan()"> > </button>
+  <button id="OddValuesBtn" class="button" onclick="ShowsOddNumber()">Odd Numbers</button>
+  <button id="EvenValuesBtn" class="button" onclick="ShowsEvenNumber()">Even Numbers</button>
+
+</div>
+
     <div class="main-container">
         <div id="array" class="array">
             <div>
@@ -41,7 +56,7 @@
     <div class="btn-container">
         <button class="btn1" onclick="generate()" id="generteButton" >
             Generate New Array</button>
-        <button class="btn1" onclick="counting()" id="countingButton" >
+        <button class="btn1" onclick="ShowsLessThan()" id="countingButton" >
             Counting</button>
         <button class="btn1" onclick="minimum()" id="minimumButton" >
             Minimum</button>

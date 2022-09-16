@@ -84,7 +84,7 @@
 	text-align: center;
 }
 
-#array-input{
+#array-input, #ConditionsValuesInput{
 	padding: 10px;
 }
 
@@ -101,6 +101,17 @@ padding: 10px;
 	font-size: 16px;
 	border: white;
 	margin: 2rem 2rem;
+}
+
+#EvenValuesBtn, #OddValuesBtn, #GreaterValuesBtn, #LessValuesBtn{
+	padding: 12px;
+	font-weight: bolder;
+	background-color: #6f459e;
+	border-radius: 10px;
+	color: white;
+	font-size: 16px;
+	border: white;
+	margin: 0.5rem 0.5rem;
 }
 
 .listCss{
