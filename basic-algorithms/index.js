@@ -202,7 +202,7 @@ async function counting(delay = 500) {
   //enabling the buttons once operation is complete
   enable();
 }
-async function maximum(delay = 500) {
+async function maximum(delay = 2000) {
   setCountValue.replaceChildren();
   header.replaceChildren();
   let minimumPsuedo = [
@@ -232,7 +232,7 @@ async function maximum(delay = 500) {
   reset(blocks);
 
   //Setting the first element as the minimum
-  codeExplaination.innerHTML += `Setting the first element as the minimum`;
+  codeExplaination.innerHTML += `Setting the first element as the maximum`;
   document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
   let max = Number(blocks[0].childNodes[0].innerHTML);
 
@@ -262,9 +262,11 @@ async function maximum(delay = 500) {
 
     document.getElementById("setCountValue2").style.backgroundColor = "white";
     document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
+    codeExplaination.replaceChildren();
+    codeExplaination.innerHTML += `Trasverse through array to find greater values`
     if (max < cuurentValue) {
       codeExplaination.replaceChildren();
-      codeExplaination.innerHTML += `swap ${max} with ${currentArray}`;
+      codeExplaination.innerHTML += `swap old max value: ${max} with the current value: ${cuurentValue}`;
       max = cuurentValue;
       blocks[i].style.backgroundColor = "#13CE66";
       document.getElementById("setCountValue3").style.backgroundColor = "white";
@@ -276,21 +278,27 @@ async function maximum(delay = 500) {
         "#d8b6ff";
 
       // display message
+      
       header.innerText = `The maximum value is: ${max} at index ${index}`;
       document.getElementById("setCountValue5").style.backgroundColor = "white";
       document.getElementById("setCountValue6").style.backgroundColor =
         "#d8b6ff";
     }
+    
     console.log(
       "if the minimum is greater than the current value set the minimum to the current value"
     );
   }
+      codeExplaination.replaceChildren();
+      codeExplaination.innerHTML += `Return the maximum value`
   enable();
+  document.getElementById("setCountValue3").style.backgroundColor = "white";
   document.getElementById("setCountValue6").style.backgroundColor = "white";
   document.getElementById("setCountValue7").style.backgroundColor = "#d8b6ff";
 }
 
-async function minimum(delay = 500) {
+async function minimum(delay = 2000) {
+  codeExplaination.replaceChildren();
   setCountValue.replaceChildren();
   header.replaceChildren();
   header.innerHTML += "Minimum Algorithm";
@@ -318,6 +326,7 @@ async function minimum(delay = 500) {
   reset(blocks);
 
   //Setting the first element as the minimum
+  codeExplaination.innerHTML += `Setting the first element as the minimum`;
   document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
   let min = Number(blocks[0].childNodes[0].innerHTML);
   blocks[0].style.backgroundColor = "#13CE66";
@@ -344,7 +353,11 @@ async function minimum(delay = 500) {
     // if the minimum is greater than the current value set the minimum to the current value
     document.getElementById("setCountValue2").style.backgroundColor = "white";
     document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
+    codeExplaination.replaceChildren();
+    codeExplaination.innerHTML += `Trasverse through array to find smaller values`
     if (min > cuurentValue) {
+      codeExplaination.replaceChildren();
+      codeExplaination.innerHTML += `swap old minimum value: ${min} with the current value: ${cuurentValue}`;
       min = cuurentValue;
       blocks[i].style.backgroundColor = "#13CE66";
       // display message
@@ -360,6 +373,8 @@ async function minimum(delay = 500) {
         "#d8b6ff";
     }
   }
+  codeExplaination.replaceChildren();
+  codeExplaination.innerHTML += `Return the minimum value`
   enable();
   document.getElementById("setCountValue6").style.backgroundColor = "white";
   document.getElementById("setCountValue3").style.backgroundColor = "white";
@@ -483,6 +498,8 @@ async function searchAlgorithm(delay = 500) {
     // variable to store index where found value is stored
     var index = blocks.length - (blocks.length - i);
     // if statement to compare values in array to value to find
+    codeExplaination.replaceChildren();
+    codeExplaination.innerHTML += `Trasverse through array to find matching value`
     const step2 = true;
     if (step2) {
     }
@@ -503,12 +520,18 @@ async function searchAlgorithm(delay = 500) {
       document.getElementById("setCountValue5").style.backgroundColor =
         "#d8b6ff";
       // document.getElementById("test2").style.backgroundColor = "white";
+      
       header.innerText = `Number ${arrInput} found at index: ${index}`;
+      codeExplaination.replaceChildren();
+    codeExplaination.innerHTML += `value found! return True`
       enable();
+      // codeExplaination.replaceChildren();
+    // codeExplaination.innerHTML += `end foo loop`
       return;
     }
   }
-
+  codeExplaination.replaceChildren();
+    codeExplaination.innerHTML += `if value is not found, return false`
   header.innerText = `The number ${arrInput} was not found in the array`;
   document.getElementById("setCountValue5").style.backgroundColor = "white";
   document.getElementById("setCountValue6").style.backgroundColor = "#d8b6ff";
