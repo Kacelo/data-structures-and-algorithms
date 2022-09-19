@@ -1123,6 +1123,7 @@ async function searchAlgorithm(delay = showVal()) {
       header.replaceChildren();
       console.log("value found");
       header.innerText = "3 return true";
+      blocks[i].style.backgroundColor = "#13CE66";
       // display message
       document.getElementById("setCountValue2").style.backgroundColor = "white";
       document.getElementById("setCountValue3").style.backgroundColor =
