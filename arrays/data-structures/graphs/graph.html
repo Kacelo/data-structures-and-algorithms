@@ -86,30 +86,30 @@
     </div>
     <div class="buttons-container">
       <div class="node-number">
-        <button onclick="startSlideShow()">Slideshow</button>
-        <button onclick="clearGraph()">Clear</button>
+        <button onclick="startSlideShow()" id="startSlideShow">Slideshow</button>
+        <button onclick="clearGraph()" id="clearGraph">Clear</button>
       </div>
       <div class="node-number">
-        <button onclick="numberOfNodes()">Number of Nodes</button>
-        <button onclick="numberOfEdges()">Number of Edges</button>
+        <button onclick="numberOfNodes()" id="numberOfNodes">Number of Nodes</button>
+        <button onclick="numberOfEdges()" id="numberOfEdges">Number of Edges</button>
       </div>
       <div class="node-number">
         <input type="text" id="addNodeInput" placeholder=" Add node to graph">
-        <button onclick="addNode()">Add A Node</button>
+        <button onclick="addNode()" id="addNode">Add A Node</button>
       </div>
       <div class="node-number">
         <input type="text" id="removeNodeInput" placeholder="Remove node from graph">
-        <button onclick="removeNode()">Remove A Node</button>
+        <button onclick="removeNode()" id="removeNode">Remove A Node</button>
       </div>
       <div class="node-number">
         <input type="text" id="addFromNode" placeholder="Add edge from node">
         <input type="text" id="addToNode" placeholder="Add edge to node">
-        <button onclick="connectNodes()">Add An Edge</button>
+        <button onclick="connectNodes()" id="addEdge">Add An Edge</button>
       </div>
       <div class="node-number">
         <input type="text" id="removeFromNode" placeholder="Remove edge from node">
         <input type="text" id="removeToNode" placeholder="Remove edge to node">
-        <button onclick="disconnectNodes()">Remove An Edge</button>
+        <button onclick="disconnectNodes()" id="removeEdge">Remove An Edge</button>
       </div>
     </div>
     <span class="jsavcounter"></span>
@@ -151,10 +151,6 @@
       traverse();
       jsav.recorded();
       disableButtons();
-    }
-    //log the graph
-    function logGraph() {
-      console.log("Graph",graph);
     }
     // function to get the number of nodes in the graph
     function numberOfNodes() {
@@ -238,7 +234,6 @@
       const { value: from } = addFromNode;
       const { value: to } = addToNode;
 
-      console.log("Value of form and to", from, to);
       if (from != "" && to != "") {
         // check if the nodes exist
         if (isNodeInGraph(from.toUpperCase()) && isNodeInGraph(to.toUpperCase())) {
@@ -252,7 +247,7 @@
           // clear input fields
           addFromNode.value = "";
           addToNode.value = "";
-         
+
 
         }
         else {
@@ -263,8 +258,6 @@
         jsav.umsg("Please enter a value");
 
       }
-      logGraph();
-      console.log("getRoot", getRoot());
     }
     // function to disconnect two nodes
     function disconnectNodes() {
@@ -311,7 +304,6 @@
           visit(neighbors[i]);
         }
       }
-      logGraph();
     }
 
     // function to traverse the graph should visit all nodes
@@ -324,7 +316,7 @@
         }
       }
     }
-    
+
 
     // function to get the degree of a node
     function getDegree() {
@@ -346,7 +338,7 @@
         jsav.umsg("Please enter a value");
 
       }
-    }  
+    }
 
     // funtion that returns the root node in the graph
     function getRoot() {
@@ -358,19 +350,27 @@
       }
       return null;
     }
-    
+
     // funtion to disable all buttons when the slideshow starts
     function disableButtons() {
-      let addNodeButton = document.getElementById("addNode");
-      let removeNodeButton = document.getElementById("removeNode");
-      let addEdgeButton = document.getElementById("addEdge");
-      let removeEdgeButton = document.getElementById("removeEdge");
-      let numberOfNodesButton = document.getElementById("numberOfNodes");
-      let numberOfEdgesButton = document.getElementById("numberOfEdges");
-      let clearGraphButton = document.getElementById("clearGraph");
-      let startSlideShowButton = document.getElementById("startSlideShow");
-
-      addNodeButton.disabled = true;
+      // check if graph is empty
+      if (graph.nodes().length !== 0) {
+        addNodeButton.disabled = true;
+        removeNodeButton.disabled = true;
+        addEdgeButton.disabled = true;
+        removeEdgeButton.disabled = true;
+        numberOfNodesButton.disabled = true;
+        numberOfEdgesButton.disabled = true;
+        startSlideShowButton.disabled = true;
+        // change the color of the buttons when they are disabled to grey
+        addNodeButton.style.backgroundColor = "grey";
+        removeNodeButton.style.backgroundColor = "grey";
+        addEdgeButton.style.backgroundColor = "grey";
+        removeEdgeButton.style.backgroundColor = "grey";
+        numberOfNodesButton.style.backgroundColor = "grey";
+        numberOfEdgesButton.style.backgroundColor = "grey";
+        startSlideShowButton.style.backgroundColor = "grey";
+      }
     }
   </script>
 </body>
