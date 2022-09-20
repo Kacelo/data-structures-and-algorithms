@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Depth-First Search Visualization</title>
+  <title>Graph Visualization</title>
   <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title"
     charset="utf-8" />
 
@@ -128,6 +128,17 @@
     let addToNode = document.getElementById("addToNode");
     let removeFromNode = document.getElementById("removeFromNode");
     let removeToNode = document.getElementById("removeToNode");
+    //define the buttons
+    let addNodeButton = document.getElementById("addNode");
+    let removeNodeButton = document.getElementById("removeNode");
+    let addEdgeButton = document.getElementById("addEdge");
+    let removeEdgeButton = document.getElementById("removeEdge");
+    let numberOfNodesButton = document.getElementById("numberOfNodes");
+    let numberOfEdgesButton = document.getElementById("numberOfEdges");
+    let clearGraphButton = document.getElementById("clearGraph");
+    let startSlideShowButton = document.getElementById("startSlideShow");
+
+
     const jsav = new JSAV("av");
     jsav.label("Layered graph layout")
     const graph = jsav.ds.graph($.extend({ width: 500, height: 350 }, { layout: "layered" }, { directed: true }));
@@ -136,12 +147,15 @@
 
     // start the slideshow
     function startSlideShow() {
-      graph.layout();
       jsav.displayInit();
-      visit(graph.nodes()[0]);
+      traverse();
       jsav.recorded();
+      disableButtons();
     }
-
+    //log the graph
+    function logGraph() {
+      console.log("Graph",graph);
+    }
     // function to get the number of nodes in the graph
     function numberOfNodes() {
       jsav.umsg("Number of nodes in the graph: " + graph.nodeCount());
@@ -231,13 +245,14 @@
           const fromNode = getNode(from.toUpperCase());
           const toNode = getNode(to.toUpperCase());
           graph.addEdge(fromNode, toNode);
+          jsav.step();
           jsav.umsg(`Added edge from ${from.toUpperCase()} to ${to.toUpperCase()}`);
           graph.layout();
           jsav.displayInit();
           // clear input fields
           addFromNode.value = "";
           addToNode.value = "";
-          jsav.step();
+         
 
         }
         else {
@@ -248,7 +263,8 @@
         jsav.umsg("Please enter a value");
 
       }
-
+      logGraph();
+      console.log("getRoot", getRoot());
     }
     // function to disconnect two nodes
     function disconnectNodes() {
@@ -282,42 +298,80 @@
       //  reload the window
       window.location.reload();
     }
-    var preVisit = function (node, prev) {
-      console.log("This is the node:", node)
-      node.addClass("processing");
-      jsav.umsg("Add node " + node.value() + " to the DFS search tree");
-      if (prev) {
-        node.edgeFrom(prev).css("stroke", "red"); // highlight
-        node.edgeTo(prev).css("stroke", "red"); // highlight
-      }
+    // function to visit a node
+    function visit(node) {
+      node.highlight();
+      jsav.umsg("Visiting node " + node.value());
       jsav.step();
-    };
-    var visit = function (node) {
-      node.addClass("visited");
-      jsav.umsg("Call DFS for node " + node.value());
-      jsav.step();
-
-    };
-    var postVisit = function (node) {
-      node.addClass("finished");
-      jsav.umsg("Done with node " + node.value());
-      jsav.step();
-    };
-    var dfs = function (start, prev) {
-      var successors,
-        next;
-      preVisit(start, prev);
-      successors = start.neighbors();
-      for (next = successors.next(); next; next = successors.next()) {
-        if (!next.hasClass("visited")) {
-          visit(next);
-          dfs(next, start);
+      node.unhighlight();
+      let neighbors = node.neighbors();
+      for (let i = 0; i < neighbors.length; i++) {
+        if (!neighbors[i].hasClass("visited")) {
+          neighbors[i].addClass("visited");
+          visit(neighbors[i]);
         }
       }
-      postVisit(start);
-    };
+      logGraph();
+    }
 
+    // function to traverse the graph should visit all nodes
+    function traverse() {
+      let nodes = graph.nodes();
+      for (let i = 0; i < nodes.length; i++) {
+        if (!nodes[i].hasClass("visited")) {
+          nodes[i].addClass("visited");
+          visit(nodes[i]);
+        }
+      }
+    }
+    
 
+    // function to get the degree of a node
+    function getDegree() {
+      const { value } = degreeNode;
+      if (value != "") {
+        // check if the node exists
+        if (isNodeInGraph(value.toUpperCase())) {
+          const currentNode = getNode(value.toUpperCase());
+          jsav.umsg(`Degree of ${value.toUpperCase()} is ${currentNode.neighbors().length}`);
+          // clear input field
+          degreeNode.value = "";
+          jsav.step();
+        }
+        else {
+          jsav.umsg(`Node ${value.toUpperCase()} does not exist`);
+        }
+      }
+      else {
+        jsav.umsg("Please enter a value");
+
+      }
+    }  
+
+    // funtion that returns the root node in the graph
+    function getRoot() {
+      let nodes = graph.nodes();
+      for (let i = 0; i < nodes.length; i++) {
+        if (nodes[i].neighbors().length === 0) {
+          return nodes[i];
+        }
+      }
+      return null;
+    }
+    
+    // funtion to disable all buttons when the slideshow starts
+    function disableButtons() {
+      let addNodeButton = document.getElementById("addNode");
+      let removeNodeButton = document.getElementById("removeNode");
+      let addEdgeButton = document.getElementById("addEdge");
+      let removeEdgeButton = document.getElementById("removeEdge");
+      let numberOfNodesButton = document.getElementById("numberOfNodes");
+      let numberOfEdgesButton = document.getElementById("numberOfEdges");
+      let clearGraphButton = document.getElementById("clearGraph");
+      let startSlideShowButton = document.getElementById("startSlideShow");
+
+      addNodeButton.disabled = true;
+    }
   </script>
 </body>
 
