@@ -8,6 +8,7 @@ let GreaterValuesBtn = document.getElementById("GreaterValuesBtn");
 let insertValuesInput = document.getElementById("insertValuesInput");
 const ConditionsValuesInput = document.getElementById("ConditionValuesInput");
 const header = document.querySelector(".header");
+let customRange1 = document.getElementById("customRange1");
 const invisibleDiv = document.getElementById("extraOperations")
 // const lessThanBtn = document.getElementById("LessValuesBtn");
 // const greaterThanBtn = document.getElementById("GreaterValuesBtn");
@@ -30,6 +31,24 @@ let pseudo = [
   "end for",
   "return false",
 ];
+const vall = null;
+function showVal(){
+  //  customRange1 = document.getElementById("customRange1");
+
+  console.log("in index",customRange1.value)
+  return customRange1.value;
+// document.getElementById("valBox").innerHTML=newVal;
+}
+
+
+
+function getNewSliderValue () {
+  return setTimeout(()=>{
+    customRange1.value
+  }, customRange1.value)
+}
+
+console.log(customRange1.value)
 function reset(blocks) {
   for (let index = 0; index < blocks.length; index++) {
     blocks[index].style.backgroundColor = "#6b5b95";
@@ -479,7 +498,8 @@ function generate() {
   generateArray();
 }
 
-async function counting(delay = 500) {
+async function counting(delay = showVal()) {
+  console.log("show",showVal())
   setCountValue.replaceChildren();
   header.replaceChildren();
   header.innerHTML += "Counting Algorithm";
@@ -544,12 +564,7 @@ async function counting(delay = 500) {
   //enabling the buttons once operation is complete
   enable();
 }
-
-
-async function maximum(delay = 2000) {
-  hideInvisibleDiv();
-  codeExplaination.replaceChildren();
-
+async function maximum(delay = showVal()) {
   setCountValue.replaceChildren();
   header.replaceChildren();
   let minimumPsuedo = [
@@ -668,10 +683,7 @@ async function maximum(delay = 2000) {
   document.getElementById("setCountValue7").style.backgroundColor = "#d8b6ff";
 }
 
-async function minimum(delay = 2000) {
-  hideInvisibleDiv();
-
-  codeExplaination.replaceChildren();
+async function minimum(delay = showVal()) {
   setCountValue.replaceChildren();
   header.replaceChildren();
   header.innerHTML += "Minimum Algorithm";
@@ -754,10 +766,8 @@ async function minimum(delay = 2000) {
   document.getElementById("setCountValue3").style.backgroundColor = "white";
   document.getElementById("setCountValue7").style.backgroundColor = "#d8b6ff";
 }
-// summing even numbers
-async function summingEvenNumbers(delay = 500) {
-
-
+async function summing(delay = showVal()) {
+  console.log(delay)
   header.replaceChildren();
   setCountValue.replaceChildren();
   header.innerHTML += "Summing Algorithm";
@@ -1054,9 +1064,7 @@ function searching(number) {
   }
 }
 
-async function searchAlgorithm(delay = 500) {
-  hideInvisibleDiv();
-
+async function searchAlgorithm(delay = showVal()) {
   header.replaceChildren();
   setCountValue.replaceChildren();
   header.innerHTML += "Searching Algorithm";
@@ -1115,6 +1123,7 @@ async function searchAlgorithm(delay = 500) {
       header.replaceChildren();
       console.log("value found");
       header.innerText = "3 return true";
+      blocks[i].style.backgroundColor = "#13CE66";
       // display message
       document.getElementById("setCountValue2").style.backgroundColor = "white";
       document.getElementById("setCountValue3").style.backgroundColor =
