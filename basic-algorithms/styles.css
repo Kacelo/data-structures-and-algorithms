@@ -130,3 +130,8 @@ padding: 10px;
 	/* font-weight: bold; */
 	font-family: sans-serif;
 }
+
+button title{
+	width: 3rem!important;
+	overflow: auto;
+}

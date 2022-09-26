@@ -25,10 +25,10 @@
     <input
     type="text"
     id="insertValuesInput"
-    placeholder="Enter Values Here"
+    placeholder="Enter values to create a new array"
     class="valueEntry"
   />
-  <button id="insertValuesBtn" class="button">Submit Values</button>
+  <button title="Enters values to be part of a new array" id="insertValuesBtn" class="button">Enter</button>
 </div>
     <div class="main-container">
         <div id="array" class="array">
@@ -63,24 +63,24 @@
     />
     <button id="LessValuesBtn" class="button" onclick="ShowsLessThan()"> < </button>
     <button id="GreaterValuesBtn" class="button" onclick="ShowsGreaterThan()"> > </button>
-    <button id="OddValuesBtn" class="button" onclick="ShowsOddNumber()">Odd Numbers</button>
-    <button id="EvenValuesBtn" class="button" onclick="ShowsEvenNumber()">Even Numbers</button>
+    <button title="sums together odd numbers in a given array"  id="OddValuesBtn" class="button" onclick="ShowsOddNumber()">Odd Numbers</button>
+    <button title="sums together odd numbers in a given array" id="EvenValuesBtn" class="button" onclick="ShowsEvenNumber()">Even Numbers</button>
   </div>
     </div>
     
  
     <div class="btn-container">
-        <button class="btn1" onclick="generate()" id="generteButton" >
+        <button title="this button allows a user to generate a new array, without entering values" class="btn1" onclick="generate()" id="generteButton" >
             Generate New Array</button>
-        <button class="btn1" onclick="hideCountElements()" id="countingButton" >
+        <button title="this counts total values that meets a specified condition, such as less than, greater than among others"  class="btn1" onclick="hideCountElements()" id="countingButton" >
             Counting</button>
-        <button class="btn1" onclick="minimum()" id="minimumButton" >
+        <button title="finds the minimum value and its index in a given array"  class="btn1" onclick="minimum()" id="minimumButton" >
             Minimum</button>
-        <button class="btn1" onclick="maximum()" id="maximumButton" >
+        <button title="finds the maximum value and its index in a given array" class="btn1" onclick="maximum()" id="maximumButton" >
             Maximum</button>
-        <button class="btn1" onclick="hideElements()" id="summingButton" >
+        <button title="adds together values that meets a certain condition" class="btn1" onclick="hideElements()" id="summingButton" >
             Summing</button>
-        <button class="btn1" id ="search" onclick="searchAlgorithm()">
+        <button title="searches for a specified number's index in a given array"  class="btn1" id ="search" onclick="searchAlgorithm()">
             Search</button>
         <input type="text" id="array-input" placeholder="find number">
     </div>
