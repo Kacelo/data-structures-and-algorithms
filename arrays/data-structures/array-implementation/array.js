@@ -127,12 +127,10 @@ function showElements() {
   let contents = items
     .map(
       (content, index) =>
-        `<li class ="array-list"><div class='box'>${content} index:${index} </div></li>`
+        `<li class ="array-list"><div class='box'>${content} </div><p>${index}</p></li>`
     )
     .join("\n");
   document.querySelector(".list").innerHTML = contents;
-
-  console.log(contents);
 }
 
 insertButton.addEventListener("click", async () => {

@@ -5,6 +5,8 @@
   <title>Graph Visualization</title>
   <link rel="stylesheet" href="../../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title"
     charset="utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
 
   <style>
     #av {
@@ -79,48 +81,73 @@
 
 <body>
   <h1>Graph Visualization</h1>
-  <div id="av">
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
 
-    <div class="jsavcontrols"></div>
-    <div class="start-slideshow">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="av">
+
+          <div class="jsavcontrols"></div>
+          <div class="start-slideshow">
+          </div>
+          <div class="buttons-container">
+            <div class="node-number">
+              <button onclick="startSlideShow()" id="startSlideShow">Slideshow</button>
+              <button onclick="clearGraph()" id="clearGraph">Clear</button>
+            </div>
+            <div class="node-number">
+              <button onclick="numberOfNodes()" id="numberOfNodes">Number of Nodes</button>
+              <button onclick="numberOfEdges()" id="numberOfEdges">Number of Edges</button>
+            </div>
+            <div class="node-number">
+              <input type="text" id="addNodeInput" placeholder=" Add node to graph">
+              <button onclick="addNode()" id="addNode">Add A Node</button>
+            </div>
+            <div class="node-number">
+              <input type="text" id="removeNodeInput" placeholder="Remove node from graph">
+              <button onclick="removeNode()" id="removeNode">Remove A Node</button>
+            </div>
+            <div class="node-number">
+              <input type="text" id="addFromNode" placeholder="Add edge from node">
+              <input type="text" id="addToNode" placeholder="Add edge to node">
+              <button onclick="connectNodes()" id="addEdge">Add An Edge</button>
+            </div>
+            <div class="node-number">
+              <input type="text" id="removeFromNode" placeholder="Remove edge from node">
+              <input type="text" id="removeToNode" placeholder="Remove edge to node">
+              <button onclick="disconnectNodes()" id="removeEdge">Remove An Edge</button>
+            </div>
+          </div>
+          <span class="jsavcounter"></span>
+          <p class="jsavoutput jsavline"></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
-    <div class="buttons-container">
-      <div class="node-number">
-        <button onclick="startSlideShow()" id="startSlideShow">Slideshow</button>
-        <button onclick="clearGraph()" id="clearGraph">Clear</button>
-      </div>
-      <div class="node-number">
-        <button onclick="numberOfNodes()" id="numberOfNodes">Number of Nodes</button>
-        <button onclick="numberOfEdges()" id="numberOfEdges">Number of Edges</button>
-      </div>
-      <div class="node-number">
-        <input type="text" id="addNodeInput" placeholder=" Add node to graph">
-        <button onclick="addNode()" id="addNode">Add A Node</button>
-      </div>
-      <div class="node-number">
-        <input type="text" id="removeNodeInput" placeholder="Remove node from graph">
-        <button onclick="removeNode()" id="removeNode">Remove A Node</button>
-      </div>
-      <div class="node-number">
-        <input type="text" id="addFromNode" placeholder="Add edge from node">
-        <input type="text" id="addToNode" placeholder="Add edge to node">
-        <button onclick="connectNodes()" id="addEdge">Add An Edge</button>
-      </div>
-      <div class="node-number">
-        <input type="text" id="removeFromNode" placeholder="Remove edge from node">
-        <input type="text" id="removeToNode" placeholder="Remove edge to node">
-        <button onclick="disconnectNodes()" id="removeEdge">Remove An Edge</button>
-      </div>
-    </div>
-    <span class="jsavcounter"></span>
-    <p class="jsavoutput jsavline"></p>
   </div>
+</div>
+ 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
   <script src="../../../JSAV/lib/jquery.transit.js"></script>
   <script src="../../../JSAV/lib/raphael.js"></script>
   <script src="../../../JSAV/lib/dagre.min.js"></script>
   <script src="../../../JSAV/build/JSAV.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script> 
+
   <script>
     let addNodeInput = document.getElementById("addNodeInput");
     let removeNodeInput = document.getElementById("removeNodeInput");

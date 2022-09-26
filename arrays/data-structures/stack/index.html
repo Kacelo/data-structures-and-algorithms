@@ -38,6 +38,21 @@
               So, it can be simply seen to follow LIFO(Last In First Out)/FILO(First In Last Out) order.</p>
 
           </div>
+          
+            <h4>Application of Stacks</h4>
+            <ol class="application-div">
+              <li>
+                Used for expression evaluation (e.g.: shunting-yard algorithm for parsing and
+                evaluating mathematical expressions).
+              </li>
+              <li>
+                During Function calls and Recursive Algorithms                                           
+              </li>
+              <li>During Function calls and Recursive Algorithms</li>
+              <li>Undo feature in computer keyboards</li>
+              <li>During Depth First Search (DFS) and backtracking algorithms</li>
+                
+            </ol>
 
           <div class="image-div">
             <h4>LIFO Principle of Stack</h4>
@@ -49,22 +64,7 @@
 
             <!-- un ordered list to display array elements -->
            
-            <div> 
-              
-
-              <ul class="stack-ul">
-                <!-- <li class="stack-list"></li> -->
-              </ul>
-            </div>
-            <h4 class="function-result"></h4>
-            <!-- Input element to accept user input -->
-            <input type="text" id="array-input" />
-            <!-- button to add input to array -->
-            <button class="button" id="push-button">push</button>
-            <!-- button to pop -->
-            <button id="pop-button" class="button">Pop</button>
-            <button id="peek-button" class="button">Peek</button>
-            <button id="empty-button" class="button">Empty</button>
+           
             <h5>Basic Operations of a stack</h5>
             <ol class="stack-ol">
               <li>push() to insert an element into the stack</li>
@@ -72,6 +72,50 @@
               <li>peek() Returns the top element of the stack.</li>
               <li>isEmpty() returns true is stack is empty else false</li>
             </ol>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Create Your Own Stack
+                        </button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title text-center" id="exampleModalLabel">Stack Operations</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                       <!-- Input element to accept user input -->
+                                       <div> 
+              
+
+                                        <ul class="stack-ul">
+                                          <!-- <li class="stack-list"></li> -->
+                                        </ul>
+                                      </div>
+                                      <h4 class="function-result"></h4>
+                                      <!-- Input element to accept user input -->
+                                      <input type="text" id="array-input" />
+                                      <!-- button to add input to array -->
+                                      <button class="button" id="push-button">push</button>
+                                      <!-- button to pop -->
+                                      <button id="pop-button" class="button">Pop</button>
+                                      <button id="peek-button" class="button">Peek</button>
+                                      <button id="empty-button" class="button">Empty</button>   
+                                       
+                                     
+                                       
+                                      
+                                      
+                    
+                                       <!-- un ordered list to display array elements -->
+                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              
+                                     </div>
+                                   </div>
+                                  
+                              </div>
+                            </div>
+                          </div>
+                        </div>
           </div>
         </div>
       </div>

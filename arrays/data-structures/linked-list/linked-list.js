@@ -119,21 +119,21 @@ LinkedList.prototype.printList = function () {
   }
   //change the innerHTML of resultText the value of this.head and this.tail
   if(this.head && this.tail){
-  resultText.innerHTML = `{This is the Head: ${this.head.value}} 
-  {This is the Tail: ${this.tail.value}}`;
+  resultText.innerHTML = `This is the Head: ${this.head.value},
+  This is the Tail: ${this.tail.value}`;
   }
   else if(this.head === null){
-    resultText.innerHTML = `{This is the Head: ${this.head}} 
-    {This is the Tail: ${this.tail}}`;
+    resultText.innerHTML = `This is the Head: ${this.head},
+    This is the Tail: ${this.tail}`;
   }
   else if(this.tail === null){
-    resultText.innerHTML = `{This is the Head: ${this.head.value}}
-    {This is the Tail: ${this.tail}}`;
+    resultText.innerHTML = `This is the Head: ${this.head.value},
+    This is the Tail: ${this.tail}`;
   }
 
   else if(this.head === null && this.tail === null){
-    resultText.innerHTML = `{This is the Head: ${this.head}}
-    {This is the Tail: ${this.tail}}`;
+    resultText.innerHTML = `This is the Head: ${this.head},
+    This is the Tail: ${this.tail}`;
   }
   //change the innerHTML of resEle to result
   resEle.innerHTML = result;

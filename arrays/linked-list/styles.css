@@ -12,7 +12,7 @@
 .button {
 	padding: 12px;
 	font-weight: bolder;
-	background-color: #5d2cff;
+    background-color: #2c80ff;
 	border-radius: 10px;
 	color: white;
 	font-size: 16px;
@@ -24,7 +24,7 @@
 	margin:2px 30vw;
 	text-align: center;
 	font-size: 20px;
-	background-color: #5d2cff;
+    background-color: #2c80ff;
 	color: white;
 	border-radius: 19px;
 	font-weight: bolder;
@@ -37,7 +37,7 @@
 	margin-left: 20vw;
 	text-align: center;
 	font-size: 30px;
-	background-color: #5d2cff;
+    background-color: #2c80ff;
 	color: white;
 	border-radius: 19px;
 	font-weight: bolder;
@@ -55,7 +55,7 @@
 	margin-left: -20px;
 	list-style: none;
 	color: white;
-	background-color: #5d2cff;
+    background-color: #2c80ff;
 	display: table-cell;
 	font-family: sans-serif;
 }
@@ -81,4 +81,6 @@
 	margin-top: 0.5rem;
 	text-align: left;
 	}
-	
+	p{
+		text-align: justify;
+	}

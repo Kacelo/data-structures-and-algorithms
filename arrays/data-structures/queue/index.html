@@ -38,9 +38,13 @@
                  Once one individual is attended to, they leave the queue for the next person to be attended to.
                   They are helped in the order which they came.
               </p>
-              <!-- <p>
-                  Attributes: Each vertex has at least 4 attributes: parent, left, right, key/value/data (there are potential other attributes)
-              </p> -->
+              <h4>Operations of a Queue</h4>
+              <ul style="text-align: justify;">
+                  <li>Maintaining the playlist in media players.</li>
+                  <li>Handling hardware or real-time systems interrupts.</li>
+                  <li>Buffer for devices like keyboard </li>
+                  <li>When data is transferred asynchronously (data not necessarily received at the same rate as sent) between two processes. Examples include IO Buffers, pipes, etc. </li>
+              </ul>
               <div>
                 <h4>Structure of a Queue</h4>
                 <p>A queue is mainly made up of two parts: the front/head and the rear/tail/back. For the purpose of clarity and consistency, we will stick to using front and back.
@@ -54,29 +58,56 @@
           </div>
         </div>
         <div class="col">
-          <div class="display">
-            <ul class="list"></ul>
-            <br />
-          </div>
-          <div class="function-display">
-            <h4 class="function-result"></h4>
-            <input
-              type="text"
-              class="enqueueVal"
-              id="queueValue"
-              placeholder="enter value"
-            /><button class="enqueueBtn btn1">Enqueue</button>
-            <button class="dequeueBtn btn1">Dequeue</button>
-            <button class="Btn btn1">Display</button>
-          </div>
+        
           <div>
             <h4>Common Operations of a Queue</h4>
-            <ul>
+            <ol style="text-align:justify">
                 <li><b>Enqueue:</b> Adds an item from the back of the queue.</li>
                 <li><b>Dequeue:</b> Removes an item from the front of the queue.</li>
                 <li><b>Display:</b> Prints all the items in the queue.</li>
-            </ul>
+            </ol>
           </div>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Create Your Own Queue
+                      </button>
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title text-center" id="exampleModalLabel">Queue Operations</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <h4 class="function-result"></h4>
+                              <div class="display">
+                                <ul class="list"></ul>
+                                <br />
+                              </div>
+                              <div class="function-display">
+                                
+                                <input
+                                  type="text"
+                                  class="enqueueVal"
+                                  id="queueValue"
+                                  placeholder="enter value"
+                                /><button class="enqueueBtn btn1">Enqueue</button>
+                                <button class="dequeueBtn btn1">Dequeue</button>
+                                <button class="Btn btn1">Display</button>
+                              </div>
+                                     
+                                    
+                                    
+                  
+                                     <!-- un ordered list to display array elements -->
+                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            
+                                   </div>
+                                 </div>
+                                
+                            </div>
+                          </div>
+                        </div>
+                      </div>
           
         </div>
       </div>

@@ -1,6 +1,6 @@
 .main{
     /* width: 0%; */
-    margin: 0 -3em;
+    margin: 0 -2em;
     justify-content: center;
 }
 .container{
@@ -10,7 +10,7 @@
 .btn1{
     padding: 12px;
 	font-weight: bolder;
-	background-color: #5d2cff;
+    background-color: #2c80ff;
 	border-radius: 10px;
 	color: white;
 	font-size: 16px;
@@ -22,7 +22,7 @@
 	margin:20px 10vw;
 	text-align: center;
 	font-size: 30px;
-	background-color: #5d2cff;
+    background-color: #2c80ff;
 	color: white;
 	border-radius: 19px;
 	font-weight: bolder;
@@ -35,7 +35,7 @@
 	margin-left: 20vw;
 	text-align: center;
 	font-size: 30px;
-	background-color: #5d2cff;
+    background-color: #2c80ff;
 	color: white;
 	border-radius: 19px;
 	font-weight: bolder;
@@ -51,13 +51,13 @@
     font-weight: bolder;
     margin-left: -20px;
     list-style: none;
-    color: white;
-    background-color: #5d2cff;
+    color: black;
+    /* background-color: #5d2cff; */
     display: table-cell;
     font-family: sans-serif;
 }
 li{
-	text-align: left;
+	/* text-align: left; */
 }
 ul{
    margin-top: 20%;
@@ -65,8 +65,36 @@ ul{
 
 .box{
     border-style: solid;
-    padding: 25px;
+    /* padding: 25px; */
+	padding: max(30px, 1%);
+    background-color: #2c80ff;
+	color: white;
+
 }
+.index-box{
+    /* border-style: solid; */
+    padding: 30px;
+}
+
 .array-img{
 	width: 100%;
+}
+#description{
+	text-align: justify;
+}
+.array-index{
+	background-color: white;
+    color: black;
+    /* display: inline-block; */
+	font-size: 16px;
+    font-weight: bolder;
+    /* margin-left: -20px; */
+    list-style: none;
+    color: black;
+    /* background-color: #5d2cff; */
+    display: table-cell;
+    font-family: sans-serif;
+}
+.button-container{
+	text-align: left;
 }

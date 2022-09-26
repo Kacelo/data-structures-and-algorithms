@@ -10,7 +10,7 @@
 .button {
 	padding: 12px;
 	font-weight: bolder;
-	background-color: #5d2cff;
+    background-color: #2c80ff;
 	border-radius: 10px;
 	color: white;
 	font-size: 16px;
@@ -22,7 +22,7 @@
 	margin:2px 10vw;
 	text-align: center;
 	font-size: 20px;
-	background-color: #5d2cff;
+    background-color: #2c80ff;
 	color: white;
 	border-radius: 19px;
 	font-weight: bolder;
@@ -35,7 +35,7 @@
 	margin-left: 20vw;
 	text-align: center;
 	font-size: 30px;
-	background-color: #5d2cff;
+    background-color: #2c80ff;
 	color: white;
 	border-radius: 19px;
 	font-weight: bolder;
@@ -71,10 +71,16 @@ ul {
 	margin-left: -20px;
 	list-style: none;
 	color: white;
-	background-color: #5d2cff;
+    background-color: #2c80ff;
 	display: table-cell;
 	font-family: sans-serif;
 }
 .stack-img{
 	width: 80%;
+}
+p{
+	text-align: justify;
+}
+.application-div{
+	text-align: justify !important;
 }

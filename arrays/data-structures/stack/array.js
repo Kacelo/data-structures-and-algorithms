@@ -32,7 +32,7 @@ function displayElements() {
       return `<li><div class='box'>${content}, index: ${index}</div></li>`;
     })
     .join("\n");
-  document.querySelector("ul").innerHTML = contents;
+  document.querySelector(".stack-ul").innerHTML = contents;
 }
 
 // to display stack elements
