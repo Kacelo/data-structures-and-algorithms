@@ -907,6 +907,77 @@ async function summingOddNumbers(delay = 500) {
   enable();
 }
 
+async function summingEvenNumbers(delay = 500) {
+ 
+
+  header.replaceChildren();
+  setCountValue.replaceChildren();
+  header.innerHTML += "Summing Algorithm";
+  let summingPseudo = [
+    "c ← 0",
+    "for i ← 0, a.length − 1 do",
+    "if (a[i] % 2 ==0) then",
+    "c ← c + 1",
+    " end i",
+    "end for",
+    "return c",
+  ];
+  setCountValue.innerHTML += `
+  <li id='setCountValue1' class = 'listCss'>${summingPseudo[0]}</li>
+  <li id='setCountValue2' class = 'listCss' >${summingPseudo[1]}</li>
+  <li id='setCountValue3' class = 'listCss'>${summingPseudo[2]}</li>
+  <li id='setCountValue4' class = 'listCss'>${summingPseudo[3]}</li>
+  <li id='setCountValue5' class = 'listCss'>${summingPseudo[4]}</li>
+  <li id='setCountValue6' class = 'listCss'>${summingPseudo[5]}</li>
+  `;
+  //disable the buttons
+  disable();
+  //selecting all the blocks on the graph
+  var blocks = document.querySelectorAll(".block");
+  //reset the blocks to the default color
+  reset(blocks);
+  document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
+  //Setting the count to 0
+  let sum = 0;
+  document.getElementById("setCountValue1").style.backgroundColor = "white";
+  document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
+
+  for (var i = 0; i < blocks.length; i += 1) {
+    blocks[i].style.backgroundColor = "#FF4949";
+
+    if(currentArray[i] % 2 ==0){
+      codeExplaination.replaceChildren()
+
+    codeExplaination.innerHTML += `Traversing through array to find odd numbers`
+    document.getElementById("setCountValue2").style.backgroundColor = "white";
+    document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
+    document.getElementById("setCountValue4").style.backgroundColor = "#d8b6ff";
+
+    // To change background-color of the
+    // blocks to be compared
+    blocks[i].style.backgroundColor = "#13CE66";
+    sum = sum+ Number(currentArray[i]);
+    // sum += sum + currentArray[i]
+    header.innerText = `The sum of even numbers is: ${sum}`;
+    }
+    // To wait for .5 sec
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
+  }
+  codeExplaination.replaceChildren()
+  codeExplaination.innerHTML += `return sum of odd numbers`
+  document.getElementById("setCountValue3").style.backgroundColor = "white";
+  document.getElementById("setCountValue4").style.backgroundColor = "white";
+  document.getElementById("setCountValue5").style.backgroundColor = "#d8b6ff";
+  document.getElementById("setCountValue6").style.backgroundColor = "#d8b6ff";
+
+  //enabling the buttons once operation is complete
+  enable();
+}
+
 async function summingGreaterThan(delay = 500) {
   header.replaceChildren();
   setCountValue.replaceChildren();
