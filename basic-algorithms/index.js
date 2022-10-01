@@ -254,7 +254,7 @@ async function ShowsOddNumber(delay = 500) {
       document.getElementById("setCountValue4").style.backgroundColor = "#d8b6ff";
       blocks[i].style.backgroundColor = "#13CE66";
       count++;
-      header.innerText = `The number of Odd Numbers is ${ConditionsValuesInput.value} is: ${count}`;
+      header.innerText = `The number of Odd Numbers is: ${count}`;
   
     }
    
@@ -389,23 +389,23 @@ insertValuesBtn.addEventListener("click", function () {
 
 function disable() {
   // To disable the button "Generate New Array"
-  document.getElementById("generteButton").disabled = true;
-  document.getElementById("generteButton").style.backgroundColor = "#d8b6ff";
-  // To disable the button "counting"
-  document.getElementById("countingButton").disabled = true;
-  document.getElementById("countingButton").style.backgroundColor = "#d8b6ff";
-  // To disable the button "minimum"
-  document.getElementById("minimumButton").disabled = true;
-  document.getElementById("minimumButton").style.backgroundColor = "#d8b6ff";
-  // To disable the button "maximum"
-  document.getElementById("maximumButton").disabled = true;
-  document.getElementById("maximumButton").style.backgroundColor = "#d8b6ff";
-  // To disable the button "summing"
-  document.getElementById("summingButton").disabled = true;
-  document.getElementById("summingButton").style.backgroundColor = "#d8b6ff";
-  // to disable the button "searching"
-  document.getElementById("search").disabled = true;
-  document.getElementById("search").style.backgroundColor = "#d8b6ff";
+  // document.getElementById("generteButton").disabled = true;
+  // document.getElementById("generteButton").style.backgroundColor = "#d8b6ff";
+  // // To disable the button "counting"
+  // document.getElementById("countingButton").disabled = true;
+  // document.getElementById("countingButton").style.backgroundColor = "#d8b6ff";
+  // // To disable the button "minimum"
+  // document.getElementById("minimumButton").disabled = true;
+  // document.getElementById("minimumButton").style.backgroundColor = "#d8b6ff";
+  // // To disable the button "maximum"
+  // document.getElementById("maximumButton").disabled = true;
+  // document.getElementById("maximumButton").style.backgroundColor = "#d8b6ff";
+  // // To disable the button "summing"
+  // document.getElementById("summingButton").disabled = true;
+  // document.getElementById("summingButton").style.backgroundColor = "#d8b6ff";
+  // // to disable the button "searching"
+  // document.getElementById("search").disabled = true;
+  // document.getElementById("search").style.backgroundColor = "#d8b6ff";
 }
 function clear() {
   // clear the array and the container
@@ -413,24 +413,24 @@ function clear() {
   container.innerHTML = "";
 }
 function enable() {
-  // To enable the button "Generate New Array"
-  document.getElementById("generteButton").disabled = false;
-  document.getElementById("generteButton").style.backgroundColor = "#6b5b95";
-  // To enable the button "counting"
-  document.getElementById("countingButton").disabled = false;
-  document.getElementById("countingButton").style.backgroundColor = "#6b5b95";
-  // To enable the button "minimum"
-  document.getElementById("minimumButton").disabled = false;
-  document.getElementById("minimumButton").style.backgroundColor = "#6b5b95";
-  // To enable the button "maximum"
-  document.getElementById("maximumButton").disabled = false;
-  document.getElementById("maximumButton").style.backgroundColor = "#6b5b95";
-  // To enable the button "summing"
-  document.getElementById("summingButton").disabled = false;
-  document.getElementById("summingButton").style.backgroundColor = "#6b5b95";
-  // to enable the button "searching"
-  document.getElementById("search").disabled = false;
-  document.getElementById("search").style.backgroundColor = "#6b5b95";
+  // // To enable the button "Generate New Array"
+  // document.getElementById("generteButton").disabled = false;
+  // document.getElementById("generteButton").style.backgroundColor = "#6b5b95";
+  // // To enable the button "counting"
+  // document.getElementById("countingButton").disabled = false;
+  // document.getElementById("countingButton").style.backgroundColor = "#6b5b95";
+  // // To enable the button "minimum"
+  // document.getElementById("minimumButton").disabled = false;
+  // document.getElementById("minimumButton").style.backgroundColor = "#6b5b95";
+  // // To enable the button "maximum"
+  // document.getElementById("maximumButton").disabled = false;
+  // document.getElementById("maximumButton").style.backgroundColor = "#6b5b95";
+  // // To enable the button "summing"
+  // document.getElementById("summingButton").disabled = false;
+  // document.getElementById("summingButton").style.backgroundColor = "#6b5b95";
+  // // to enable the button "searching"
+  // document.getElementById("search").disabled = false;
+  // document.getElementById("search").style.backgroundColor = "#6b5b95";
 }
 function hideElements(){
   hideStuff = !hideStuff;
@@ -766,7 +766,7 @@ async function minimum(delay = showVal()) {
   document.getElementById("setCountValue3").style.backgroundColor = "white";
   document.getElementById("setCountValue7").style.backgroundColor = "#d8b6ff";
 }
-async function summing(delay = showVal()) {
+async function summingEvenNumbers(delay = showVal()) {
   console.log(delay)
   header.replaceChildren();
   setCountValue.replaceChildren();
@@ -789,7 +789,7 @@ async function summing(delay = showVal()) {
   <li id='setCountValue6' class = 'listCss'>${summingPseudo[5]}</li>
   `;
   //disable the buttons
-  disable();
+  // disable();
   //selecting all the blocks on the graph
   var blocks = document.querySelectorAll(".block");
   //reset the blocks to the default color
@@ -836,7 +836,7 @@ async function summing(delay = showVal()) {
   //enabling the buttons once operation is complete
   enable();
 }
-async function summingOddNumbers(delay = 500) {
+async function summingOddNumbers(delay = showVal()) {
  
 
   header.replaceChildren();
@@ -860,7 +860,7 @@ async function summingOddNumbers(delay = 500) {
   <li id='setCountValue6' class = 'listCss'>${summingPseudo[5]}</li>
   `;
   //disable the buttons
-  disable();
+  // disable();
   //selecting all the blocks on the graph
   var blocks = document.querySelectorAll(".block");
   //reset the blocks to the default color
@@ -907,7 +907,7 @@ async function summingOddNumbers(delay = 500) {
   enable();
 }
 
-async function summingGreaterThan(delay = 500) {
+async function summingGreaterThan(delay = showVal()) {
   header.replaceChildren();
   setCountValue.replaceChildren();
   header.innerHTML += "Summing Algorithm";
@@ -929,7 +929,7 @@ async function summingGreaterThan(delay = 500) {
   <li id='setCountValue6' class = 'listCss'>${summingPseudo[5]}</li>
   `;
   //disable the buttons
-  disable();
+  // disable();
   //selecting all the blocks on the graph
   var blocks = document.querySelectorAll(".block");
   //reset the blocks to the default color
@@ -978,7 +978,7 @@ async function summingGreaterThan(delay = 500) {
   //enabling the buttons once operation is complete
   enable();
 }
-async function summingLessThan(delay = 500) {
+async function summingLessThan(delay = showVal()) {
   header.replaceChildren();
   setCountValue.replaceChildren();
   header.innerHTML += "Summing Algorithm";
@@ -1000,7 +1000,7 @@ async function summingLessThan(delay = 500) {
   <li id='setCountValue6' class = 'listCss'>${summingPseudo[5]}</li>
   `;
   //disable the buttons
-  disable();
+  // disable();
   //selecting all the blocks on the graph
   var blocks = document.querySelectorAll(".block");
   //reset the blocks to the default color

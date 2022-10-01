@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Graph Visualization</title>
+  <link rel="stylesheet" href="../../JSAV/css/JSAV.css" type="text/css" media="screen" title="no title"
+    charset="utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="./styles.css">
+
+  <style>
+    #av {
+      width: 98%;
+      position: relative;
+      border: 2px solid rgb(114, 109, 109);
+      background-color: #ccc;
+    }
+
+    .jsavcounter {
+      position: absolute;
+      top: 15px;
+    }
+
+    .jsavcanvas {
+      height: 300px;
+    }
+
+    .visited {
+      background-color: #ddd;
+    }
+
+    .processing {
+      border-color: red;
+    }
+
+    .finished {
+      background-color: black;
+      color: white;
+    }
+
+    .jsavlabel {
+      font-size: 2em;
+      text-align: center;
+    }
+
+    input {
+      margin: 0.5rem;
+      /* add a border */
+      border: 2px solid #ccc;
+      padding: 1em;
+    }
+
+    button {
+      padding: 12px;
+      font-weight: bolder;
+      background-color: #5d2cff;
+      border-radius: 10px;
+      color: white;
+      font-size: 16px;
+      border: white;
+      margin: 0 2%;
+      cursor: pointer;
+    }
+
+    .buttons-container {
+      margin: auto;
+      display: flex;
+      flex-direction: row;
+      width: 80%;
+      justify-content: space-between;
+    }
+
+    .node-number {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class = "nav-link" style="cursor: pointer;" onclick="history.back()">back</a>
+
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="../../home-page/index.html">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="../../basic-algorithms/index.html">Algorithms</a>        </li>
+  </ul>
+  
+
+  <div class="container">
+    <h1 class="header">Graph Visualization</h1>
+    <div class="row">
+      <div class="col">
+        <div id="description">
+          <h2>
+            What is a Graph? 
+          </h2>
+          <p>
+            A Graph is a non-linear data structure consisting of vertices and edges. 
+            The vertices are sometimes also referred to as nodes and the edges are lines or arcs that connect any two nodes in the graph.
+            More formally a Graph is composed of a set of vertices( V ) and a set of edges( E ). The graph is denoted by G(E, V).
+          </p>
+          <h2>Components of a Graph</h2>
+          <ul>
+            <li>
+              <b>Vertices: </b>Vertices are the fundamental units of the graph.
+               Sometimes, vertices are also known as vertex or nodes. 
+               Every node/vertex can be labeled or unlabelled.
+            </li>
+            <li>
+              <b>Edges:</b>Edges are drawn or used to connect two nodes of the graph. It can be ordered pair of nodes in a directed graph.
+               Edges can connect any two nodes in any possible way.
+                There are no rules. Sometimes, edges are also known as arcs.
+                 Every edge can be labeled/unlabelled.
+            </li>
+          </ul>
+          <h3>Terms to remember</h3>
+          <ul>
+            <li>
+              An edge is one of the two primary units used to form graphs. Each edge has two ends, which are vertices to which it is attached.
+            </li>
+            <li>
+              If two vertices are endpoints of the same edge, they are adjacent.
+            </li>
+            <li>
+              A vertex's outgoing edges are directed edges that point to the origin.
+            </li>
+            <li>
+              A vertex's incoming edges are directed edges that point to the vertex's destination.
+            </li>
+          </ul>
+          <p>
+            Here is an image to help understand graph structure
+          </p>
+          <div >
+            <img src="./what-is-graphs-in-data-structure.webp" id="graphImage"> 
+            <p>
+              This graph has a set of vertices V= { 1,2,3,4,5} and a set of edges E= { (1,2),(1,3),(2,3),(2,4),(2,5),(3,5),(4,5) }
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div>
+          <h2>Types of Graphs in Data Structures</h2>
+          <ol>
+            <li>
+              <b>Finite Graph:</b> The graph G=(V, E) is called a finite graph if the number of vertices and edges in the graph is limited in number
+            </li>
+            <li>
+              <b>Infinite Graph:</b>The graph G=(V, E) is called a finite graph if the number of vertices and edges in the graph is interminable
+            </li>
+            <li>
+              <b>Simple Graph:</b> If each pair of nodes or vertices in a graph G=(V, E) has only one edge, it is a simple graph. 
+              As a result, there is just one edge linking two vertices, depicting one-to-one interactions between two elements.
+            </li>
+            <li>
+              <b>Multi Graph:</b> If there are numerous edges between a pair of vertices in a graph G= (V, E),
+               the graph is referred to as a multigraph. There are no self-loops in a Multigraph.
+            </li>
+          </ol>
+          <div>
+            <h2>Operations on Graphs in Data Structures</h2>
+            <ul>
+              <li>
+                <b>Creating Graphs </b>
+              </li>
+              <li><b>Insert Vertex</b></li>
+              <li><b>Delete Vertex</b></li>
+
+              <li><b>Insert Edge</b></li>
+              <li><b>
+                Delete Edge
+              </b></li>
+
+            </ul>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Create Your Own Graph
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal  fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Graph Operations</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div id="av">
+      
+                <div class="jsavcontrols"></div>
+                <div class="start-slideshow">
+                </div>
+                <div class="buttons-container">
+                  <div class="node-number">
+                    <button onclick="startSlideShow()" id="startSlideShow">Slideshow</button>
+                    <button onclick="clearGraph()" id="clearGraph">Clear</button>
+                  </div>
+                  <div class="node-number">
+                    <button onclick="numberOfNodes()" id="numberOfNodes">Number of Nodes</button>
+                    <button onclick="numberOfEdges()" id="numberOfEdges">Number of Edges</button>
+                  </div>
+                  <div class="node-number">
+                    <input type="text" id="addNodeInput" placeholder=" Add node to graph">
+                    <button onclick="addNode()" id="addNode">Add A Node</button>
+                  </div>
+                  <div class="node-number">
+                    <input type="text" id="removeNodeInput" placeholder="Remove node from graph">
+                    <button onclick="removeNode()" id="removeNode">Remove A Node</button>
+                  </div>
+                  <div class="node-number">
+                    <input type="text" id="addFromNode" placeholder="Add edge from node">
+                    <input type="text" id="addToNode" placeholder="Add edge to node">
+                    <button onclick="connectNodes()" id="addEdge">Add An Edge</button>
+                  </div>
+                  <div class="node-number">
+                    <input type="text" id="removeFromNode" placeholder="Remove edge from node">
+                    <input type="text" id="removeToNode" placeholder="Remove edge to node">
+                    <button onclick="disconnectNodes()" id="removeEdge">Remove An Edge</button>
+                  </div>
+                </div>
+                <span class="jsavcounter"></span>
+                <p class="jsavoutput jsavline"></p>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+  <!-- Button trigger modal -->
+
+ 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script src="../../JSAV/lib/jquery.transit.js"></script>
+  <script src="../../JSAV/lib/raphael.js"></script>
+  <script src="../../JSAV/lib/dagre.min.js"></script>
+  <script src="../../JSAV/build/JSAV.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script> 
+
+  <script>
+    let addNodeInput = document.getElementById("addNodeInput");
+    let removeNodeInput = document.getElementById("removeNodeInput");
+    let addFromNode = document.getElementById("addFromNode");
+    let addToNode = document.getElementById("addToNode");
+    let removeFromNode = document.getElementById("removeFromNode");
+    let removeToNode = document.getElementById("removeToNode");
+    //define the buttons
+    let addNodeButton = document.getElementById("addNode");
+    let removeNodeButton = document.getElementById("removeNode");
+    let addEdgeButton = document.getElementById("addEdge");
+    let removeEdgeButton = document.getElementById("removeEdge");
+    let numberOfNodesButton = document.getElementById("numberOfNodes");
+    let numberOfEdgesButton = document.getElementById("numberOfEdges");
+    let clearGraphButton = document.getElementById("clearGraph");
+    let startSlideShowButton = document.getElementById("startSlideShow");
+
+
+    const jsav = new JSAV("av");
+    jsav.label("Layered graph layout")
+    const graph = jsav.ds.graph($.extend({ width: 500, height: 350 }, { layout: "layered" }, { directed: true }));
+    graph.layout();
+    jsav.displayInit();
+
+    // start the slideshow
+    function startSlideShow() {
+      jsav.displayInit();
+      traverse();
+      jsav.recorded();
+      disableButtons();
+    }
+    // function to get the number of nodes in the graph
+    function numberOfNodes() {
+      jsav.umsg("Number of nodes in the graph: " + graph.nodeCount());
+      return graph.nodeCount();
+    }
+    // function to get the number of edges in the graph
+    function numberOfEdges() {
+      jsav.umsg("Number of edges in the graph: " + graph.edgeCount());
+      return graph.edgeCount();
+    }
+    // function to get a node by its value
+    function getNode(value) {
+      let nodes = graph.nodes();
+      for (let i = 0; i < nodes.length; i++) {
+        if (nodes[i].value() === value.toUpperCase()) {
+          return nodes[i];
+        }
+      }
+      return null;
+    }
+    //check if a node is in the graph
+    function isNodeInGraph(node) {
+      let nodes = graph.nodes();
+      for (let i = 0; i < nodes.length; i++) {
+        if (nodes[i].value() == node) {
+          return true;
+        }
+      }
+      return false;
+    }
+    // function to add a node to the graph
+    function addNode() {
+      const { value } = addNodeInput;
+      if (value != "") {
+        // check if the node already exists
+        if (getNode(value.toUpperCase()) === null) {
+          graph.addNode(value.toUpperCase());
+          jsav.umsg("Added node " + value.toUpperCase());
+          // clear input field
+          addNodeInput.value = "";
+          graph.layout();
+          jsav.displayInit();
+          jsav.step();
+        } else {
+          jsav.umsg("Node " + value.toUpperCase() + " already exists");
+        }
+      }
+      else {
+        jsav.umsg("Please enter a value");
+      }
+    }
+    // function to remove a node from the graph
+    function removeNode() {
+      const { value } = removeNodeInput;
+      if (value != "") {
+        // check if the node exists
+        if (isNodeInGraph(value.toUpperCase())) {
+          const currentNode = getNode(value.toUpperCase());
+          graph.removeNode(currentNode);
+          jsav.umsg(`Removed ${value.toUpperCase()} from the graph`);
+          // clear input field
+          removeNodeInput.value = "";
+          graph.layout();
+          jsav.displayInit();
+          jsav.step();
+        }
+        else {
+          jsav.umsg(`Node ${value.toUpperCase()} does not exist`);
+
+        }
+      }
+      else {
+        jsav.umsg("Please enter a value");
+
+      }
+
+    }
+    // function to connect two nodes
+    function connectNodes() {
+      const { value: from } = addFromNode;
+      const { value: to } = addToNode;
+
+      if (from != "" && to != "") {
+        // check if the nodes exist
+        if (isNodeInGraph(from.toUpperCase()) && isNodeInGraph(to.toUpperCase())) {
+          const fromNode = getNode(from.toUpperCase());
+          const toNode = getNode(to.toUpperCase());
+          graph.addEdge(fromNode, toNode);
+          jsav.step();
+          jsav.umsg(`Added edge from ${from.toUpperCase()} to ${to.toUpperCase()}`);
+          graph.layout();
+          jsav.displayInit();
+          // clear input fields
+          addFromNode.value = "";
+          addToNode.value = "";
+
+
+        }
+        else {
+          jsav.umsg(`Node ${from.toUpperCase()} or ${to.toUpperCase()} does not exist`);
+        }
+      }
+      else {
+        jsav.umsg("Please enter a value");
+
+      }
+    }
+    // function to disconnect two nodes
+    function disconnectNodes() {
+      const { value: from } = removeFromNode;
+      const { value: to } = removeToNode;
+      if (from != "" && to != "") {
+        // check if the nodes exist
+        if (isNodeInGraph(from.toUpperCase()) && isNodeInGraph(to.toUpperCase())) {
+          const fromNode = getNode(from.toUpperCase());
+          const toNode = getNode(to.toUpperCase());
+          graph.removeEdge(fromNode, toNode);
+          jsav.umsg(`Removed edge from ${from.toUpperCase()} to ${to.toUpperCase()}`);
+          graph.layout();
+          jsav.displayInit();
+          // clear input fields
+          removeFromNode.value = "";
+          removeToNode.value = "";
+          jsav.step();
+        }
+        else {
+          jsav.umsg(`Node ${from.toUpperCase()} or ${to.toUpperCase()} does not exist`);
+        }
+      }
+      else {
+        jsav.umsg("Please enter a value");
+
+      }
+    }
+    // function to clear the graph
+    function clearGraph() {
+      //  reload the window
+      window.location.reload();
+    }
+    // function to visit a node
+    function visit(node) {
+      node.highlight();
+      jsav.umsg("Visiting node " + node.value());
+      jsav.step();
+      node.unhighlight();
+      let neighbors = node.neighbors();
+      for (let i = 0; i < neighbors.length; i++) {
+        if (!neighbors[i].hasClass("visited")) {
+          neighbors[i].addClass("visited");
+          visit(neighbors[i]);
+        }
+      }
+    }
+
+    // function to traverse the graph should visit all nodes
+    function traverse() {
+      let nodes = graph.nodes();
+      for (let i = 0; i < nodes.length; i++) {
+        if (!nodes[i].hasClass("visited")) {
+          nodes[i].addClass("visited");
+          visit(nodes[i]);
+        }
+      }
+    }
+
+
+    // function to get the degree of a node
+    function getDegree() {
+      const { value } = degreeNode;
+      if (value != "") {
+        // check if the node exists
+        if (isNodeInGraph(value.toUpperCase())) {
+          const currentNode = getNode(value.toUpperCase());
+          jsav.umsg(`Degree of ${value.toUpperCase()} is ${currentNode.neighbors().length}`);
+          // clear input field
+          degreeNode.value = "";
+          jsav.step();
+        }
+        else {
+          jsav.umsg(`Node ${value.toUpperCase()} does not exist`);
+        }
+      }
+      else {
+        jsav.umsg("Please enter a value");
+
+      }
+    }
+
+    // funtion that returns the root node in the graph
+    function getRoot() {
+      let nodes = graph.nodes();
+      for (let i = 0; i < nodes.length; i++) {
+        if (nodes[i].neighbors().length === 0) {
+          return nodes[i];
+        }
+      }
+      return null;
+    }
+
+    // funtion to disable all buttons when the slideshow starts
+    function disableButtons() {
+      // check if graph is empty
+      if (graph.nodes().length !== 0) {
+        addNodeButton.disabled = true;
+        removeNodeButton.disabled = true;
+        addEdgeButton.disabled = true;
+        removeEdgeButton.disabled = true;
+        numberOfNodesButton.disabled = true;
+        numberOfEdgesButton.disabled = true;
+        startSlideShowButton.disabled = true;
+        // change the color of the buttons when they are disabled to grey
+        addNodeButton.style.backgroundColor = "grey";
+        removeNodeButton.style.backgroundColor = "grey";
+        addEdgeButton.style.backgroundColor = "grey";
+        removeEdgeButton.style.backgroundColor = "grey";
+        numberOfNodesButton.style.backgroundColor = "grey";
+        numberOfEdgesButton.style.backgroundColor = "grey";
+        startSlideShowButton.style.backgroundColor = "grey";
+      }
+    }
+  </script>
+</body>
+
+</html>
