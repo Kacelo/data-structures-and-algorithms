@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles.css">
 
-    <title>Summing Algorithm</title>
+    <title>Maximum Algorithm</title>
 </head>
 <body>
     <ul class="nav justify-content-center">
@@ -16,42 +16,34 @@
   
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../../../home-page/index.html">Home</a>
+          <a class="nav-link" href="../../home-page/index.html">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../../../basic-algorithms/index.html">Algorithms</a>        </li>
+          <a class="nav-link" href="../../data-structures/ds-main-page/index.html">Data Structures</a>        </li>
       </ul>
       <div class="container text-center">
-        <h3 class="heading">Counting Algorithm</h3>
+        <!-- <h3 class="heading">Maximum Algorithm</h3> -->
         <div class="row">
           <div class="col">
             <div id="descriptionDiv">
-              <h4>What is a Queue?</h4>
-              <br>
+              
                 <p id="description">
-                 discription here
-                </p>
-                <p>
-                 more info
-                </p>
-                <h4>implementations of the summing</h4>
-                <ul style="text-align: justify;">
-                   
-                </ul>
-               
+                  The maximum algorithm returns the element that is highest in the collection. 
+                  Firstly, the algorithm will then traverse throughout the entire collection of items. 
+                  Then it will compare the first element with the next element in the collection.
+                   If the first element is greater it will be considered to be the maximum until another element that is greater appears in the collection. 
+                  After all this the maximum element will be displayed.
+                </p> 
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Try algorithm here
+                        </button>
             </div>
           </div>
           <div class="col">
-          
             <div>
-              <h4>Common Operations</h4>
-              <ol style="text-align:justify">
-                  
-              </ol>
+              <img src="../algorithm-home/assets/maximum.png">
             </div>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Create Your Own Queue
-                        </button>
+           
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
                             <div class="modal-content">
@@ -105,14 +97,9 @@
                                     <div class="btn-container">
                                           <button class="btn1" onclick="generate()" id="generteButton" >
                                             Generate New Array</button>
-                                        <button class="btn1" onclick="hideCountElements()" id="countingButton" >
-                                            Counting</button>
-                                        <!-- <button class="btn1" onclick="minimum()" id="minimumButton" > -->
-                                            <!-- Minimum</button> -->
                                         <button class="btn1" onclick="maximum()" id="maximumButton" > 
                                             Maximum</button>
-                                        <!-- <button class="btn1" onclick="hideElements()" id="summingButton" >
-                                            Summing</button> -->
+                                       
                                             <div class="InsertValuesContainer">
                                                 <input
                                                 type="text"
@@ -122,9 +109,6 @@
                                               />
                                               <button id="insertValuesBtn" class="button">Enter</button>
                                             </div>
-                                        <!-- <button class="btn1" id ="search" onclick="searchAlgorithm()"> -->
-                                            <!-- Search</button>
-                                        <input type="text" id="array-input" placeholder="search for number"> --> 
                                     </div>
                                     <div  class="centerDiv" style="text-align: center;">
                                         <div class="container">

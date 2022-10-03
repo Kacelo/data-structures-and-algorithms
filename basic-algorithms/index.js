@@ -1012,7 +1012,7 @@ async function summingLessThan(delay = showVal()) {
   document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
 
   for (var i = 0; i < blocks.length; i += 1) {
-    blocks[i].style.backgroundColor = "#FF4949";
+    // blocks[i].style.backgroundColor = "#FF4949";
 
     if(currentArray[i] < conditionValue.value ){
 
