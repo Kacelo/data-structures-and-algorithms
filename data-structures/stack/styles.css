@@ -54,13 +54,13 @@
 .stack-ol{
 	text-align: left;
 }
-ul {
+/* ul {
 	display: flex;
 	flex-direction: column-reverse;
 	justify-content: center;
 	align-items: center;
 	margin-top: 5%;
-}
+} */
 
 .box {
 	border-style: solid;
