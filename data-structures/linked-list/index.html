@@ -5,37 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
     <title>Linked List</title>
   </head>
   <body>
     <div class="main">
       <ul class="nav justify-content-center">
         <li class="nav-item">
-          <a class = "nav-link" style="cursor: pointer;" onclick="history.back()">back</a>
-  
+          <a class="nav-link" style="cursor: pointer" onclick="history.back()"
+            >back</a
+          >
         </li>
         <li class="nav-item">
           <a class="nav-link" href="../../../home-page/index.html">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../../../basic-algorithms/index.html">Algorithms</a>        </li>
+          <a class="nav-link" href="../../../basic-algorithms/index.html"
+            >Algorithms</a
+          >
+        </li>
       </ul>
       <h2 class="header">Linked List implementation</h2>
-     
+
       <div class="container text-center">
         <div class="row">
           <div class="col">
             <div class="bottom-content">
               <h4>What is a linked List?</h4>
-              <div style="text-align: justify;">
+              <div style="text-align: justify">
                 <p class="buttom-text">
-                  A linked list is a data structure that is linear and includes nodes
-                  connect together. The nodes stores data and the address of the next node
+                  A linked list is a data structure that is linear and includes
+                  nodes connect together. The nodes stores data and the address
+                  of the next node
                 </p>
               </div>
-              
+
               <h5 class="buttom-text">Three types of linked list:</h5>
               <div>
                 <ul class="linktypes">
@@ -46,119 +55,166 @@
               </div>
               <div>
                 <h4>Application of Linked-Lists</h4>
-                <ul style="text-align: justify;">
-                  <li>representing sparse matrices
+                <ul style="text-align: justify">
+                  <li>representing sparse matrices</li>
+                  <li>
+                    Dynamic memory allocation: We use a linked list of free
+                    blocks.
                   </li>
-                  <li>Dynamic memory allocation: We use a linked list of free blocks.</li>
                   <li>Performing arithmetic operations on long integers</li>
-                    <li>
-                      Used in switching between programs using Alt + Tab (implemented using
-                      Circular Linked List).
-                    </li>
+                  <li>
+                    Used in switching between programs using Alt + Tab
+                    (implemented using Circular Linked List).
+                  </li>
                 </ul>
               </div>
-        
+
               <p class="types-text">
-                The image below shows how a linked list works and the different parts
-                that makes up a linked list
+                The image below shows how a linked list works and the different
+                parts that makes up a linked list
               </p>
-              <img src="./assets/linked-list.png" style="width: 90%;"/>
+              <img src="./assets/linked-list.png" style="width: 90%" />
             </div>
           </div>
           <div class="col">
             <div class="listDiv">
               <h4>Operations of a Linked-List</h4>
-              <ul style="text-align: justify;">
-                  <li><b>Search: </b>Find the first element with the key k in the given linked list by a simple
-                    linear search and returns a pointer to this element</li>
-                  <li><b>Insert:</b> Insert a key to the linked list. An insertion can be done in 3 different
-                    ways; insert at the beginning of the list, insert at the end of the list and insert in
-                    the middle of the list.</li>
-                  <li><b>Delete: </b> Removes an element x from a given linked list. You cannot delete a node
-                    by a single step. A deletion can be done in 3 different ways; delete from the
-                    beginning of the list, delete from the end of the list and delete from the middle of
-                    the list.</li>
-                                </ul>
+              <ul style="text-align: justify">
+                <li>
+                  <b>Search: </b>Find the first element with the key k in the
+                  given linked list by a simple linear search and returns a
+                  pointer to this element
+                </li>
+                <li>
+                  <b>Insert:</b> Insert a key to the linked list. An insertion
+                  can be done in 3 different ways; insert at the beginning of
+                  the list, insert at the end of the list and insert in the
+                  middle of the list.
+                </li>
+                <li>
+                  <b>Delete: </b> Removes an element x from a given linked list.
+                  You cannot delete a node by a single step. A deletion can be
+                  done in 3 different ways; delete from the beginning of the
+                  list, delete from the end of the list and delete from the
+                  middle of the list.
+                </li>
+              </ul>
+              <div>
+                <p>
+                  Even though there are many linked list types, for educational
+                  purposes we will be focusing on singly linked list only.
+                </p>
+              </div>
             </div>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
               Create Your own Linked List
             </button>
-            
+
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
+            >
               <div class="modal-dialog modal-xl modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel">
+                      Modal title
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
                   </div>
                   <div class="modal-body">
-                    <div class="container" style="max-width: 800px;">
+                    <div class="container" style="max-width: 800px">
                       <div class="result-container">
                         <p class="result-text"></p>
                       </div>
                       <!-- Input element to accept user input -->
                       <ul class="result"></ul>
-              
+
                       <br />
-                      
-              
+
                       <!-- div container for buttons without input fields -->
                       <div class="first-button-group">
                         <!-- button to add input to array -->
                         <button id="displayList" class="button">Display</button>
                         <!-- Button to remove the first element in the List -->
-                        <button id="removeHeadBtn" class="button">Remove Head</button>
+                        <button id="removeHeadBtn" class="button">
+                          Remove Head
+                        </button>
                         <!-- Button to remove the last element in the list -->
-                        <button id="removeTailBtn" class="button">Remove Tail</button>
+                        <button id="removeTailBtn" class="button">
+                          Remove Tail
+                        </button>
                       </div>
-                      <div style="text-align: justify;">
+                      <div style="text-align: justify">
                         <input
-                        type="text"
-                        id="insertValue"
-                        placeholder="Insert value at the end"
-                        class="valueEntry"
-                      />
-                      <button id="insert-button" class="button">Insert Tail</button>
-              
-                      <input
-                        type="text"
-                        id="array-input"
-                        class="valueEntry"
-                        placeholder="Insert value at the start"
-                      />
-                      <button id="insertHeadBtn" class="button">Insert Head</button>
-              
-                      <!-- Delete value input field -->
-                      <input
-                        type="number"
-                        id="deleteValue"
-                        placeholder="Insert value to delete"
-                        class="valueEntry"
-                      />
-                      <button id="delete-button" class="button">Delete</button>
-                      
+                          type="text"
+                          id="insertValue"
+                          placeholder="Insert value at the end"
+                          class="valueEntry"
+                        />
+                        <button id="insert-button" class="button">
+                          Insert Tail
+                        </button>
+
+                        <input
+                          type="text"
+                          id="array-input"
+                          class="valueEntry"
+                          placeholder="Insert value at the start"
+                        />
+                        <button id="insertHeadBtn" class="button">
+                          Insert Head
+                        </button>
+
+                        <!-- Delete value input field -->
+                        <input
+                          type="number"
+                          id="deleteValue"
+                          placeholder="Insert value to delete"
+                          class="valueEntry"
+                        />
+                        <button id="delete-button" class="button">
+                          Delete
+                        </button>
                       </div>
-                    
-                     
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-            
           </div>
         </div>
       </div>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-    crossorigin="anonymous"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
     <script src="./linked-list.js"></script>
-   
   </body>
 </html>
