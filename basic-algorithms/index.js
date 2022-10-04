@@ -360,8 +360,15 @@ insertValuesBtn.addEventListener("click", function () {
     clear();
   }
   let value = insertValuesInput.value;
+  if (!isNumber(value)) {
+    alert("Could not add! only enter numbers please ");
+    return;
+  } else {
+    
+     currentArray.push(value);
+  }
   //Populating the array
-  currentArray.push(value);
+  
 
   // Creating element div
   var array_ele = document.createElement("div");
@@ -431,6 +438,20 @@ function enable() {
   // // to enable the button "searching"
   // document.getElementById("search").disabled = false;
   // document.getElementById("search").style.backgroundColor = "#6b5b95";
+}
+//convert value passed as an argument to a number and check if it is a number
+function isNumber(value) {
+  //convert value to number
+  let number = Number(value);
+  //regex to check if the value is a number
+  let regex = /^[0-9]+$/;
+
+  //return true if value is a number
+  if (regex.test(number)) {
+    return true;
+  }
+  //return false if value is not a number
+  return false;
 }
 function hideElements(){
   hideStuff = !hideStuff;
