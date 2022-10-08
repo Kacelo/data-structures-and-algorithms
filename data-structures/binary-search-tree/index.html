@@ -1,134 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.js"></script>
-    <link rel="stylesheet" href="./styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  </head>
-    <title>Binary search tree</title>
-</head>
-<body>
-    <div class="main">
-      <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class = "nav-link" style="cursor: pointer;" onclick="history.back()">back</a>
-  
-        </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../home-page/index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../basic-algorithms/algorithm-home/index.html">Algorithms</a>
-          </li>
-        </ul>
-        <div class="header">
-            <h1>
-                Binary search Tree
-            </h1>
-            
-        </div>
-            
-            
-            <div class="box" id="rootNode"></div>
-         
-           
-            <div id="level4"></div>
-            <div class="container text-center">
-                <div class="row">
-                  <div class="col">
-                    <div id="descriptionDiv">
-                        <h4>What is a Binary Search Tree?</h4>
-                        <p id="description">
-                            A Binary Search Tree (BST) is a binary tree in which each vertex has only up to 2 children
-                            that satisfies BST property
-                        </p>
-                        <p>
-                            All vertices in the left subtree of a vertex must hold
-                            a value smaller than its own and all vertices in the right subtree of a vertex must hold a value larger than its own
-                        </p>
-                        <p>
-                            Attributes: Each vertex has at least 4 attributes: parent, left, right, key/value/data (there are potential other attributes)
-                        </p>
-                        <div>
-                            <h4>Application of Binary Search Trees</h4>
-                            <ul style="text-align: justify;">
-                              <li><b>Binary Trees:</b> Used to implement expression parsers and expression solvers.</li>
-                              <li><b>Binary Search Tree:</b> used in many search applications where data are
-                                constantly entering and leaving.</li>
-                              <li><b>Heaps:</b> used by JVM (Java Virtual Machine) to store Java objects.</li>
-                                <li>
-                                    <b>Treaps:</b> used in wireless networking.
-                                </li>
-                            </ul>
-                          </div>
-                        
-                        <div class="image-div">
-                          <h4>Structure of a Binary Search Tree</h4>
-                            <img src="./assets/binary.png" style="width: 100%;">
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div>
-                        <h4>Trasversal Functions</h4>
-                        <ul>
-                            <li>Inorder, you traverse from the left subtree to the root then to the right subtree. (Left, Root, Right)</li>
-                            <li> Preorder, you traverse from the root to the left subtree then to the right subtree. (Root, Left, Right)</li>
-                            <li>Post order, you traverse from the left subtree to the right subtree then to the root. (Left, Right, Root.)</li>
-                        </ul>
-                    </div>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Create Your Own Binary Search Tree
-                                  </button>
-                                  
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-                                              <div class="modal-content">
-                                                <div class="modal-header">
-                                                  <h5 class="modal-title text-center" id="exampleModalLabel">Binary Search Tree Operations</h5>
-                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div id="result">
-               
-                                                    </div>
-                                                    <div id="level3"></div>
-                                                    <div class="container">
-                                                        <input type="number" placeholder="insert node" id="insertValue" class="inputField">
-                                                        <button id="insertButton" class="btn1">insert node</button>
-                                                        <!-- <input type="text" placeholder="remove node" class="inputField" id="removeValue">
-                                                        <button id="removeButton" class="btn1">remove node</button> -->
-                                                        <input type="text" placeholder="search node" id="searchValue" class="inputField">
-                                                        <button id="searchButton" class="btn1 btn-btn">search node</button>
-                                                        <button id="printInOrder" class="btn1">print InOrder</button>
-                                                        <button id="printPostOrder" class="btn1">print PostOrder</button>
-                                                        <button id="printPreOrder" class="btn1">print preOrder</button>
-                                                        <button id="findMinNodeButton" class="btn1">find Min Node</button>
-                                        
-                                                    </div>  
-                                                     </div>
-                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                                                    
-                                                </div>
-                                                <!-- <div class="modal-footer">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.js"></script>
+  <link rel="stylesheet" href="./styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<title>Binary search tree</title>
+</head>
+
+<body>
+  <div class="main">
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link" style="cursor: pointer;" onclick="history.back()">back</a>
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../home-page/index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../basic-algorithms/algorithm-home/index.html">Algorithms</a>
+      </li>
+    </ul>
+    <div class="header">
+      <h1>
+        Binary search Tree
+      </h1>
+
+    </div>
+
+
+    <div class="box" id="rootNode"></div>
+
+
+    <div id="level4"></div>
+    <div class="container text-center">
+      <div class="row">
+        <div class="col">
+          <div id="descriptionDiv">
+            <h4>What is a Binary Search Tree?</h4>
+            <p id="description">
+              A Binary Search Tree (BST) is a binary tree in which each vertex has only
+              up to 2 children that satisfies BST property
+            </p>
+            <p>
+              All vertices in the left subtree of a vertex must hold a value smaller than
+              its own and all vertices in the right subtree of a vertex must hold a value
+              larger than its own
+            </p>
+            <p>
+              Attributes: Each vertex has at least 4 attributes: parent, left, right,
+              key/value/data (there are potential other attributes)
+            </p>
+            <div>
+              <h4>Application of Binary Search Trees</h4>
+              <ul style="text-align: justify;">
+                <li><b>Binary Trees:</b> Used to implement expression parsers and expression
+                  solvers.</li>
+                <li><b>Binary Search Tree:</b> used in many search applications where data are 
+                  constantly entering and leaving</li>
+                <li><b>Heaps:</b> used by Java Virtual Machine to store Java objects</li>
+                <li>
+                  <b>Treaps:</b> used in wireless networking.
+                </li>
+              </ul>
+            </div>
+
+            <div class="image-div">
+              <h4>Structure of a Binary Search Tree</h4>
+              <img src="./assets/binary.png" style="width: 100%;">
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div>
+            <h4>Trasversal Functions</h4>
+            <ul>
+              <li>Inorder, you traverse from the left subtree to the root then to the right 
+                subtree. (Left, Root, Right)
+              </li>
+              <li> Preorder, you traverse from the root to the left subtree then to the right 
+                subtree. (Root, Left, Right)</li>
+              <li>Post order, you traverse from the left subtree to the right subtree then to 
+                the root. (Left, Right, Root.)</li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Create Your Own Binary Search Tree
+          </button>
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-center" id="exampleModalLabel">Binary Search Tree Operations</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div id="result">
+
+                  </div>
+                  <div id="level3"></div>
+                  <div class="container">
+                    <input type="number" placeholder="insert node" id="insertValue" class="inputField">
+                    <button id="insertButton" class="btn1">insert node</button>
+                    <!-- <input type="text" placeholder="remove node" class="inputField" id="removeValue">
+                                                        <button id="removeButton" class="btn1">remove node</button> -->
+                    <input type="text" placeholder="search node" id="searchValue" class="inputField">
+                    <button id="searchButton" class="btn1 btn-btn">search node</button>
+                    <button id="printInOrder" class="btn1">print InOrder</button>
+                    <button id="printPostOrder" class="btn1">print PostOrder</button>
+                    <button id="printPreOrder" class="btn1">print preOrder</button>
+                    <button id="findMinNodeButton" class="btn1">find Min Node</button>
+
+                  </div>
+                </div>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+
+              </div>
+              <!-- <div class="modal-footer">
                                                   
                                                   <button type="button" class="btn btn-primary">Save changes</button>
                                                 </div> -->
-                                              </div>
-                                            </div>
-                                          </div>
-                  </div>
-                  
-                </div>
-              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <!-- <script src="./binary-search-tree.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script> 
-    <script src="./sketch.js"></script>
-    
+  </div>
+  </div>
+  <!-- <script src="./binary-search-tree.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+  <script src="./sketch.js"></script>
+
 </body>
+
 </html>
