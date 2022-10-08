@@ -149,3 +149,13 @@ font-family: sans-serif;
 	margin-top: 2rem;
 	width: 20rem;
 }
+#EvenValuesBtnn, #OddValuesBtnn, #GreaterValuesBtnn, #LessValuesBtnn{
+	padding: 12px;
+	font-weight: bolder;
+	background-color: #2c80ff;
+	border-radius: 10px;
+	color: white;
+	font-size: 16px;
+	border: white;
+	margin: 0.5rem 0.5rem;
+}

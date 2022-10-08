@@ -40,10 +40,11 @@ displayElements();
 
 // isEmpty button
 btnEmpty.addEventListener("click", () => {
+  functionRes.replaceChildren();
   if (isEmpty()) {
     functionRes.innerHTML += `Stack is empty`;
   } else {
-    functionRes.innerHTML += `Stack is not empty`;
+    functionRes.innerHTML += `Stack contains the values ${elements}`;
   }
 });
 
@@ -55,7 +56,9 @@ btnPop.addEventListener("click", async () => {
     disableButton(btnPop);
     //enable push button
     enableButton(btnPush);
+    const last = elements[elements.length -1]
     elements.pop();
+    functionRes.innerHTML = `${last} has been popped from the stack`;
 
     //wait for .5 sec before enabling the pop button and adding the element to the stack
     await new Promise((resolve) =>
@@ -66,6 +69,9 @@ btnPop.addEventListener("click", async () => {
       }, 500)
     );
     enableButton(btnPop);
+  }
+  else{
+    functionRes.innerHTML = `Error! Stack is empty`;
   }
 });
 

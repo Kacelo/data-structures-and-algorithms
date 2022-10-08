@@ -13,8 +13,8 @@ const printPreOrder = document.getElementById("printPreOrder");
 const printPostOrder = document.getElementById("printPostOrder");
 const findMinNodeButton = document.getElementById("findMinNodeButton");
 const displayRes = document.getElementById("result");
-const main = document.getElementsByName('main')
-
+const main = document.getElementsByName("main");
+let functionRes = document.querySelector(".function-result");
 
 // Tree object
 function Tree() {
@@ -50,14 +50,18 @@ Tree.prototype.search = function (val) {
 // Add a new value to the tree
 Tree.prototype.addValue = function (val) {
   var n = new Node(val);
-  if (this.root == null) {
-    this.root = n;
-    // An initial position for the root node
-    this.root.x = width / 2;
-    this.root.y = 16;
-    tree.traverse();
+  if (val) {
+    if (this.root == null) {
+      this.root = n;
+      // An initial position for the root node
+      this.root.x = width / 2;
+      this.root.y = 16;
+      tree.traverse();
+    } else {
+      this.root.addNode(n);
+    }
   } else {
-    this.root.addNode(n);
+    displayRes.innerHTML += `Error! cannot enter a null value`;
   }
 };
 
@@ -137,76 +141,10 @@ Tree.prototype.removeNode = function (node, key) {
 // Binary tree
 var tree;
 
-// function setup() {
-//   createCanvas(1000, 500);
-
-//   // New tree
-//   tree = new Tree();
-
-//   // Add ten random values
-//   for (var i = 0; i < 5; i++) {
-//     tree.addValue(floor(random(0, 100)));
-//     insertButton.addEventListener("click", () => {
-//       // displayRes.replaceChildren();
-//       tree.addValue(insertValue.value);
-//       // tree.inorder()
-//       console.log(insertValue.value);
-//       tree.traverse();
-//       insertValue.value = "";
-//     });
-
-//     findMinNodeButton.addEventListener("click", () => {
-//       displayRes.replaceChildren();
-//       tree.findSmallest();
-//     });
-//   }
-
-// }
-
-//   // if data to be delete is greater than
-//   // roots data then move to right subtree
-//   else if (key > this.value) {
-//     this.right =  this.right.removeNode(key);
-
-//     return this;
-//   }
-
-//   // if data is similar to the root's data
-//   // then delete this node
-//   else {
-//     // deleting node with no children
-//     if (this.left === null && this.right === null) {
-//       this = null;
-//       return this;
-//     }
-
-//     // deleting node with one children
-//     if (this.left === null) {
-//       this = this.right;
-//       return this;
-//     } else if (this.right === null) {
-//       this = this.left;
-//       return this;
-//     }
-
-//     // Deleting node with two children
-//     // minimum node of the right subtree
-//     // is stored in aux
-//     var aux = this.right.findMinNode(this);
-//     this.value = aux.value
-
-//     this.right = this.right.removeNode(aux.value);
-//     return this;
-//   }
-// };
-// Daniel Shiffman
-// Nature of Code: Intelligence and Learning
-// https://github.com/shiffman/NOC-S17-2-Intelligence-Learning
-
 // Binary tree
 
 function setup() {
- var canvas = createCanvas(750, 600);
+  var canvas = createCanvas(750, 600);
 
   canvas.parent("level3");
 
@@ -214,14 +152,14 @@ function setup() {
   tree = new Tree();
 
   // Add ten random values
-  // for (var i = 0; i < 1; i++) {
+  // for (var i = 0; i < 3; i++) {
   //   tree.addValue(floor(random(0, 100)));
   //   console.log("5 value added");
   // }
 
   insertButton.addEventListener("click", () => {
     // displayRes.replaceChildren();
-    tree.addValue(parseInt (insertValue.value, 10));
+    tree.addValue(parseInt(insertValue.value, 10));
     console.log(insertValue.value);
     tree.traverse();
     insertValue.value = "";
@@ -284,8 +222,6 @@ function Node(val, x, y) {
   this.y = y;
 }
 
-
-
 // Search the tree for a value
 Node.prototype.search = function (val) {
   if (this.value == val) {
@@ -331,7 +267,7 @@ Node.prototype.visit = function (parent) {
   // Draw a circle
   stroke(255);
   fill(map(this.value, 0, 100, 0, 255), 100, 100);
-  ellipse(this.x, this.y, 30, 30);
+  ellipse(this.x, this.y, 33, 33);
   noStroke();
   // Display the value
   fill(255);

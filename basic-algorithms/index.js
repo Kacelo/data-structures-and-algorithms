@@ -413,24 +413,25 @@ function enableSumming() {
 }
 
 function disableCounting() {
-  document.getElementById("LessValuesBtn").disabled = true;
-  document.getElementById("LessValuesBtn").style.backgroundColor = "#d8b6ff";
-  document.getElementById("GreaterValuesBtn").disabled = true;
-  document.getElementById("GreaterValuesBtn").style.backgroundColor = "#d8b6ff";
-  document.getElementById("OddValuesBtn").disabled = true;
-  document.getElementById("OddValuesBtn").style.backgroundColor = "#d8b6ff";
-  document.getElementById("EvenValuesBtn").disabled = true;
-  document.getElementById("EvenValuesBtn").style.backgroundColor = "#d8b6ff";
+  document.getElementById("LessValuesBtnn").disabled = true;
+  document.getElementById("LessValuesBtnn").style.backgroundColor = "#d8b6ff";
+  document.getElementById("GreaterValuesBtnn").disabled = true;
+  document.getElementById("GreaterValuesBtnn").style.backgroundColor = "#d8b6ff";
+  document.getElementById("OddValuesBtnn").disabled = true;
+  document.getElementById("OddValuesBtnn").style.backgroundColor = "#d8b6ff";
+  document.getElementById("EvenValuesBtnn").disabled = true;
+  document.getElementById("EvenValuesBtnn").style.backgroundColor = "#d8b6ff";
+  console.log("counting disabled")
 }
 function enableCounting() {
-  document.getElementById("LessValuesBtn").disabled = false;
-  document.getElementById("LessValuesBtn").style.backgroundColor = "#2c80ff";
-  document.getElementById("GreaterValuesBtn").disabled = false;
-  document.getElementById("GreaterValuesBtn").style.backgroundColor = "#2c80ff";
-  document.getElementById("OddValuesBtn").disabled = false;
-  document.getElementById("OddValuesBtn").style.backgroundColor = "#2c80ff";
-  document.getElementById("EvenValuesBtn").disabled = false;
-  document.getElementById("EvenValuesBtn").style.backgroundColor = "#2c80ff";
+  document.getElementById("LessValuesBtnn").disabled = false;
+  document.getElementById("LessValuesBtnn").style.backgroundColor = "#2c80ff";
+  document.getElementById("GreaterValuesBtnn").disabled = false;
+  document.getElementById("GreaterValuesBtnn").style.backgroundColor = "#2c80ff";
+  document.getElementById("OddValuesBtnn").disabled = false;
+  document.getElementById("OddValuesBtnn").style.backgroundColor = "#2c80ff";
+  document.getElementById("EvenValuesBtnn").disabled = false;
+  document.getElementById("EvenValuesBtnn").style.backgroundColor = "#2c80ff";
 }
 
 function disable() {

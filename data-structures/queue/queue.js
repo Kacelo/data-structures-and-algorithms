@@ -1,17 +1,36 @@
 let resEle = document.querySelector(".list");
 let functionRes = document.querySelector(".function-result");
-let BtnEle = document.querySelector(".Btn");
+let front = document.getElementById('front');
 let enqueueBtnEle = document.querySelector(".enqueueBtn");
 let dequeueBtnEle = document.querySelector(".dequeueBtn");
 let inputVal = document.getElementById("queueValue");
 let message = document.getElementById("display");
+let btnEmpty = document.getElementById('isEmpty')
+
 class Queue {
   constructor() {
     this.items = [];
     this.length = 0;
   }
 }
+
+Queue.prototype.front = function () {
+
+  if(!this.isEmpty()){
+    const firstElement = this.items[0];
+    functionRes.replaceChildren();
+
+   return functionRes.innerHTML += `The Value at the front of the Queue is ${firstElement}`;
+  }
+  else{
+    return (functionRes.innerHTML = "The Queue is empty, please enqueue values and try again");
+  }
+  
+
+}
+
 Queue.prototype.enqueue = function (ele) {
+  
   const lastElement = this.items[this.length - 1];
   if (this.length > 0) {
     if (
@@ -55,11 +74,12 @@ Queue.prototype.dequeue = function () {
 Queue.prototype.display = function () {
   debugger;
   if (this.length == 0) {
-    return (functionRes.innerHTML = "Stack is empty");
+    return (functionRes.innerHTML = "The Queue is empty, please enqueue values and try again");
   }
 
   for (let i = 0; i < this.length; i++) {
-    resEle.innerHTML += `<li class ="queue-list"><div class='box'>${this.items[i]} index: ${i}</div></li>`;
+    
+    resEle.innerHTML += `<li class ="queue-list"><div class='box'>${this.items[i]}</div></li>`;
   }
 };
 
@@ -88,29 +108,56 @@ function isString(value) {
   return false;
 }
 // see if array is empty
-function isEmpty() {
+Queue.prototype.isEmpty = function () {
   if (this.length === 0) {
     return true;
   }
-  return false;
+  
+  for (let i = 0; i < this.length; i++) {
+    functionRes.replaceChildren();
+    functionRes.innerHTML += `Queue contains values ${this.items}`;
+  }
 }
 
 let queue1 = new Queue();
-BtnEle.addEventListener("click", () => {
-  functionRes.replaceChildren();
-  resEle.innerHTML = "";
-  queue1.display();
-});
+// BtnEle.addEventListener("click", () => {
+//   functionRes.replaceChildren();
+//   resEle.innerHTML = "";
+//   queue1.display();
+// });
 enqueueBtnEle.addEventListener("click", () => {
   functionRes.replaceChildren();
   let ele = document.querySelector(".enqueueVal").value;
 
   queue1.enqueue(ele);
-  // queue1.display();
+  resEle.replaceChildren();
+  queue1.display();
+ 
+
   inputVal.value = "";
 });
 dequeueBtnEle.addEventListener("click", () => {
   functionRes.replaceChildren();
   queue1.dequeue();
-  // queue1.display();
+  resEle.replaceChildren();
+  queue1.display();
 });
+// isEmpty button
+btnEmpty.addEventListener("click", () => {
+  functionRes.replaceChildren();
+  if (queue1.isEmpty()) {
+    functionRes.innerHTML += `Queue is empty`;
+  } else {
+    console.log("not empty")
+    
+
+      
+  
+    
+  }
+});
+
+front.addEventListener("click", ()=>{
+  functionRes.replaceChildren();
+  queue1.front();
+})
