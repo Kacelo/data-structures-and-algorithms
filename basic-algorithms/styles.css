@@ -26,8 +26,8 @@
 
 .header {
 	margin-top: 20px;
-	margin-right: 20vw;
-	margin-left: 20vw;
+	margin-right: 8vw;
+	margin-left: 8vw;
 	text-align: center;
 	font-size: 30px;
 	background-color: #2c80ff;
@@ -144,4 +144,8 @@ font-family: sans-serif;
 #descriptionDiv{
 	margin-top: 20%;
 	text-align: justify;
+}
+#psuedo{
+	margin-top: 2rem;
+	width: 20rem;
 }
