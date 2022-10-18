@@ -94,6 +94,29 @@ async function ShowsLessThan(delay = showVal()) {
   document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
 
   for (var i = 0; i < blocks.length; i += 1) {
+
+      if (!ConditionsValuesInput.value) {
+        alert("Error! Please enter a value");
+        await new Promise((resolve) =>
+          setTimeout(() => {
+            enableCounting();
+            resolve();
+          }, 2000)
+        );
+        return;
+      }
+      if (!isNumber(ConditionsValuesInput.value)) {
+        alert("Error! please enter numbers only");
+        // To wait for .5 sec
+        await new Promise((resolve) =>
+          setTimeout(() => {
+            enableCounting();
+            resolve();
+          }, 2000)
+        );
+        return;
+      }
+    
     blocks[i].style.backgroundColor = "#FF4949";
 
     if (currentArray[i] < ConditionsValuesInput.value) {
@@ -166,6 +189,27 @@ async function ShowsGreaterThan(delay = showVal()) {
   document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
 
   for (var i = 0; i < blocks.length; i += 1) {
+    if (!ConditionsValuesInput.value) {
+      alert("Error! Please enter a value");
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          enableSumming();
+          resolve();
+        }, 2000)
+      );
+      return;
+    }
+    if (!isNumber(ConditionsValuesInput.value)) {
+      alert("Error! please enter numbers only");
+      // To wait for .5 sec
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          enableSumming();
+          resolve();
+        }, 2000)
+      );
+      return;
+    }
     blocks[i].style.backgroundColor = "#FF4949";
 
     if (currentArray[i] > ConditionsValuesInput.value) {
@@ -314,6 +358,7 @@ async function ShowsEvenNumber(delay = showVal()) {
   let count = 0;
 
   for (var i = 0; i < blocks.length; i += 1) {
+
     blocks[i].style.backgroundColor = "#FF4949";
 
     if (currentArray[i] % 2 == 0) {
@@ -416,18 +461,20 @@ function disableCounting() {
   document.getElementById("LessValuesBtnn").disabled = true;
   document.getElementById("LessValuesBtnn").style.backgroundColor = "#d8b6ff";
   document.getElementById("GreaterValuesBtnn").disabled = true;
-  document.getElementById("GreaterValuesBtnn").style.backgroundColor = "#d8b6ff";
+  document.getElementById("GreaterValuesBtnn").style.backgroundColor =
+    "#d8b6ff";
   document.getElementById("OddValuesBtnn").disabled = true;
   document.getElementById("OddValuesBtnn").style.backgroundColor = "#d8b6ff";
   document.getElementById("EvenValuesBtnn").disabled = true;
   document.getElementById("EvenValuesBtnn").style.backgroundColor = "#d8b6ff";
-  console.log("counting disabled")
+  console.log("counting disabled");
 }
 function enableCounting() {
   document.getElementById("LessValuesBtnn").disabled = false;
   document.getElementById("LessValuesBtnn").style.backgroundColor = "#2c80ff";
   document.getElementById("GreaterValuesBtnn").disabled = false;
-  document.getElementById("GreaterValuesBtnn").style.backgroundColor = "#2c80ff";
+  document.getElementById("GreaterValuesBtnn").style.backgroundColor =
+    "#2c80ff";
   document.getElementById("OddValuesBtnn").disabled = false;
   document.getElementById("OddValuesBtnn").style.backgroundColor = "#2c80ff";
   document.getElementById("EvenValuesBtnn").disabled = false;
@@ -435,22 +482,7 @@ function enableCounting() {
 }
 
 function disable() {
-  // To disable the button "Generate New Array"
-  // // To disable the button "counting"
-  // document.getElementById("countingButton").disabled = true;
-  // document.getElementById("countingButton").style.backgroundColor = "#d8b6ff";
-  // // To disable the button "minimum"
-  // document.getElementById("minimumButton").disabled = true;
-  // document.getElementById("minimumButton").style.backgroundColor = "#d8b6ff";
-  // // To disable the button "maximum"
-  // document.getElementById("maximumButton").disabled = true;
-  // document.getElementById("maximumButton").style.backgroundColor = "#d8b6ff";
-  // // To disable the button "summing"
-  // document.getElementById("summingButton").disabled = true;
-  // document.getElementById("summingButton").style.backgroundColor = "#d8b6ff";
-  // // to disable the button "searching"
-  // document.getElementById("search").disabled = true;
-  // document.getElementById("search").style.backgroundColor = "#d8b6ff";
+
 }
 function clear() {
   // clear the array and the container
@@ -458,24 +490,7 @@ function clear() {
   container.innerHTML = "";
 }
 function enable() {
-  // // To enable the button "Generate New Array"
-  // document.getElementById("LessValuesBtn").disabled = false;
-  // document.getElementById("LessValuesBtn").style.backgroundColor = "#6b5b95";
-  // // To enable the button "counting"
-  // document.getElementById("countingButton").disabled = false;
-  // document.getElementById("countingButton").style.backgroundColor = "#6b5b95";
-  // // To enable the button "minimum"
-  // document.getElementById("minimumButton").disabled = false;
-  // document.getElementById("minimumButton").style.backgroundColor = "#6b5b95";
-  // // To enable the button "maximum"
-  // document.getElementById("maximumButton").disabled = false;
-  // document.getElementById("maximumButton").style.backgroundColor = "#6b5b95";
-  // // To enable the button "summing"
-  // document.getElementById("summingButton").disabled = false;
-  // document.getElementById("summingButton").style.backgroundColor = "#6b5b95";
-  // // to enable the button "searching"
-  // document.getElementById("search").disabled = false;
-  // document.getElementById("search").style.backgroundColor = "#6b5b95";
+
 }
 //convert value passed as an argument to a number and check if it is a number
 function isNumber(value) {
@@ -837,7 +852,7 @@ async function summingEvenNumbers(delay = showVal()) {
   <li id='setCountValue6' class = 'listCss'>${summingPseudo[5]}</li>
   `;
   //disable the buttons
-  disableSumming()
+  disableSumming();
   //selecting all the blocks on the graph
   var blocks = document.querySelectorAll(".block");
   //reset the blocks to the default color
@@ -991,6 +1006,28 @@ async function summingGreaterThan(delay = showVal()) {
   document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
 
   for (var i = 0; i < blocks.length; i += 1) {
+
+    if (!conditionValue.value) {
+      alert("Error! Please enter a value");
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          enableSumming();
+          resolve();
+        }, 2000)
+      );
+      return;
+    }
+    if (!isNumber(conditionValue.value)) {
+      alert("Error! please enter numbers only");
+      // To wait for .5 sec
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          enableSumming();
+          resolve();
+        }, 2000)
+      );
+      return;
+    }
     blocks[i].style.backgroundColor = "#FF4949";
 
     if (currentArray[i] > conditionValue.value) {
@@ -1051,7 +1088,7 @@ async function summingLessThan(delay = showVal()) {
   <li id='setCountValue6' class = 'listCss'>${summingPseudo[5]}</li>
   `;
   //disable the buttons
-  disableSumming()
+  disableSumming();
   //selecting all the blocks on the graph
   var blocks = document.querySelectorAll(".block");
   //reset the blocks to the default color
@@ -1063,8 +1100,29 @@ async function summingLessThan(delay = showVal()) {
   document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
 
   for (var i = 0; i < blocks.length; i += 1) {
-    // blocks[i].style.backgroundColor = "#FF4949";
-
+   
+    if (!conditionValue.value) {
+      alert("Error! Please enter a value");
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          enableSumming();
+          resolve();
+        }, 2000)
+      );
+      return;
+    }
+    if (!isNumber(conditionValue.value)) {
+      alert("Error! please enter numbers only");
+      // To wait for .5 sec
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          enableSumming();
+          resolve();
+        }, 2000)
+      );
+      return;
+    }
+    blocks[i].style.backgroundColor = "#FF4949";
     if (currentArray[i] < conditionValue.value) {
       codeExplaination.replaceChildren();
 
