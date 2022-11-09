@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../styles.css" />
 
     <title>Counting Algorithm</title>
@@ -46,16 +47,15 @@
                 <li>Basic counting</li>
                 <li>Counting Sort</li>
               </ul>
-             
             </div>
           </div>
           <div id="descriptionDiv">
             <p>
               The count algorithm counts the element that meet a certain
-              condition. Firstly the algorithm finds the specific element in
-              the collection and for each time it encounters that element it
-              adds to the count. It will then display the amount of times that
-              element appeared in the collection.
+              condition. Firstly the algorithm finds the specific element in the
+              collection and for each time it encounters that element it adds to
+              the count. It will then display the amount of times that element
+              appeared in the collection.
             </p>
             <button
               type="button"
@@ -168,14 +168,17 @@
                       <div class="">
                         <h4>Perform counting functions here</h4>
                       </div>
-                      
-                      <span class ="hovertext" data-hover ="enter a value and choose a condtion to find numbers that are either greater or less than the entered number">
+
+                      <span
+                        class="hovertext"
+                        data-hover="enter a value and choose a condtion to find numbers that are either greater or less than the entered number"
+                      >
                         <input
-                        type="text"
-                        id="ConditionValuesInput"
-                        placeholder="Enter a number"
-                        class="valueEntry"
-                      />
+                          type="text"
+                          id="ConditionValuesInput"
+                          placeholder="Enter a number"
+                          class="valueEntry"
+                        />
                       </span>
                       <button
                         id="LessValuesBtnn"
@@ -279,9 +282,28 @@
 
     <script src="../index.js"></script>
 
+    <script>
+      var tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      );
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    </script>
+
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+      integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
       crossorigin="anonymous"
     ></script>
   </body>
