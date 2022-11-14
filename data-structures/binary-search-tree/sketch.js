@@ -1,6 +1,4 @@
-// Daniel Shiffman
-// Nature of Code: Intelligence and Learning
-// https://github.com/shiffman/NOC-S17-2-Intelligence-Learning
+
 
 let insertValue = document.getElementById("insertValue");
 let insertButton = document.getElementById("insertButton");
@@ -134,9 +132,6 @@ Tree.prototype.removeNode = function (node, key) {
     return node;
   }
 };
-// Daniel Shiffman
-// Nature of Code: Intelligence and Learning
-// https://github.com/shiffman/NOC-S17-2-Intelligence-Learning
 
 // Binary tree
 var tree;
@@ -205,9 +200,6 @@ function setup() {
   // })
 }
 
-// Daniel Shiffman
-// Nature of Code: Intelligence and Learning
-// https://github.com/shiffman/NOC-S17-2-Intelligence-Learning
 
 // Node in the tree
 function Node(val, x, y) {

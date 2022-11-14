@@ -1,11 +1,11 @@
 let resEle = document.querySelector(".list");
 let functionRes = document.querySelector(".function-result");
-let front = document.getElementById('front');
+let front = document.getElementById("front");
 let enqueueBtnEle = document.querySelector(".enqueueBtn");
 let dequeueBtnEle = document.querySelector(".dequeueBtn");
 let inputVal = document.getElementById("queueValue");
 let message = document.getElementById("display");
-let btnEmpty = document.getElementById('isEmpty')
+let btnEmpty = document.getElementById("isEmpty");
 
 class Queue {
   constructor() {
@@ -13,30 +13,27 @@ class Queue {
     this.length = 0;
   }
 }
-
+// funtion to print out the value at the front of the queue
 Queue.prototype.front = function () {
-
-  if(!this.isEmpty()){
+  if (!this.isEmpty()) {
     const firstElement = this.items[0];
     functionRes.replaceChildren();
 
-   return functionRes.innerHTML += `The Value at the front of the Queue is ${firstElement}`;
+    return (functionRes.innerHTML += `The Value at the front of the Queue is ${firstElement}`);
+  } else {
+    return (functionRes.innerHTML =
+      "The Queue is empty, please enqueue values and try again");
   }
-  else{
-    return (functionRes.innerHTML = "The Queue is empty, please enqueue values and try again");
-  }
-  
-
-}
-
+};
+// function to enque value
 Queue.prototype.enqueue = function (ele) {
-  
   const lastElement = this.items[this.length - 1];
   if (this.length > 0) {
     if (
       (isNumber(ele) && isString(lastElement)) ||
       (isNumber(lastElement) && isString(ele))
     ) {
+      // expection handling to prevent user from entering value types that do not match
       if (isNumber(ele)) {
         alert("Could not enqueue! only enter strings please ");
         return;
@@ -56,29 +53,29 @@ Queue.prototype.enqueue = function (ele) {
     functionRes.innerHTML += `Error! Please enter a value`;
   }
 };
+// function to remove value at the front of the queue
 Queue.prototype.dequeue = function () {
   debugger;
   if (this.length === 0) {
     return (functionRes.innerHTML = "Underflow: no more elements to remove");
   }
 
- 
   this.length -= 1;
- 
+
   functionRes.innerHTML =
-  this.items[length] + " is removed from the front of queue";
+    this.items[length] + " is removed from the front of queue";
 
   return this.items.shift();
 };
-
+// function to display
 Queue.prototype.display = function () {
   debugger;
   if (this.length == 0) {
-    return (functionRes.innerHTML = "The Queue is empty, please enqueue values and try again");
+    return (functionRes.innerHTML =
+      "The Queue is empty, please enqueue values and try again");
   }
 
   for (let i = 0; i < this.length; i++) {
-    
     resEle.innerHTML += `<li class ="queue-list"><div class='box'>${this.items[i]}</div></li>`;
   }
 };
@@ -112,12 +109,12 @@ Queue.prototype.isEmpty = function () {
   if (this.length === 0) {
     return true;
   }
-  
+
   for (let i = 0; i < this.length; i++) {
     functionRes.replaceChildren();
     functionRes.innerHTML += `Queue contains values ${this.items}`;
   }
-}
+};
 
 let queue1 = new Queue();
 // BtnEle.addEventListener("click", () => {
@@ -132,7 +129,6 @@ enqueueBtnEle.addEventListener("click", () => {
   queue1.enqueue(ele);
   resEle.replaceChildren();
   queue1.display();
- 
 
   inputVal.value = "";
 });
@@ -148,16 +144,11 @@ btnEmpty.addEventListener("click", () => {
   if (queue1.isEmpty()) {
     functionRes.innerHTML += `Queue is empty`;
   } else {
-    console.log("not empty")
-    
-
-      
-  
-    
+    console.log("not empty");
   }
 });
 
-front.addEventListener("click", ()=>{
+front.addEventListener("click", () => {
   functionRes.replaceChildren();
   queue1.front();
-})
+});

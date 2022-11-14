@@ -1,3 +1,4 @@
+// getting elements by their IDs and Classes in the html files
 const container = document.getElementById("array");
 let currentArray = [];
 const setCountValue = document.getElementById("countValue");
@@ -10,9 +11,6 @@ const ConditionsValuesInput = document.getElementById("ConditionValuesInput");
 const header = document.querySelector(".header");
 let customRange1 = document.getElementById("customRange1");
 const invisibleDiv = document.getElementById("extraOperations");
-// const lessThanBtn = document.getElementById("LessValuesBtn");
-// const greaterThanBtn = document.getElementById("GreaterValuesBtn");
-// const oddValuesBtn = document.getElementById("oddValuesBtn");
 let hideStuff = false;
 let hideCount = false;
 
@@ -33,20 +31,15 @@ let pseudo = [
 ];
 const vall = null;
 function showVal() {
-  //  customRange1 = document.getElementById("customRange1");
-
-  console.log("in index", customRange1.value);
   return customRange1.value;
-  // document.getElementById("valBox").innerHTML=newVal;
 }
-
+// function to set range value
 function getNewSliderValue() {
   return setTimeout(() => {
     customRange1.value;
   }, customRange1.value);
 }
 
-console.log(customRange1.value);
 function reset(blocks) {
   for (let index = 0; index < blocks.length; index++) {
     blocks[index].style.backgroundColor = "#6b5b95";
@@ -54,12 +47,14 @@ function reset(blocks) {
 }
 
 //Conditional check functions
-
-async function ShowsLessThan(delay = showVal()) {
+// function that operates on values that are less than the value provided
+async function CountLessThan(delay = showVal()) {
+  // replacing result container before re rendering new data
   setCountValue.replaceChildren();
   header.replaceChildren();
   header.innerHTML += "Counting Algorithm";
   const step = true;
+  // array that contains each step of the algorithm
   let countingPsuedo = [
     "c ← 0",
     "for i ← 0, a.length − 1 do",
@@ -69,6 +64,7 @@ async function ShowsLessThan(delay = showVal()) {
     "end for",
     "return c",
   ];
+  // setting each algorithm line to a list item in the index.html file
   setCountValue.innerHTML += `
   <li id='setCountValue1' class = 'listCss'>${countingPsuedo[0]}</li>
   <li id='setCountValue2'  class = 'listCss'>${countingPsuedo[1]}</li>
@@ -77,9 +73,6 @@ async function ShowsLessThan(delay = showVal()) {
   <li id='setCountValue5'  class = 'listCss'>${countingPsuedo[4]}</li>
   <li id='setCountValue6'  class = 'listCss'>${countingPsuedo[5]}</li>
   `;
-  if (step) {
-    console.log("count");
-  }
   //disable the buttons
   disableCounting();
   //selecting all the blocks on the graph
@@ -94,29 +87,29 @@ async function ShowsLessThan(delay = showVal()) {
   document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
 
   for (var i = 0; i < blocks.length; i += 1) {
+    // exception handling to prevent user from entering null or no values
+    if (!ConditionsValuesInput.value) {
+      alert("Error! Please enter a value");
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          enableCounting();
+          resolve();
+        }, 2000)
+      );
+      return;
+    }
+    if (!isNumber(ConditionsValuesInput.value)) {
+      alert("Error! please enter numbers only");
+      // To wait for .5 sec
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          enableCounting();
+          resolve();
+        }, 2000)
+      );
+      return;
+    }
 
-      if (!ConditionsValuesInput.value) {
-        alert("Error! Please enter a value");
-        await new Promise((resolve) =>
-          setTimeout(() => {
-            enableCounting();
-            resolve();
-          }, 2000)
-        );
-        return;
-      }
-      if (!isNumber(ConditionsValuesInput.value)) {
-        alert("Error! please enter numbers only");
-        // To wait for .5 sec
-        await new Promise((resolve) =>
-          setTimeout(() => {
-            enableCounting();
-            resolve();
-          }, 2000)
-        );
-        return;
-      }
-    
     blocks[i].style.backgroundColor = "#FF4949";
 
     if (currentArray[i] < ConditionsValuesInput.value) {
@@ -124,7 +117,6 @@ async function ShowsLessThan(delay = showVal()) {
       codeExplaination.innerHTML += `Traversing through array to find numbers less than ${ConditionsValuesInput.value}`;
       // To change background-color of the
       // blocks to be compared
-      // console.log('var i = 0; i < blocks.length; i += 1')
       document.getElementById("setCountValue2").style.backgroundColor = "white";
       document.getElementById("setCountValue3").style.backgroundColor =
         "#d8b6ff";
@@ -150,11 +142,14 @@ async function ShowsLessThan(delay = showVal()) {
   //enabling the buttons once operation is complete
   enableCounting();
 }
-async function ShowsGreaterThan(delay = showVal()) {
+// function that operates on values that are greater than the value provided
+async function CountGreaterThan(delay = showVal()) {
+  // replacing result container before re rendering new data
   setCountValue.replaceChildren();
   header.replaceChildren();
   header.innerHTML += "Counting Algorithm";
   const step = true;
+  // array that contains each step of the algorithm
   let countingPsuedo = [
     "c ← 0",
     "for i ← 0, a.length − 1 do",
@@ -164,6 +159,7 @@ async function ShowsGreaterThan(delay = showVal()) {
     "end for",
     "return c",
   ];
+  // setting each algorithm line to a list item in the index.html file
   setCountValue.innerHTML += `
   <li id='setCountValue1' class = 'listCss'>${countingPsuedo[0]}</li>
   <li id='setCountValue2'  class = 'listCss'>${countingPsuedo[1]}</li>
@@ -189,6 +185,7 @@ async function ShowsGreaterThan(delay = showVal()) {
   document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
 
   for (var i = 0; i < blocks.length; i += 1) {
+    // exception handling to prevent user from entering null, no values or non numeral values
     if (!ConditionsValuesInput.value) {
       alert("Error! Please enter a value");
       await new Promise((resolve) =>
@@ -218,7 +215,6 @@ async function ShowsGreaterThan(delay = showVal()) {
       codeExplaination.innerHTML += `Traversing through array to find numbers greater than ${ConditionsValuesInput.value}`;
       // To change background-color of the
       // blocks to be compared
-      // console.log('var i = 0; i < blocks.length; i += 1')
       document.getElementById("setCountValue2").style.backgroundColor = "white";
       document.getElementById("setCountValue3").style.backgroundColor =
         "#d8b6ff";
@@ -244,12 +240,13 @@ async function ShowsGreaterThan(delay = showVal()) {
   //enabling the buttons once operation is complete
   enableCounting();
 }
-
-async function ShowsOddNumber(delay = showVal()) {
+// function that loops through the array and finds Odd Numbers
+async function CountOddNumber(delay = showVal()) {
   setCountValue.replaceChildren();
   header.replaceChildren();
   header.innerHTML += "Counting Algorithm";
   const step = true;
+  // array that contains each step of the algorithm
   let countingPsuedo = [
     "c ← 0",
     "for i ← 0, a.length − 1 do",
@@ -259,6 +256,7 @@ async function ShowsOddNumber(delay = showVal()) {
     "end for",
     "return c",
   ];
+  // setting each algorithm line to a list item in the index.html file
   setCountValue.innerHTML += `
   <li id='setCountValue1' class = 'listCss'>${countingPsuedo[0]}</li>
   <li id='setCountValue2'  class = 'listCss'>${countingPsuedo[1]}</li>
@@ -285,21 +283,23 @@ async function ShowsOddNumber(delay = showVal()) {
 
   for (var i = 0; i < blocks.length; i += 1) {
     blocks[i].style.backgroundColor = "#FF4949";
-
+    // function to find values that do not return zero when divided by two
+    // making them odd numbers
     if (currentArray[i] % 2 != 0) {
       codeExplaination.replaceChildren();
 
       codeExplaination.innerHTML += `Traversing through array to find odd numbers`;
       // To change background-color of the
       // blocks to be compared
-      // console.log('var i = 0; i < blocks.length; i += 1')
       document.getElementById("setCountValue2").style.backgroundColor = "white";
       document.getElementById("setCountValue3").style.backgroundColor =
         "#d8b6ff";
       document.getElementById("setCountValue4").style.backgroundColor =
         "#d8b6ff";
       blocks[i].style.backgroundColor = "#13CE66";
+      // adding the number of even number with each iteration
       count++;
+      // returning the total count of even numbers
       header.innerText = `The number of Odd Numbers is: ${count}`;
     }
 
@@ -320,12 +320,13 @@ async function ShowsOddNumber(delay = showVal()) {
   //enabling the buttons once operation is complete
   enableCounting();
 }
-
-async function ShowsEvenNumber(delay = showVal()) {
+// function that loops through the array and finds Even Numbers
+async function CountEvenNumber(delay = showVal()) {
   setCountValue.replaceChildren();
   header.replaceChildren();
   header.innerHTML += "Counting Algorithm";
   const step = true;
+  // array that contains each step of the algorithm
   let countingPsuedo = [
     "c ← 0",
     "for i ← 0, a.length − 1 do",
@@ -335,6 +336,7 @@ async function ShowsEvenNumber(delay = showVal()) {
     "end for",
     "return c",
   ];
+  // setting each algorithm line to a list item in the index.html file
   setCountValue.innerHTML += `
   <li id='setCountValue1' class = 'listCss'>${countingPsuedo[0]}</li>
   <li id='setCountValue2'  class = 'listCss'>${countingPsuedo[1]}</li>
@@ -358,9 +360,10 @@ async function ShowsEvenNumber(delay = showVal()) {
   let count = 0;
 
   for (var i = 0; i < blocks.length; i += 1) {
-
     blocks[i].style.backgroundColor = "#FF4949";
 
+    // function to find values that return zero when divided by two
+    // making them even numbers
     if (currentArray[i] % 2 == 0) {
       codeExplaination.replaceChildren();
       codeExplaination.innerHTML += `Traversing through array to find even numbers`;
@@ -369,14 +372,15 @@ async function ShowsEvenNumber(delay = showVal()) {
         "#d8b6ff";
       // To change background-color of the
       // blocks to be compared
-      // console.log('var i = 0; i < blocks.length; i += 1')
       document.getElementById("setCountValue2").style.backgroundColor = "white";
       document.getElementById("setCountValue3").style.backgroundColor =
         "#d8b6ff";
       document.getElementById("setCountValue4").style.backgroundColor =
         "#d8b6ff";
       blocks[i].style.backgroundColor = "#13CE66";
+      // adding the number of even number with each iteration
       count++;
+      // returning the total count of even numbers
       header.innerText = `The total number of Even Numbers is: ${count}`;
     }
 
@@ -436,6 +440,7 @@ insertValuesBtn.addEventListener("click", function () {
   insertValuesInput.value = "";
 });
 
+// function to disable buttons while the summing function runs
 function disableSumming() {
   document.getElementById("LessValuesBtn").disabled = true;
   document.getElementById("LessValuesBtn").style.backgroundColor = "#d8b6ff";
@@ -446,6 +451,8 @@ function disableSumming() {
   document.getElementById("EvenValuesBtn").disabled = true;
   document.getElementById("EvenValuesBtn").style.backgroundColor = "#d8b6ff";
 }
+// function to enable buttons after the summing function ends
+
 function enableSumming() {
   document.getElementById("LessValuesBtn").disabled = false;
   document.getElementById("LessValuesBtn").style.backgroundColor = "#2c80ff";
@@ -456,6 +463,7 @@ function enableSumming() {
   document.getElementById("EvenValuesBtn").disabled = false;
   document.getElementById("EvenValuesBtn").style.backgroundColor = "#2c80ff";
 }
+// function to disable buttons while the counting function runs
 
 function disableCounting() {
   document.getElementById("LessValuesBtnn").disabled = true;
@@ -467,8 +475,9 @@ function disableCounting() {
   document.getElementById("OddValuesBtnn").style.backgroundColor = "#d8b6ff";
   document.getElementById("EvenValuesBtnn").disabled = true;
   document.getElementById("EvenValuesBtnn").style.backgroundColor = "#d8b6ff";
-  console.log("counting disabled");
 }
+// function to enable buttons after the counting function ends
+
 function enableCounting() {
   document.getElementById("LessValuesBtnn").disabled = false;
   document.getElementById("LessValuesBtnn").style.backgroundColor = "#2c80ff";
@@ -481,17 +490,14 @@ function enableCounting() {
   document.getElementById("EvenValuesBtnn").style.backgroundColor = "#2c80ff";
 }
 
-function disable() {
-
-}
+function disable() {}
+// function to clear the array
 function clear() {
   // clear the array and the container
   currentArray = [];
   container.innerHTML = "";
 }
-function enable() {
-
-}
+function enable() {}
 //convert value passed as an argument to a number and check if it is a number
 function isNumber(value) {
   //convert value to number
@@ -506,16 +512,16 @@ function isNumber(value) {
   //return false if value is not a number
   return false;
 }
+// function to hide buttons that appear to run extra functions
 function hideElements() {
   hideStuff = !hideStuff;
   if (hideStuff) {
     document.getElementById("hiddenDiv").style.display = "none";
   } else {
-    // document.getElementById("hiddenCountDiv").style.display = "none";
     document.getElementById("hiddenDiv").style.display = "flex";
   }
-  console.log(hideStuff);
 }
+// function to hide buttons that appear to run extra functions on the counting algorithm page
 function hideCountElements() {
   hideCount = !hideCount;
   if (hideCount) {
@@ -571,11 +577,11 @@ function generate() {
 }
 
 async function counting(delay = showVal()) {
-  console.log("show", showVal());
   setCountValue.replaceChildren();
   header.replaceChildren();
   header.innerHTML += "Counting Algorithm";
   const step = true;
+  // array that contains each step of the algorithm
   let countingPsuedo = [
     "c ← 0",
     "for i ← 0, a.length − 1 do",
@@ -585,6 +591,7 @@ async function counting(delay = showVal()) {
     "end for",
     "return c",
   ];
+  // setting each algorithm line to a list item in the index.html file
   setCountValue.innerHTML += `
   <li id='setCountValue1' class = 'listCss'>${countingPsuedo[0]}</li>
   <li id='setCountValue2'  class = 'listCss'>${countingPsuedo[1]}</li>
@@ -638,6 +645,7 @@ async function counting(delay = showVal()) {
 async function maximum(delay = showVal()) {
   setCountValue.replaceChildren();
   header.replaceChildren();
+  // array that contains each step of the algorithm
   let minimumPsuedo = [
     "max ← a[0]",
     "for i ← 0, a.length − 1 do",
@@ -647,6 +655,7 @@ async function maximum(delay = showVal()) {
     "end for",
     "return max",
   ];
+  // setting each algorithm line to a list item in the index.html file
   setCountValue.innerHTML += `
   <li id='setCountValue1'  class = 'listCss'>${minimumPsuedo[0]}</li>
   <li id='setCountValue2' class = 'listCss'>${minimumPsuedo[1]}</li>
@@ -701,6 +710,8 @@ async function maximum(delay = showVal()) {
     codeExplaination.replaceChildren();
 
     codeExplaination.innerHTML += `Traverse through array to find greater values`;
+    // if the previous maximum is less than the current value being evaluated
+    // then the current value is set as the new max
     if (max < cuurentValue) {
       console.log("step3");
       document.getElementById("setCountValue2").style.backgroundColor = "white";
@@ -709,7 +720,7 @@ async function maximum(delay = showVal()) {
 
       codeExplaination.replaceChildren();
       codeExplaination.innerHTML += `swap old max value: ${max} with the current value: ${cuurentValue}`;
-
+      // previous max is replaced with current value
       max = cuurentValue;
       document.getElementById("setCountValue4").style.backgroundColor =
         "#d8b6ff";
@@ -730,10 +741,6 @@ async function maximum(delay = showVal()) {
 
     document.getElementById("setCountValue5").style.backgroundColor = "white";
     document.getElementById("setCountValue6").style.backgroundColor = "#d8b6ff";
-
-    console.log(
-      "if the minimum is greater than the current value set the minimum to the current value"
-    );
   }
 
   codeExplaination.replaceChildren();
@@ -751,6 +758,7 @@ async function minimum(delay = showVal()) {
   setCountValue.replaceChildren();
   header.replaceChildren();
   header.innerHTML += "Minimum Algorithm";
+  // array that contains each step of the algorithm
   let minimumPsuedo = [
     "min ← a[0]",
     "for i ← 0, a.length − 1 do",
@@ -760,6 +768,7 @@ async function minimum(delay = showVal()) {
     "end for",
     "return min",
   ];
+  // setting each algorithm line to a list item in the index.html file
   setCountValue.innerHTML += `
   <li id='setCountValue1'  class = 'listCss'>${minimumPsuedo[0]}</li>
   <li id='setCountValue2'  class = 'listCss'>${minimumPsuedo[1]}</li>
@@ -804,9 +813,12 @@ async function minimum(delay = showVal()) {
     document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
     codeExplaination.replaceChildren();
     codeExplaination.innerHTML += `Traverse through array to find smaller values`;
+    // function to find out if the current minimum value is less than the current value being evaluated
     if (min > cuurentValue) {
       codeExplaination.replaceChildren();
       codeExplaination.innerHTML += `swap old minimum value: ${min} with the current value: ${cuurentValue}`;
+      // if the current value less than the previous minimum,
+      // the current value is set as the new minimum value
       min = cuurentValue;
       blocks[i].style.backgroundColor = "#13CE66";
       // display message
@@ -829,11 +841,13 @@ async function minimum(delay = showVal()) {
   document.getElementById("setCountValue3").style.backgroundColor = "white";
   document.getElementById("setCountValue7").style.backgroundColor = "#d8b6ff";
 }
+// a function to sum up the total number of even numbers
 async function summingEvenNumbers(delay = showVal()) {
   console.log(delay);
   header.replaceChildren();
   setCountValue.replaceChildren();
   header.innerHTML += "Summing Algorithm";
+  // array that contains each step of the algorithm
   let summingPseudo = [
     "c ← 0",
     "for i ← 0, a.length − 1 do",
@@ -843,6 +857,8 @@ async function summingEvenNumbers(delay = showVal()) {
     "end for",
     "return s",
   ];
+  // setting each algorithm line to a list item in the index.html file
+
   setCountValue.innerHTML += `
   <li id='setCountValue1' class = 'listCss'>${summingPseudo[0]}</li>
   <li id='setCountValue2' class = 'listCss' >${summingPseudo[1]}</li>
@@ -865,7 +881,8 @@ async function summingEvenNumbers(delay = showVal()) {
 
   for (var i = 0; i < blocks.length; i += 1) {
     blocks[i].style.backgroundColor = "#FF4949";
-
+    // function to find values that return zero when divided by two
+    // making them even numbers
     if (currentArray[i] % 2 === 0) {
       codeExplaination.replaceChildren();
       codeExplaination.innerHTML += `Traversing through array to find even numbers`;
@@ -879,6 +896,7 @@ async function summingEvenNumbers(delay = showVal()) {
       // To change background-color of the
       // blocks to be compared
       blocks[i].style.backgroundColor = "#13CE66";
+      // summing the total number of even numbers
       sum = sum + currentArray[i];
       // sum += sum + currentArray[i]
       header.innerText = `The sum of even numbers is: ${sum}`;
@@ -905,6 +923,7 @@ async function summingOddNumbers(delay = showVal()) {
   header.replaceChildren();
   setCountValue.replaceChildren();
   header.innerHTML += "Summing Algorithm";
+  // array that contains each step of the algorithm
   let summingPseudo = [
     "c ← 0",
     "for i ← 0, a.length − 1 do",
@@ -914,6 +933,8 @@ async function summingOddNumbers(delay = showVal()) {
     "end for",
     "return s",
   ];
+  // setting each algorithm line to a list item in the index.html file
+
   setCountValue.innerHTML += `
   <li id='setCountValue1' class = 'listCss'>${summingPseudo[0]}</li>
   <li id='setCountValue2' class = 'listCss' >${summingPseudo[1]}</li>
@@ -936,7 +957,8 @@ async function summingOddNumbers(delay = showVal()) {
 
   for (var i = 0; i < blocks.length; i += 1) {
     blocks[i].style.backgroundColor = "#FF4949";
-
+    // function to find values that do not return zero when divided by two
+    // making them odd numbers
     if (currentArray[i] % 2 != 0) {
       codeExplaination.replaceChildren();
 
@@ -950,6 +972,7 @@ async function summingOddNumbers(delay = showVal()) {
       // To change background-color of the
       // blocks to be compared
       blocks[i].style.backgroundColor = "#13CE66";
+      // summing up the total number of odd numbers
       sum = sum + Number(currentArray[i]);
       // sum += sum + currentArray[i]
       header.innerText = `The sum of odd numbers is: ${sum}`;
@@ -976,6 +999,7 @@ async function summingGreaterThan(delay = showVal()) {
   header.replaceChildren();
   setCountValue.replaceChildren();
   header.innerHTML += "Summing Algorithm";
+  // array that contains each step of the algorithm
   let summingPseudo = [
     "c ← 0",
     "for i ← 0, a.length − 1 do",
@@ -985,6 +1009,8 @@ async function summingGreaterThan(delay = showVal()) {
     "end for",
     "return s",
   ];
+  // setting each algorithm line to a list item in the index.html file
+
   setCountValue.innerHTML += `
   <li id='setCountValue1' class = 'listCss'>${summingPseudo[0]}</li>
   <li id='setCountValue2' class = 'listCss' >${summingPseudo[1]}</li>
@@ -1006,7 +1032,7 @@ async function summingGreaterThan(delay = showVal()) {
   document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
 
   for (var i = 0; i < blocks.length; i += 1) {
-
+    // preventing user from entering null or non numeral values
     if (!conditionValue.value) {
       alert("Error! Please enter a value");
       await new Promise((resolve) =>
@@ -1029,7 +1055,7 @@ async function summingGreaterThan(delay = showVal()) {
       return;
     }
     blocks[i].style.backgroundColor = "#FF4949";
-
+    // looping through array to find value greater than the value entered by user
     if (currentArray[i] > conditionValue.value) {
       codeExplaination.replaceChildren();
 
@@ -1043,7 +1069,7 @@ async function summingGreaterThan(delay = showVal()) {
       // To change background-color of the
       // blocks to be compared
       blocks[i].style.backgroundColor = "#13CE66";
-
+      // summing up the total number of array values which are greater than the value entered by user
       sum = sum + Number(currentArray[i]);
       // sum += sum + currentArray[i]
       header.innerText = `The sum of numbers greater than ${conditionValue.value} is: ${sum}`;
@@ -1070,6 +1096,7 @@ async function summingLessThan(delay = showVal()) {
   header.replaceChildren();
   setCountValue.replaceChildren();
   header.innerHTML += "Summing Algorithm";
+  // array that contains each step of the algorithm
   let summingPseudo = [
     "c ← 0",
     "for i ← 0, a.length − 1 do",
@@ -1079,6 +1106,8 @@ async function summingLessThan(delay = showVal()) {
     "end for",
     "return s",
   ];
+  // setting each algorithm line to a list item in the index.html file
+
   setCountValue.innerHTML += `
   <li id='setCountValue1' class = 'listCss'>${summingPseudo[0]}</li>
   <li id='setCountValue2' class = 'listCss' >${summingPseudo[1]}</li>
@@ -1100,8 +1129,8 @@ async function summingLessThan(delay = showVal()) {
   document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
 
   for (var i = 0; i < blocks.length; i += 1) {
-   
     if (!conditionValue.value) {
+      // preventing user from entering null or non numeral values
       alert("Error! Please enter a value");
       await new Promise((resolve) =>
         setTimeout(() => {
@@ -1123,6 +1152,7 @@ async function summingLessThan(delay = showVal()) {
       return;
     }
     blocks[i].style.backgroundColor = "#FF4949";
+    // looping through array to find value less than the value entered by user
     if (currentArray[i] < conditionValue.value) {
       codeExplaination.replaceChildren();
 
@@ -1136,7 +1166,7 @@ async function summingLessThan(delay = showVal()) {
       // To change background-color of the
       // blocks to be compared
       blocks[i].style.backgroundColor = "#13CE66";
-
+      // summing up the total number of array values which are less than the value entered by user
       sum = sum + Number(currentArray[i]);
       // sum += sum + currentArray[i]
       header.innerText = `The sum of numbers less than ${conditionValue.value} is: ${sum}`;
@@ -1177,6 +1207,7 @@ async function searchAlgorithm(delay = showVal()) {
   header.replaceChildren();
   setCountValue.replaceChildren();
   header.innerHTML += "Searching Algorithm";
+  // array that contains each step of the algorithm
   let pseudo = [
     "for i ← 0, a.length − 1 do",
     "if (a[i] == e) then",
@@ -1186,6 +1217,7 @@ async function searchAlgorithm(delay = showVal()) {
     "return false",
   ];
   pseudo.push("for i ← 0, a.length − 1 do");
+  // setting each algorithm line to a list item in the index.html file
   setCountValue.innerHTML += `
   <li id='setCountValue1' class = 'listCss'>${pseudo[0]}</li>
   <li id='setCountValue2' class = 'listCss'>${pseudo[1]}</li>
@@ -1214,8 +1246,6 @@ async function searchAlgorithm(delay = showVal()) {
         resolve();
       }, delay)
     );
-    console.log(arrInput);
-    console.log(Number(blocks[i].childNodes[0].innerHTML));
     // values in array
     var values = Number(blocks[i].childNodes[0].innerHTML);
     // variable to store index where found value is stored
