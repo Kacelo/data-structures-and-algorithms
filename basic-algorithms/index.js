@@ -994,7 +994,7 @@ async function minimum(delay = showVal()) {
   document.getElementById("setCountValue4").style.backgroundColor = "white";
   header.replaceChildren();
   header.innerText = `The final minimum value is: ${min} at index ${index}`;
-  document.getElementById("setCountValue7").style.backgroundColor = "#d8b6ff"
+  document.getElementById("setCountValue7").style.backgroundColor = "#d8b6ff";
 }
 // a function to sum up the total number of even numbers
 async function summingEvenNumbers(delay = showVal()) {
@@ -1055,12 +1055,9 @@ async function summingEvenNumbers(delay = showVal()) {
     document.getElementById("setCountValue1").style.backgroundColor = "white";
     document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
     document.getElementById("setCountValue3").style.backgroundColor = "white";
+    document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
     if (currentArray[i] % 2 === 0) {
       document.getElementById("setCountValue2").style.backgroundColor = "white";
-      // document.getElementById("setCountValue3").style.backgroundColor =
-      //   "#white";
-      document.getElementById("setCountValue3").style.backgroundColor =
-        "#d8b6ff";
       // To change background-color of the
       // blocks to be compared
       blocks[i].style.backgroundColor = "#13CE66";
@@ -1074,17 +1071,18 @@ async function summingEvenNumbers(delay = showVal()) {
           resolve();
         }, 3000)
       );
-      document.getElementById("setCountValue3").style.backgroundColor =
-        "#white";
+
       // summing the total number of even numbers
       // sum += sum + currentArray[i]
       codeExplaination.replaceChildren();
       codeExplaination.innerHTML += `Even number added to sum`;
+      document.getElementById("setCountValue3").style.backgroundColor =
+        "#white";
       document.getElementById("setCountValue4").style.backgroundColor =
         "#d8b6ff";
       sum = sum + currentArray[i];
 
-      header.innerText = `The the new sum of even numbers is: ${sum}`;
+      header.innerText = `The new sum of even numbers is: ${sum}`;
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
@@ -1146,34 +1144,68 @@ async function summingOddNumbers(delay = showVal()) {
   var blocks = document.querySelectorAll(".block");
   //reset the blocks to the default color
   reset(blocks);
-  document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
+
   //Setting the count to 0
+  codeExplaination.replaceChildren();
+  codeExplaination.innerHTML += `Set Sum to Zero`;
+  document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
+  await new Promise((resolve) =>
+    setTimeout(() => {
+      resolve();
+    }, 2000)
+  );
   let sum = 0;
   document.getElementById("setCountValue1").style.backgroundColor = "white";
+  await new Promise((resolve) =>
+    setTimeout(() => {
+      resolve();
+    }, 2000)
+  );
   document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
 
   for (var i = 0; i < blocks.length; i += 1) {
     blocks[i].style.backgroundColor = "#FF4949";
     // function to find values that do not return zero when divided by two
     // making them odd numbers
+    codeExplaination.replaceChildren();
+    codeExplaination.innerHTML += `Traversing through array to find odd numbers`;
+    document.getElementById("setCountValue1").style.backgroundColor = "white";
+    document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
+    document.getElementById("setCountValue3").style.backgroundColor = "white";
+    // document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
     if (currentArray[i] % 2 != 0) {
-      codeExplaination.replaceChildren();
-
-      codeExplaination.innerHTML += `Traversing through array to find odd numbers`;
       document.getElementById("setCountValue2").style.backgroundColor = "white";
-      document.getElementById("setCountValue3").style.backgroundColor =
-        "#d8b6ff";
-      document.getElementById("setCountValue4").style.backgroundColor =
-        "#d8b6ff";
 
       // To change background-color of the
       // blocks to be compared
       blocks[i].style.backgroundColor = "#13CE66";
+      codeExplaination.replaceChildren();
+
+      codeExplaination.innerHTML +=
+        "if the current value is NOT divisible by 2, then add it to current sum";
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          resolve();
+        }, 3000)
+      );
+
+      codeExplaination.replaceChildren();
+      codeExplaination.innerHTML += `Even number added to sum`;
+      document.getElementById("setCountValue3").style.backgroundColor =
+        "#white";
+      document.getElementById("setCountValue4").style.backgroundColor =
+        "#d8b6ff";
       // summing up the total number of odd numbers
       sum = sum + Number(currentArray[i]);
       // sum += sum + currentArray[i]
-      header.innerText = `The sum of odd numbers is: ${sum}`;
+      header.innerText = `The new sum of odd numbers is: ${sum}`;
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          resolve();
+        }, 2000)
+      );
     }
+    document.getElementById("setCountValue4").style.backgroundColor = "white";
     // To wait for .5 sec
     await new Promise((resolve) =>
       setTimeout(() => {
@@ -1181,13 +1213,19 @@ async function summingOddNumbers(delay = showVal()) {
       }, delay)
     );
   }
+  document.getElementById("setCountValue5").style.backgroundColor = "#d8b6ff";
   codeExplaination.replaceChildren();
   codeExplaination.innerHTML += `return sum of odd numbers`;
+  document.getElementById("setCountValue2").style.backgroundColor = "white";
   document.getElementById("setCountValue3").style.backgroundColor = "white";
   document.getElementById("setCountValue4").style.backgroundColor = "white";
-  document.getElementById("setCountValue5").style.backgroundColor = "#d8b6ff";
+  await new Promise((resolve) =>
+    setTimeout(() => {
+      resolve();
+    }, 2000)
+  );
+  document.getElementById("setCountValue5").style.backgroundColor = "#white";
   document.getElementById("setCountValue6").style.backgroundColor = "#d8b6ff";
-
   //enabling the buttons once operation is complete
   enableSumming();
 }
