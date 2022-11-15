@@ -211,31 +211,42 @@
                     </div>
                   </div>
 
-                  <div class="btn-container">
-                    <button
-                      class="btn1"
-                      onclick="generate()"
-                      id="generteButton"
-                    >
-                      Generate Random Array
-                    </button>
+                  <div class="btn-container row">
+                    <div class="col">
+                      <button
+                        class="btn1"
+                        onclick="generate()"
+                        id="generteButton"
+                      >
+                        Generate Random Array
+                      </button>
+                    </div>
 
-                    <div class="InsertValuesContainer">
-                      <input
-                        type="text"
-                        id="insertValuesInput"
-                        placeholder="add values to custom array"
-                        class="valueEntry"
-                      />
+                    <div class="InsertValuesContainer col">
+                      <div class="row">
+                        <label for="custom">
+                          Or create your own array here
+                        </label>
+                        <input
+                          type="text"
+                          id="insertValuesInput"
+                          placeholder="add values to custom array"
+                          class="valueEntry"
+                          name="custom"
+                        />
+                      </div>
                       <button id="insertValuesBtn" class="button">Enter</button>
                     </div>
-                    <button
-                      class="btn1"
-                      onclick="hideCountElements()"
-                      id="countingButton"
-                    >
-                      Counting
-                    </button>
+                    <div class="col">
+                      <button
+                        class="btn1"
+                        onclick="hideCountElements()"
+                        id="countingButton"
+                      >
+                        Counting Operations
+                      </button>
+                    </div>
+
                     <!-- <button class="btn1" id ="search" onclick="searchAlgorithm()"> -->
                     <!-- Search</button>
                                         <input type="text" id="array-input" placeholder="search for number"> -->
