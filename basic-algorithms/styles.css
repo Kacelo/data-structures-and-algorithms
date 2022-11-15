@@ -223,3 +223,7 @@ visibility: hidden;
   .custom-tooltip {
 	--bs-tooltip-bg: var(--bs-primary);
   }
+  .card-header{
+	max-height: 20vh;
+    min-height: 15vh;
+  }
