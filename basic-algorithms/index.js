@@ -79,8 +79,6 @@ async function CountLessThan(delay = showVal()) {
   var blocks = document.querySelectorAll(".block");
   //reset the blocks to the default color
   reset(blocks);
-  document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
-  reset(blocks);
   codeExplaination.replaceChildren();
   codeExplaination.innerHTML += `Set Sum to Zero`;
   document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
@@ -153,20 +151,19 @@ async function CountLessThan(delay = showVal()) {
         "#13CE66";
       codeExplaination.replaceChildren();
       codeExplaination.innerHTML += `lesser number is added to count`;
-      document.getElementById("setCountValue3").style.backgroundColor =
-        "#white";
+
       count++;
       // codeExplaination.replaceChildren();
       // codeExplaination.innerHTML += `found a number Less than ${ConditionsValuesInput.value} then add it to count total`;
-      header.innerText = `The total number of values less than ${ConditionsValuesInput.value} is: ${count}`;
+
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
         }, 2000)
       );
-      document.getElementById("setCountValue4").style.backgroundColor = "white";
     }
-
+    header.innerText = `The total number of values less than ${ConditionsValuesInput.value} is: ${count}`;
+    document.getElementById("setCountValue4").style.backgroundColor = "white";
     // To wait for .5 sec
     await new Promise((resolve) =>
       setTimeout(() => {
@@ -174,20 +171,26 @@ async function CountLessThan(delay = showVal()) {
       }, delay)
     );
   }
-  document.getElementById("setCountValue5").style.backgroundColor = "#FF4949";
   codeExplaination.replaceChildren();
-  codeExplaination.innerHTML += `return total number of values greater than ${conditionValue.value}`;
+  codeExplaination.innerHTML += `end Traversal`;
+  document.getElementById("setCountValue5").style.backgroundColor = "#FF4949";
+  await new Promise((resolve) =>
+    setTimeout(() => {
+      resolve();
+    }, 1000)
+  );
   document.getElementById("setCountValue2").style.backgroundColor = "white";
   document.getElementById("setCountValue3").style.backgroundColor = "white";
   document.getElementById("setCountValue4").style.backgroundColor = "white";
   await new Promise((resolve) =>
     setTimeout(() => {
       resolve();
-    }, 2000)
+    }, 1000)
   );
-  document.getElementById("setCountValue5").style.backgroundColor = "#white";
-  document.getElementById("setCountValue6").style.backgroundColor = "#FF4949";
-
+  document.getElementById("setCountValue5").style.backgroundColor = "white";
+  codeExplaination.replaceChildren();
+  codeExplaination.innerHTML += `return total number of values less than ${conditionValue.value}`;
+  document.getElementById("setCountValue6").style.backgroundColor = "#13CE66";
   //enabling the buttons once operation is complete
   enableCounting();
 }
@@ -226,8 +229,6 @@ async function CountGreaterThan(delay = showVal()) {
   var blocks = document.querySelectorAll(".block");
   //reset the blocks to the default color
   reset(blocks);
-  document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
-  reset(blocks);
   codeExplaination.replaceChildren();
   codeExplaination.innerHTML += `Set Sum to Zero`;
   document.getElementById("setCountValue1").style.backgroundColor = "#d8b6ff";
@@ -253,7 +254,7 @@ async function CountGreaterThan(delay = showVal()) {
       alert("Error! Please enter a value");
       await new Promise((resolve) =>
         setTimeout(() => {
-          enableSumming();
+        enableCounting();
           resolve();
         }, 2000)
       );
@@ -264,7 +265,7 @@ async function CountGreaterThan(delay = showVal()) {
       // To wait for .5 sec
       await new Promise((resolve) =>
         setTimeout(() => {
-          enableSumming();
+          enableCounting();
           resolve();
         }, 2000)
       );
@@ -283,9 +284,8 @@ async function CountGreaterThan(delay = showVal()) {
     if (currentArray[i] > Number(ConditionsValuesInput.value)) {
       // To change background-color of the
       // blocks to be compared
+      document.getElementById("setCountValue2").style.backgroundColor = "white";
       document.getElementById("setCountValue3").style.backgroundColor =
-        "#white";
-      document.getElementById("setCountValue4").style.backgroundColor =
         "#d8b6ff";
       codeExplaination.replaceChildren();
       codeExplaination.innerHTML += `if the current value is Greater than ${ConditionsValuesInput.value}, then`;
@@ -298,18 +298,19 @@ async function CountGreaterThan(delay = showVal()) {
       document.getElementById("setCountValue4").style.backgroundColor =
         "#13CE66";
       codeExplaination.replaceChildren();
-      codeExplaination.innerHTML += `lesser number is added to count`;
-      document.getElementById("setCountValue3").style.backgroundColor =
-        "#white";
+      codeExplaination.innerHTML += `Greater number is added to count`;
+
       count++;
-      header.innerText = `The total number of values greater than ${ConditionsValuesInput.value} is: ${count}`;
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
         }, 2000)
       );
-      document.getElementById("setCountValue4").style.backgroundColor = "white";
+      // document.getElementById("setCountValue3").style.backgroundColor = "white";
     }
+    header.innerText = `The total number of values greater than ${ConditionsValuesInput.value} is: ${count}`;
+
+    document.getElementById("setCountValue4").style.backgroundColor = "white";
 
     // To wait for .5 sec
     await new Promise((resolve) =>
@@ -318,19 +319,27 @@ async function CountGreaterThan(delay = showVal()) {
       }, 2000)
     );
   }
-  document.getElementById("setCountValue5").style.backgroundColor = "#FF4949";
   codeExplaination.replaceChildren();
-  codeExplaination.innerHTML += `return total number of values greater than ${conditionValue.value}`;
-  document.getElementById("setCountValue2").style.backgroundColor = "white";
-  document.getElementById("setCountValue3").style.backgroundColor = "white";
-  document.getElementById("setCountValue4").style.backgroundColor = "white";
+  codeExplaination.innerHTML += `end Traversal`;
+  document.getElementById("setCountValue5").style.backgroundColor = "#FF4949";
   await new Promise((resolve) =>
     setTimeout(() => {
       resolve();
-    }, 2000)
+    }, 1000)
   );
-  document.getElementById("setCountValue5").style.backgroundColor = "#white";
-  document.getElementById("setCountValue6").style.backgroundColor = "#FF4949";
+  document.getElementById("setCountValue2").style.backgroundColor = "white";
+  document.getElementById("setCountValue3").style.backgroundColor = "white";
+  document.getElementById("setCountValue4").style.backgroundColor = "white";
+
+  await new Promise((resolve) =>
+    setTimeout(() => {
+      resolve();
+    }, 1000)
+  );
+  document.getElementById("setCountValue5").style.backgroundColor = "white";
+  codeExplaination.replaceChildren();
+  codeExplaination.innerHTML += `return total number of values greater than ${ConditionsValuesInput.value}`;
+  document.getElementById("setCountValue6").style.backgroundColor = "#13CE66";
   //enabling the buttons once operation is complete
   enableCounting();
 }
@@ -359,9 +368,7 @@ async function CountOddNumber(delay = showVal()) {
   <li id='setCountValue5'  class = 'listCss'>${countingPsuedo[4]}</li>
   <li id='setCountValue6'  class = 'listCss'>${countingPsuedo[5]}</li>
   `;
-  if (step) {
-    console.log("count");
-  }
+
   //disable the buttons
   disableCounting();
   //selecting all the blocks on the graph
@@ -391,30 +398,53 @@ async function CountOddNumber(delay = showVal()) {
     // function to find values that do not return zero when divided by two
     // making them odd numbers
     codeExplaination.replaceChildren();
-
     codeExplaination.innerHTML += `Traversing through array to find odd numbers`;
+    document.getElementById("setCountValue1").style.backgroundColor = "white";
+    document.getElementById("setCountValue2").style.backgroundColor = "#FF4949";
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
     if (currentArray[i] % 2 != 0) {
       // To change background-color of the
       // blocks to be compared
-      document.getElementById("setCountValue2").style.backgroundColor = "white";
       document.getElementById("setCountValue3").style.backgroundColor =
         "#d8b6ff";
-      document.getElementById("setCountValue4").style.backgroundColor =
-        "#d8b6ff";
-      blocks[i].style.backgroundColor = "#13CE66";
-      // adding the number of even number with each iteration
-      count++;
-      codeExplaination.replaceChildren();
-      codeExplaination.innerHTML += `Odd number found! then add it to count total`;
+      document.getElementById("setCountValue2").style.backgroundColor = "white";
+
+      // blocks[i].style.backgroundColor = "#13CE66";
+
       // returning the total count of even numbers
-      header.innerText = `The number of Odd Numbers is: ${count}`;
+      codeExplaination.replaceChildren();
+
+      codeExplaination.innerHTML +=
+        "if the current value is NOT divisible by 2, then";
+      header.innerText = `The new sum of odd numbers is: ${count}`;
+
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
         }, 2000)
       );
-      document.getElementById("setCountValue4").style.backgroundColor = "white";
+      blocks[i].style.backgroundColor = "#13CE66";
+      document.getElementById("setCountValue4").style.backgroundColor =
+        "#13CE66";
+      codeExplaination.replaceChildren();
+      codeExplaination.innerHTML += `Odd number is added to sum`;
+
+      // adding the number of even number with each iteration
+      count++;
+      header.innerText = `The total number of Odd Numbers is: ${count}`;
+
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          resolve();
+        }, 2000)
+      );
+      // document.getElementById("setCountValue3").style.backgroundColor = "white";
     }
+    document.getElementById("setCountValue4").style.backgroundColor = "white";
 
     // To wait for .5 sec
     await new Promise((resolve) =>
@@ -424,10 +454,26 @@ async function CountOddNumber(delay = showVal()) {
     );
   }
   codeExplaination.replaceChildren();
-  codeExplaination.innerHTML += `end loop and return total count of odd numbers`;
+  codeExplaination.innerHTML += `end Traversal`;
+  document.getElementById("setCountValue5").style.backgroundColor = "#FF4949";
+  await new Promise((resolve) =>
+    setTimeout(() => {
+      resolve();
+    }, 1000)
+  );
+  document.getElementById("setCountValue2").style.backgroundColor = "white";
   document.getElementById("setCountValue3").style.backgroundColor = "white";
-  document.getElementById("setCountValue5").style.backgroundColor = "#d8b6ff";
-  document.getElementById("setCountValue6").style.backgroundColor = "#d8b6ff";
+  document.getElementById("setCountValue4").style.backgroundColor = "white";
+  await new Promise((resolve) =>
+    setTimeout(() => {
+      resolve();
+    }, 1000)
+  );
+  document.getElementById("setCountValue5").style.backgroundColor = "white";
+  codeExplaination.replaceChildren();
+  codeExplaination.innerHTML += `return sum of Odd numbers`;
+  document.getElementById("setCountValue6").style.backgroundColor = "#13CE66";
+  //enabling the buttons once operation is complete
 
   //enabling the buttons once operation is complete
   enableCounting();
@@ -457,9 +503,6 @@ async function CountEvenNumber(delay = showVal()) {
   <li id='setCountValue5'  class = 'listCss'>${countingPsuedo[4]}</li>
   <li id='setCountValue6'  class = 'listCss'>${countingPsuedo[5]}</li>
   `;
-  if (step) {
-    console.log("count");
-  }
   //disable the buttons
   disableCounting();
   //selecting all the blocks on the graph
@@ -486,36 +529,57 @@ async function CountEvenNumber(delay = showVal()) {
 
   for (var i = 0; i < blocks.length; i += 1) {
     blocks[i].style.backgroundColor = "#FF4949";
-
     // function to find values that return zero when divided by two
     // making them even numbers
     codeExplaination.replaceChildren();
     codeExplaination.innerHTML += `Traversing through array to find even numbers`;
     document.getElementById("setCountValue1").style.backgroundColor = "white";
-    // document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
-    document.getElementById("setCountValue2").style.backgroundColor = "white";
-    document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
+    document.getElementById("setCountValue2").style.backgroundColor = "#FF4949";
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, delay)
+    );
     if (currentArray[i] % 2 == 0) {
       // To change background-color of the
       // blocks to be compared
       document.getElementById("setCountValue3").style.backgroundColor =
-        "#white";
-      document.getElementById("setCountValue4").style.backgroundColor =
         "#d8b6ff";
-      blocks[i].style.backgroundColor = "#13CE66";
-      // adding the number of even number with each iteration
-      count++;
+      document.getElementById("setCountValue2").style.backgroundColor = "white";
+
+      // blocks[i].style.backgroundColor = "#13CE66";
+
       // returning the total count of even numbers
       codeExplaination.replaceChildren();
-      codeExplaination.innerHTML += `Found Even number then add it to count total`;
-      header.innerText = `The total number of Even Numbers is: ${count}`;
+
+      codeExplaination.innerHTML +=
+        "if the current value is divisible by 2, then";
+      header.innerText = `The new sum of even numbers is: ${count}`;
+
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
         }, 2000)
       );
-      document.getElementById("setCountValue4").style.backgroundColor = "white";
+      blocks[i].style.backgroundColor = "#13CE66";
+      document.getElementById("setCountValue4").style.backgroundColor =
+        "#13CE66";
+      codeExplaination.replaceChildren();
+      codeExplaination.innerHTML += `Even number is added to sum`;
+
+      // adding the number of even number with each iteration
+      count++;
+      header.innerText = `The total number of Even Numbers is: ${count}`;
+
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          resolve();
+        }, 2000)
+      );
+      document.getElementById("setCountValue3").style.backgroundColor =
+        "#white";
     }
+    document.getElementById("setCountValue4").style.backgroundColor = "white";
 
     // To wait for .5 sec
     await new Promise((resolve) =>
@@ -525,13 +589,25 @@ async function CountEvenNumber(delay = showVal()) {
     );
   }
   codeExplaination.replaceChildren();
-
-  codeExplaination.innerHTML += `end loop and return total count of even numbers`;
+  codeExplaination.innerHTML += `end Traversal`;
+  document.getElementById("setCountValue5").style.backgroundColor = "#FF4949";
+  await new Promise((resolve) =>
+    setTimeout(() => {
+      resolve();
+    }, 1000)
+  );
+  document.getElementById("setCountValue2").style.backgroundColor = "white";
   document.getElementById("setCountValue3").style.backgroundColor = "white";
   document.getElementById("setCountValue4").style.backgroundColor = "white";
-  document.getElementById("setCountValue5").style.backgroundColor = "#d8b6ff";
-  document.getElementById("setCountValue6").style.backgroundColor = "#d8b6ff";
-
+  await new Promise((resolve) =>
+    setTimeout(() => {
+      resolve();
+    }, 1000)
+  );
+  document.getElementById("setCountValue5").style.backgroundColor = "white";
+  codeExplaination.replaceChildren();
+  codeExplaination.innerHTML += `return sum of even numbers`;
+  document.getElementById("setCountValue6").style.backgroundColor = "#13CE66";
   //enabling the buttons once operation is complete
   enableCounting();
 }
@@ -675,7 +751,7 @@ function generate() {
 function generateArray() {
   // Clear the array and the container
   clear();
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < 5; i++) {
     // Return a value from 1 to 100 (both inclusive)
     var value = Math.ceil(Math.random() * 100);
 
@@ -779,7 +855,7 @@ async function maximum(delay = showVal()) {
   setCountValue.replaceChildren();
   header.replaceChildren();
   // array that contains each step of the algorithm
-  let minimumPsuedo = [
+  let maximumPsuedo = [
     "max ← a[0]",
     "for i ← 0, a.length − 1 do",
     "if (a[i] > max) then",
@@ -790,13 +866,13 @@ async function maximum(delay = showVal()) {
   ];
   // setting each algorithm line to a list item in the index.html file
   setCountValue.innerHTML += `
-  <li id='setCountValue1'  class = 'listCss'>${minimumPsuedo[0]}</li>
-  <li id='setCountValue2' class = 'listCss'>${minimumPsuedo[1]}</li>
-  <li id='setCountValue3'  class = 'listCss'>${minimumPsuedo[2]}</li>
-  <li id='setCountValue4'  class = 'listCss'>${minimumPsuedo[3]}</li>
-  <li id='setCountValue5'  class = 'listCss'>${minimumPsuedo[4]}</li>
-  <li id='setCountValue6'  class = 'listCss'>${minimumPsuedo[5]}</li>
-  <li id='setCountValue7'  class = 'listCss'>${minimumPsuedo[6]}</li>`;
+  <li id='setCountValue1'  class = 'listCss'>${maximumPsuedo[0]}</li>
+  <li id='setCountValue2' class = 'listCss'>${maximumPsuedo[1]}</li>
+  <li id='setCountValue3'  class = 'listCss'>${maximumPsuedo[2]}</li>
+  <li id='setCountValue4'  class = 'listCss'>${maximumPsuedo[3]}</li>
+  <li id='setCountValue5'  class = 'listCss'>${maximumPsuedo[4]}</li>
+  <li id='setCountValue6'  class = 'listCss'>${maximumPsuedo[5]}</li>
+  <li id='setCountValue7'  class = 'listCss'>${maximumPsuedo[6]}</li>`;
   header.replaceChildren();
   header.innerHTML += "Maximum Algorithm";
   //disable the buttons
@@ -804,8 +880,7 @@ async function maximum(delay = showVal()) {
   //selecting all the blocks on the graph
   var blocks = document.querySelectorAll(".block");
   //reset the blocks to the default color
-  var btnsArr = Array.prototype.slice.call(blocks);
-  console.log(btnsArr[4]);
+
   reset(blocks);
   codeExplaination.replaceChildren();
   //Setting the first element as the maximum
@@ -817,19 +892,17 @@ async function maximum(delay = showVal()) {
     }, 2000)
   );
 
-  console.log("step1");
   let max = Number(blocks[0].childNodes[0].innerHTML);
-
   blocks[0].style.backgroundColor = "#13CE66";
-
   for (var i = 1; i < blocks.length; i += 1) {
+    blocks[i].style.backgroundColor = "#FF4949";
+    codeExplaination.replaceChildren();
+    codeExplaination.innerHTML += `Traversing through array to find values greater than ${max} number`;
     document.getElementById("setCountValue1").style.backgroundColor = "white";
-    document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
+    document.getElementById("setCountValue2").style.backgroundColor = "#FF4949";
 
     // To change background-color of the
     // blocks to be compared
-    blocks[i].style.backgroundColor = "#FF4949";
-
     // To wait for .5 sec
     await new Promise((resolve) =>
       setTimeout(() => {
@@ -843,68 +916,52 @@ async function maximum(delay = showVal()) {
     var index = blocks.length - (blocks.length - i);
 
     // if the minimum is greater than the current value set the minimum to the current value
-
-    // document.getElementById("setCountValue2").style.backgroundColor = "white";
-    // document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
-    codeExplaination.replaceChildren();
-
-    codeExplaination.innerHTML += `Traverse through array to find greater values`;
     // if the previous maximum is less than the current value being evaluated
     // then the current value is set as the new max
     if (max < cuurentValue) {
-      const oldMax = blocks[i];
-
-      console.log("step3");
       document.getElementById("setCountValue2").style.backgroundColor = "white";
       document.getElementById("setCountValue3").style.backgroundColor =
         "#d8b6ff";
       codeExplaination.replaceChildren();
 
       codeExplaination.innerHTML +=
-        "if the current value is greater than the current max value, then set it as new Max value";
+        "if the current value is greater than the current max value, then";
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 3000)
+        }, 2000)
       );
       codeExplaination.replaceChildren();
       codeExplaination.innerHTML += `swap old max value: ${max} with the current value: ${cuurentValue}`;
       // previous max is replaced with current value
       max = cuurentValue;
-
       document.getElementById("setCountValue4").style.backgroundColor =
-        "#d8b6ff";
-      console.log("step4");
+        "#13CE66";
       document.getElementById("setCountValue3").style.backgroundColor = "white";
-
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 3000)
+        }, 2000)
       );
-      // display message
       blocks[i].style.backgroundColor = "#FF4949";
 
       header.innerText = `The new maximum value is: ${max} at index ${index}`;
       blocks[index].style.backgroundColor = "#13CE66";
-
-      console.log("end");
     }
-
-    // document.getElementById("setCountValue5").style.backgroundColor = "#d8b6ff";
     document.getElementById("setCountValue4").style.backgroundColor = "white";
 
     document.getElementById("setCountValue5").style.backgroundColor = "white";
   }
+  codeExplaination.replaceChildren();
+  codeExplaination.innerHTML += `end Traversal`;
+  document.getElementById("setCountValue6").style.backgroundColor = "#FF4949";
+
   await new Promise((resolve) =>
     setTimeout(() => {
       resolve();
     }, 1000)
   );
-  document.getElementById("setCountValue6").style.backgroundColor = "#d8b6ff";
 
-  codeExplaination.replaceChildren();
-  codeExplaination.innerHTML += `Return the maximum value`;
   enable();
   document.getElementById("setCountValue3").style.backgroundColor = "white";
   await new Promise((resolve) =>
@@ -915,9 +972,11 @@ async function maximum(delay = showVal()) {
   document.getElementById("setCountValue6").style.backgroundColor = "white";
   document.getElementById("setCountValue2").style.backgroundColor = "white";
   document.getElementById("setCountValue4").style.backgroundColor = "white";
+  codeExplaination.replaceChildren();
+  codeExplaination.innerHTML += `Return the maximum value`;
   header.replaceChildren();
   header.innerText = `The final maximum value is: ${max} at index ${index}`;
-  document.getElementById("setCountValue7").style.backgroundColor = "#d8b6ff";
+  document.getElementById("setCountValue7").style.backgroundColor = "#13CE66";
 }
 
 async function minimum(delay = showVal()) {
@@ -959,14 +1018,21 @@ async function minimum(delay = showVal()) {
   );
   let min = Number(blocks[0].childNodes[0].innerHTML);
   blocks[0].style.backgroundColor = "#13CE66";
-
+  document.getElementById("setCountValue1").style.backgroundColor = "white";
+  await new Promise((resolve) =>
+    setTimeout(() => {
+      resolve();
+    }, 2000)
+  );
+  document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
   for (var i = 1; i < blocks.length; i += 1) {
-    document.getElementById("setCountValue1").style.backgroundColor = "white";
-    document.getElementById("setCountValue2").style.backgroundColor = "#d8b6ff";
     // To change background-color of the
     // blocks to be compared
     blocks[i].style.backgroundColor = "#FF4949";
-
+    codeExplaination.replaceChildren();
+    codeExplaination.innerHTML += `Traversing through array to find values less than ${min} number`;
+    document.getElementById("setCountValue1").style.backgroundColor = "white";
+    document.getElementById("setCountValue2").style.backgroundColor = "#FF4949";
     // To wait for .5 sec
     await new Promise((resolve) =>
       setTimeout(() => {
@@ -980,58 +1046,56 @@ async function minimum(delay = showVal()) {
     var index = blocks.length - (blocks.length - i);
 
     // if the minimum is greater than the current value set the minimum to the current value
-    // document.getElementById("setCountValue2").style.backgroundColor = "white";
-    // document.getElementById("setCountValue3").style.backgroundColor = "#d8b6ff";
-    codeExplaination.replaceChildren();
-    codeExplaination.innerHTML += `Traverse through array to find smaller values`;
+
     // function to find out if the current minimum value is less than the current value being evaluated
     if (min > cuurentValue) {
       // if the current value less than the previous minimum,
 
-      blocks[i].style.backgroundColor = "#13CE66";
+      // blocks[i].style.backgroundColor = "#13CE66";
       // display message
       document.getElementById("setCountValue3").style.backgroundColor = "white";
-      document.getElementById("setCountValue4").style.backgroundColor =
+      document.getElementById("setCountValue3").style.backgroundColor =
         "#d8b6ff";
       codeExplaination.replaceChildren();
 
       codeExplaination.innerHTML +=
-        "if the current value is less than the current Min value, then set it as new Min value";
+        "if the current value is less than the current Min value, then";
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 3000)
+        }, 2000)
       );
       codeExplaination.replaceChildren();
       codeExplaination.innerHTML += `swap old minimum value: ${min} with the current value: ${cuurentValue}`;
-
       // the current value is set as the new minimum value
       min = cuurentValue;
       document.getElementById("setCountValue4").style.backgroundColor =
-        "#d8b6ff";
+        "#13CE66";
       document.getElementById("setCountValue3").style.backgroundColor = "white";
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 3000)
+        }, 2000)
       );
       blocks[i].style.backgroundColor = "#FF4949";
 
-      header.innerText = `The new maximum value is: ${min} at index ${index}`;
+      header.innerText = `The new minimum value is: ${min} at index ${index}`;
       blocks[index].style.backgroundColor = "#13CE66";
     }
     document.getElementById("setCountValue4").style.backgroundColor = "white";
 
     document.getElementById("setCountValue5").style.backgroundColor = "white";
   }
+  codeExplaination.replaceChildren();
+  codeExplaination.innerHTML += `end Traversal`;
+  document.getElementById("setCountValue6").style.backgroundColor = "#FF4949";
+
   await new Promise((resolve) =>
     setTimeout(() => {
       resolve();
     }, 1000)
   );
-  document.getElementById("setCountValue6").style.backgroundColor = "#d8b6ff";
-  codeExplaination.replaceChildren();
-  codeExplaination.innerHTML += `Return the minimum value`;
+
   enable();
   document.getElementById("setCountValue3").style.backgroundColor = "white";
   await new Promise((resolve) =>
@@ -1042,9 +1106,11 @@ async function minimum(delay = showVal()) {
   document.getElementById("setCountValue6").style.backgroundColor = "white";
   document.getElementById("setCountValue2").style.backgroundColor = "white";
   document.getElementById("setCountValue4").style.backgroundColor = "white";
+  codeExplaination.replaceChildren();
+  codeExplaination.innerHTML += `Return the minimum value`;
   header.replaceChildren();
   header.innerText = `The final minimum value is: ${min} at index ${index}`;
-  document.getElementById("setCountValue7").style.backgroundColor = "#d8b6ff";
+  document.getElementById("setCountValue7").style.backgroundColor = "#13CE66";
 }
 // a function to sum up the total number of even numbers
 async function summingEvenNumbers(delay = showVal()) {
@@ -1163,8 +1229,8 @@ async function summingEvenNumbers(delay = showVal()) {
       resolve();
     }, 2000)
   );
-  document.getElementById("setCountValue5").style.backgroundColor = "#white";
-  document.getElementById("setCountValue6").style.backgroundColor = "#FF4949";
+  document.getElementById("setCountValue5").style.backgroundColor = "white";
+  document.getElementById("setCountValue6").style.backgroundColor = "#13CE66";
 
   //enabling the buttons once operation is complete
   enableSumming();
@@ -1240,7 +1306,7 @@ async function summingOddNumbers(delay = showVal()) {
       codeExplaination.replaceChildren();
 
       codeExplaination.innerHTML +=
-        "if the current value is NOT divisible by 2, then add it to current sum";
+        "if the current value is NOT divisible by 2, then";
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
@@ -1284,8 +1350,8 @@ async function summingOddNumbers(delay = showVal()) {
       resolve();
     }, 2000)
   );
-  document.getElementById("setCountValue5").style.backgroundColor = "#white";
-  document.getElementById("setCountValue6").style.backgroundColor = "#FF4949";
+  document.getElementById("setCountValue5").style.backgroundColor = "white";
+  document.getElementById("setCountValue6").style.backgroundColor = "#13CE66";
   //enabling the buttons once operation is complete
   enableSumming();
 }
@@ -1296,7 +1362,7 @@ async function summingGreaterThan(delay = showVal()) {
   header.innerHTML += "Summing Algorithm";
   // array that contains each step of the algorithm
   let summingPseudo = [
-    "c ← 0",
+    "s ← 0",
     "for i ← 0, a.length − 1 do",
     "if (a[i] > s) then",
     "s ← s + a[i]",
@@ -1425,8 +1491,8 @@ async function summingGreaterThan(delay = showVal()) {
       resolve();
     }, 2000)
   );
-  document.getElementById("setCountValue5").style.backgroundColor = "#white";
-  document.getElementById("setCountValue6").style.backgroundColor = "#FF4949";
+  document.getElementById("setCountValue5").style.backgroundColor = "white";
+  document.getElementById("setCountValue6").style.backgroundColor = "#13CE66";
 
   //enabling the buttons once operation is complete
   enableSumming();
@@ -1565,8 +1631,8 @@ async function summingLessThan(delay = showVal()) {
       resolve();
     }, 2000)
   );
-  document.getElementById("setCountValue5").style.backgroundColor = "#white";
-  document.getElementById("setCountValue6").style.backgroundColor = "#FF4949";
+  document.getElementById("setCountValue5").style.backgroundColor = "white";
+  document.getElementById("setCountValue6").style.backgroundColor = "#13CE66";
 
   //enabling the buttons once operation is complete
   enableSumming();
